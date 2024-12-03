@@ -3,14 +3,14 @@ CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 NAME	=	Unnecessary\ violence
 
-HDR		=	Weapon.hpp \
-			HumanA.hpp \
-			HumanB.hpp
+HDR		=	HumanA.hpp \
+			Weapon.hpp \
+			HumanB.hpp \
 
-SRC		=	Weapon.cpp \
+SRC		=	main.cpp \
+			Weapon.cpp \
 			HumanA.cpp \
-			HumanB.cpp
-			main.cpp
+			HumanB.cpp \
 
 all: $(NAME)
 
