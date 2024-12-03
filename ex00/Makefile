@@ -1,5 +1,5 @@
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror #-std=c++98
 
 NAME	=	megaphone
 
@@ -11,7 +11,6 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

@@ -1,14 +1,12 @@
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror #-std=c++98
 
-NAME	=	MyAwesomePhoneBook
+NAME	=	MissingFileTest
 
-HDR		=	PhoneBook.hpp \
-			Contact.hpp
+HDR		=	Account.hpp \
 
-SRC		=	PhoneBook.cpp \
-			Contact.cpp \
-			main.cpp
+SRC		=	Account.cpp \
+			tests.cpp
 
 all: $(NAME)
 
