@@ -22,6 +22,7 @@ SOURCE_FILE="$DEST_DIR/$CLASS_NAME.cpp"
 cat > "$HEADER_FILE" <<EOF
 #ifndef ${CLASS_NAME^^}_HPP
 # define ${CLASS_NAME^^}_HPP
+# include <iostream>
 
 class $CLASS_NAME
 {

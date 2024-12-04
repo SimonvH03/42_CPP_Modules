@@ -6,14 +6,14 @@ int	main(void)
 	PhoneBook	PhoneBook;
 	std::string	command;
 
-	std::cout << "My Awesome PhoneBook" << std::endl
-		<< "Please Enter one of the Commands: ADD, SEARCH, EXIT" << std::endl;
+	std::cout << "My Awesome PhoneBook\n"
+		<< "Please Enter one of the Commands: ADD, SEARCH, EXIT\n";
 	while (1)
 	{
 		std::cout << std::endl << "Enter Command: ";
 		if (!std::getline(std::cin, command))
 		{
-			std::cout << std::endl << "Input error, exiting..." << std::endl;
+			std::cout << std::endl << "Input error, exiting...\n";
 			return (1);
 		}
 		if (command == "EXIT")
@@ -23,10 +23,10 @@ int	main(void)
 		else if (command == "SEARCH")
 			PhoneBook.search_contact();
 		else
-			std::cout << "Invalid command." << std::endl;
+			std::cout << "Invalid command.\n";
 		if (std::cin.eof())
 		{
-			std::cout << "exiting..." << std::endl;
+			std::cout << "exiting...\n";
 			return (1);
 		}
 	}

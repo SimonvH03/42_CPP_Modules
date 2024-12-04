@@ -30,7 +30,8 @@ NAME	=	$PROGRAM_NAME
 
 HDR		=	$HDR_FILES
 
-SRC		=	$SRC_FILES
+SRC		=	$SRC_FILES \
+			main.cpp
 
 all: \$(NAME)
 
@@ -58,6 +59,7 @@ if [ "$ADD_MAIN" -eq 1 ]; then
 	# Create main.cpp
 	cat > "$SRC_DIR/main.cpp" <<EOF
 $INCLUDES
+# include <iostream>
 
 int	main(void)
 {

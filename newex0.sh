@@ -10,11 +10,12 @@ fi
 DEST_DIR=$1
 PROGRAM_NAME=$2
 shift
+shift
 
 # Create the source directory if it doesn't exist
 mkdir -p "$DEST_DIR"
 
-for CLASS_NAME in "$@"; do
+for CLASS_NAME in "${@^}"; do
 # Define filenames
 HEADER_FILE="$DEST_DIR/$CLASS_NAME.hpp"
 SOURCE_FILE="$DEST_DIR/$CLASS_NAME.cpp"
@@ -23,6 +24,7 @@ SOURCE_FILE="$DEST_DIR/$CLASS_NAME.cpp"
 cat > "$HEADER_FILE" <<EOF
 #ifndef ${CLASS_NAME^^}_HPP
 # define ${CLASS_NAME^^}_HPP
+# include <iostream>
 
 class $CLASS_NAME
 {
@@ -75,7 +77,8 @@ NAME	=	$PROGRAM_NAME
 
 HDR		=	$HDR_FILES
 
-SRC		=	$SRC_FILES
+SRC		=	$SRC_FILES \
+			main.cpp
 
 all: \$(NAME)
 
@@ -101,6 +104,7 @@ INCLUDES=$(find "$DEST_DIR" -maxdepth 1 -name "*.hpp" -printf "#include \"%f\"\\
 # Create main.cpp
 cat > "$DEST_DIR/main.cpp" <<EOF
 $INCLUDES
+# include <iostream>
 
 int	main(void)
 {
