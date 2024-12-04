@@ -29,7 +29,7 @@ class $CLASS_NAME
 		$CLASS_NAME();
 		~$CLASS_NAME();
 	private:
-
+		
 };
 
 #endif

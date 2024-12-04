@@ -13,9 +13,9 @@ ADD_MAIN=${3:-0}
 # Find all .hpp and .cpp files in the current directory
 format_files()
 {
-    find "$SRC_DIR" -maxdepth 1 -name "*.$1" -exec basename {} \; | sort -u | awk '{
-        if (NR == 1) printf "%s", $0;
-        else printf " \\\n\t\t\t%s", $0;}'
+	find "$SRC_DIR" -maxdepth 1 -name "*.$1" -exec basename {} \; | sort -u | awk '{
+		if (NR == 1) printf "%s", $0;
+		else printf " \\\n\t\t\t%s", $0;}'
 }
 
 HDR_FILES=$(format_files "hpp")
@@ -52,19 +52,18 @@ echo "Makefile created for program: $PROGRAM_NAME"
 
 # Conditionally create main.cpp if add_main is set to 1
 if [ "$ADD_MAIN" -eq 1 ]; then
-    # Generate #include list for HDR files
-    INCLUDES=$(find "$SRC_DIR" -maxdepth 1 -name "*.hpp" -printf "#include \"%f\"\\n" | sort)
+	# Generate #include list for HDR files
+	INCLUDES=$(find "$SRC_DIR" -maxdepth 1 -name "*.hpp" -printf "#include \"%f\"\\n" | sort)
 
-    # Create main.cpp
-    cat > "$SRC_DIR/main.cpp" <<EOF
+	# Create main.cpp
+	cat > "$SRC_DIR/main.cpp" <<EOF
 $INCLUDES
 
 int	main(void)
 {
-
 }
 EOF
 
 	# Notify the user of the created file
-    echo "main.cpp created #including headers: $(find "$SRC_DIR" -maxdepth 1 -name "*.hpp" -printf "%f " | sort)"
+	echo "main.cpp created #including headers: $(find "$SRC_DIR" -maxdepth 1 -name "*.hpp" -printf "%f " | sort)"
 fi
