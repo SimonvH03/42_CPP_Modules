@@ -1,10 +1,10 @@
 #include "Harl.hpp"
 # include <iostream>
 
-int main(void)
+int main()
 {
-	std::string input;
 	Harl		harl;
+	std::string input;
 
 	do
 	{
@@ -15,7 +15,12 @@ int main(void)
 			std::cout << std::endl << "Input error, exiting...\n";
 			return (1);
 		}
-		harl.complain(input);
+		int i = harl.getLevel(input);
+		while ((size_t)i < harl.n_lvl)
+		{
+			std::cout << '\n' << harl.levels[i] << '\n';
+			harl.complain(harl.levels[i++]);
+		}
 	} while (input.compare("exit"));
 
 	return (0);

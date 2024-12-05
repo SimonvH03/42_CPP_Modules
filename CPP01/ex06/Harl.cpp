@@ -2,27 +2,42 @@
 
 Harl::Harl()
 {
+	levels[0] = "DEBUG";
+	levels[1] = "INFO";
+	levels[2] = "WARNING";
+	levels[3] = "ERROR";
 }
 
 Harl::~Harl()
 {
 }
 
+int		Harl::getLevel(std::string level)
+{
+	if (level.empty())
+		return (-1);
+	int	i = 0;
+	while (i < 4 && levels[i].compare(level))
+		i++;
+	if (i == 4)
+		return (-1);
+	return (i);
+}
+
 void	Harl::complain(std::string level)
 {
 	thought		thoughts[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	if (level.empty())
 	{
 		std::cout << '\n';
 		return ;
 	}
-	int	i = 0;
-	while (i < 4 && levels[i].compare(level))
-		i++;
-	if (i < 4)
+	int	i = getLevel(level);
+	if (i != -1)
+	{
 		(this->*thoughts[i])();
+	}
 }
 
 void	Harl::debug(void)
