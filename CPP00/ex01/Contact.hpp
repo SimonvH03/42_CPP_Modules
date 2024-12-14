@@ -8,16 +8,22 @@ class	Contact
 		Contact();
 		~Contact();
 		void		display_contact(void);
-		void		set_firstname(std::string first_name);
-		void		set_lastname(std::string last_name);
-		void		set_nickname(std::string nickname);
-		std::string	get_firstname(void);
-		std::string	get_lastname(void);
-		std::string	get_nickname(void);
+		void		setFirstName(std::string firstName);
+		void		setLastName(std::string lastName);
+		void		setNickname(std::string nickname);
+		void		setPhoneNumber(std::string phone_number);
+		void		setDarkestSecret(std::string darkest_secret);
+		std::string	getFirstName(void);
+		std::string	getLastName(void);
+		std::string	getNickName(void);
+		std::string	getPhoneNumber(void);
+		std::string	getDarkestSecret(void);
 	private:
-		std::string	first_name;
-		std::string	last_name;
+		std::string	firstName;
+		std::string	lastName;
 		std::string	nickname;
+		std::string	phoneNumber;
+		std::string	darkestSecret;
 };
 
 #endif

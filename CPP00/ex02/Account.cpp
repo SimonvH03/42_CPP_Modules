@@ -62,7 +62,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 	if (_amount < withdrawal)
 	{
 		std::cout
-			<< ";withdrawal:refused" << '\n';
+			<< ";withdrawal:refused\n";
 		return (false);
 	}
 	_totalAmount -= withdrawal;

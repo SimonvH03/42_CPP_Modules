@@ -8,7 +8,7 @@ int	main(void)
 	int	N = 10;
 	std::string	name = "Bob";
 	std::cout << "\nWe call NewZombieHorde() to make " << N << " Zombies named " << name
-		<< "\nThen let each Zombie in the Horde announce itself\n";
+		<< "\nThen let each Zombie in the Horde announce itself\n\n";
 
 	Zombie	*ProbablyBob = ZombieHorde(N, name);
 	for (int i = 0; i < N; i++)

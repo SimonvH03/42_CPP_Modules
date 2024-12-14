@@ -3,11 +3,12 @@
 HumanB::HumanB(std::string name)
 {
 	this->_name = name;
+	std::cout<< this->_name << " was Constructed (HumanB)\n";
 }
 
 HumanB::~HumanB()
 {
-	// std::cout << "Destructing HumanB " << this->_name << '\n';
+	std::cout<< this->_name << " was Destructed (HumanB)\n";
 }
 
 void	HumanB::setWeapon(Weapon weapon)

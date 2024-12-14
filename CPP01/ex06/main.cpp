@@ -18,8 +18,9 @@ int main()
 		int i = harl.getLevel(input);
 		while ((size_t)i < harl.n_lvl)
 		{
-			std::cout << '\n' << harl.levels[i] << '\n';
+			std::cout << harl.levels[i] << '\n';
 			harl.complain(harl.levels[i++]);
+			std::cout << '\n';
 		}
 	} while (input.compare("exit"));
 

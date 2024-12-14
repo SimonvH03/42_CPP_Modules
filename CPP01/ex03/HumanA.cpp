@@ -4,11 +4,12 @@ HumanA::HumanA(std::string name, Weapon &weapon)
 {
 	this->_name = name;
 	this->_weapon = &weapon;
+	std::cout<< this->_name << " was Constructed (HumanA)\n";
 }
 
 HumanA::~HumanA()
 {
-	// std::cout << "Destructing HumanA " << this->_name << '\n';
+	std::cout<< this->_name << " was Destructed (HumanA)\n";
 }
 
 void	HumanA::attack()

@@ -1,12 +1,12 @@
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-NAME	=	MissingFileTest
+NAME	=	Towards\ a\ more\ useful\ fixed-point\ number\ class
 
-HDR		=	Account.hpp \
+HDR		=	Fixed.hpp
 
-SRC		=	Account.cpp \
-			tests.cpp
+SRC		=	Fixed.cpp \
+			main.cpp
 
 all: $(NAME)
 

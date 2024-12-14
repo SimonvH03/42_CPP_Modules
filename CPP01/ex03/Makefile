@@ -1,7 +1,7 @@
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-NAME	=	Unnessecary\ violence
+NAME	=	Unnecessary\ violence
 
 HDR		=	HumanA.hpp \
 			HumanB.hpp \
