@@ -8,12 +8,13 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	Energy = 50;
 	ATK = 20;
 	guardState = false;
+	guardCost = 20;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
 {
 	std::cout	<< "> ScavTrap Copy Constructor called on " << original.Name << '\n';
-	guardState = false;
+	*this = original;
 }
 
 ScavTrap& ScavTrap::operator=(ScavTrap const &original)
@@ -22,6 +23,7 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &original)
 	if (this != &original)
 	{
 		ClapTrap::operator=(original);
+		guardState = original.guardState;
 	}
 	return *this;
 }
@@ -33,11 +35,20 @@ ScavTrap::~ScavTrap()
 
 void	ScavTrap::guardGate()
 {
+	std::cout << Name;
 	guardState = !guardState;
 	if (guardState)
-		std::cout << Name << " is Guarding, incoming damage reduced\n";
+	{
+		if (Energy < guardCost)
+			std::cout << " attemps to Guard, but has insufficient Energy\n";
+		else
+		{
+			Energy -= guardCost;
+			std::cout << " is Guarding, incoming damage reduced\n";
+		}
+	}
 	else
-		std::cout << Name << " is no longer Guarding\n";
+		std::cout << " is no longer Guarding\n";
 }
 
 void	ScavTrap::takeDamage(unsigned int amount)
@@ -51,7 +62,7 @@ void	ScavTrap::takeDamage(unsigned int amount)
 		ClapTrap::takeDamage(amount);
 }
 
-std::string	ScavTrap::status()
+std::string	ScavTrap::status() const
 {
 	std::string	status = ClapTrap::status();
 
