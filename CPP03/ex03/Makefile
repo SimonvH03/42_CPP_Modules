@@ -3,33 +3,32 @@ CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 NAME	=	Now\ it\'s\ weird!
 
-CLSDIR	=	./classes
+CLS_DIR	=	./classes
 
-HDR		=	$(CLSDIR)/ClapTrap.hpp \
-			$(CLSDIR)/FragTrap.hpp \
-			$(CLSDIR)/ScavTrap.hpp \
-			$(CLSDIR)/DiamondTrap.hpp
+HDR		=	$(CLS_DIR)/ClapTrap.hpp \
+			$(CLS_DIR)/DiamondTrap.hpp \
+			$(CLS_DIR)/FragTrap.hpp \
+			$(CLS_DIR)/ScavTrap.hpp
 
-SRC		=	$(CLSDIR)/ClapTrap.cpp \
-			$(CLSDIR)/FragTrap.cpp \
-			$(CLSDIR)/ScavTrap.cpp \
-			$(CLSDIR)/DiamondTrap.cpp \
-			main.cpp
+SRC		=	$(CLS_DIR)/ClapTrap.cpp \
+			$(CLS_DIR)/DiamondTrap.cpp \
+			$(CLS_DIR)/FragTrap.cpp \
+			$(CLS_DIR)/ScavTrap.cpp
 
-OBJDIR	=	./obj
-OBJ		=	$(SRC:%.cpp=$(OBJDIR)/%.o)
+OBJ_DIR	=	./objects
+OBJ		=	$(SRC:$(CLS_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-$(OBJDIR)/%.o: %.cpp
+$(OBJ_DIR)/%.o: $(CLS_DIR)/%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(NAME): $(HDR) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ) main.cpp
+	$(CC) $(CFLAGS) $(OBJ) main.cpp -o $(NAME)
 
 clean:
 	rm -f $(OBJ)

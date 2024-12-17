@@ -1,7 +1,7 @@
 #include "classes/ClapTrap.hpp"
+#include "classes/DiamondTrap.hpp"
 #include "classes/FragTrap.hpp"
 #include "classes/ScavTrap.hpp"
-#include "classes/DiamondTrap.hpp"
 # include <iostream>
 
 void	nl()
