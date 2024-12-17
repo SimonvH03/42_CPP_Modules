@@ -14,6 +14,10 @@ Fixed::Fixed()
 	this->setRawBits(0);
 }
 
+/*
+	Note while both implementations of the Default Constructor are correct,
+	one is probably prefered by 42, as it produces the output shown in Subject
+*/
 Fixed::Fixed(Fixed const &src)
 {
 	announce("Copy Constructor", "Fixed::Fixed(Fixed const &src)");
@@ -21,10 +25,6 @@ Fixed::Fixed(Fixed const &src)
 	*this = src;
 }
 
-/*
-	Note while both implementations of the Default Constructor are correct,
-	one is probably prefered by 42, as it produces the output shown in Subject
-*/
 /*Fixed::Fixed(Fixed const &src)
 {
 	announce("Copy Constructor", "Fixed::Fixed(Fixed const &src)");

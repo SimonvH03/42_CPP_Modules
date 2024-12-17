@@ -2,15 +2,15 @@
 # define FIXED_HPP
 # include <iostream>
 # include <iomanip>
-
-void	announce(std::string const &name, std::string const &func);
+#include <cmath>
 
 class Fixed
 {
 	private:
-	static const
-		int	bitCount = 8;
-		int	value;
+		static const int	bitCount = 8;
+		int					value;
+
+		void	announce(std::string const &name, std::string const &func) const;
 
 	public:
 		Fixed();
@@ -22,6 +22,7 @@ class Fixed
 
 		int		getRawBits() const;
 		void	setRawBits(int const raw);
+		void	setRawBits(float const raw);
 
 		float	toFloat() const;
 		int		toInt() const;

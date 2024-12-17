@@ -1,5 +1,12 @@
 #include "Fixed.hpp"
 
+void	Fixed::announce(std::string const &name, std::string const &func) const
+{
+	std::cout << "called:\t\e[32m"
+		<< std::setw(27) << name
+		<< "\e[0m\t" << func << "\n";
+}
+
 Fixed::Fixed()
 {
 	announce("Default Constructor", "Fixed::Fixed()");
@@ -33,9 +40,7 @@ Fixed	&Fixed::operator=(Fixed const &src)
 	announce("Copy assignment operator", "Fixed  &Fixed::operator=(Fixed const &src)");
 
 	if (this != &src)
-	{
-		this->setRawBits(src.getRawBits());
-	}
+		this->value = src.getRawBits();
 	return (*this);
 }
 
@@ -44,7 +49,7 @@ Fixed::~Fixed()
 	announce("Destructor", "Fixed::~Fixed()");
 }
 
-int	Fixed::getRawBits() const
+int		Fixed::getRawBits() const
 {
 	announce("getRawBits member function", "int    Fixed::getRawBits() const");
 
@@ -55,15 +60,26 @@ void	Fixed::setRawBits(int const raw)
 {
 	announce("setRawBits member function", "void   Fixed::setRawBits(int const raw)");
 
-	this->value = raw;
+	this->value = raw << Fixed::bitCount;
+	std::cout << "Set iValue: " << this->value << '\n';
 }
 
-float	Fixed::toFloat() const
+void	Fixed::setRawBits(float const raw)
 {
-	return (1);
+	announce("setRawBits member function", "void   Fixed::setRawBits(float const raw)");
+
+	// this->value = raw * (1 << Fixed::bitCount);
+	this->value = round(raw * (1 << Fixed::bitCount));
+	std::cout << "Set fValue: " << this->value << '\n';
 }
 
-int	Fixed::toInt() const
+int		Fixed::toInt(void) const
 {
-	return (1);
+	// return (this->value >> Fixed::bitCount);
+	return round(this->value >> Fixed::bitCount);
+}
+
+float	Fixed::toFloat(void) const
+{
+	return static_cast<float>(this->value) / ( 1 << Fixed::bitCount);
 }
