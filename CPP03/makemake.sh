@@ -6,8 +6,8 @@ if [ "$#" -lt 2 ]; then
 fi
 
 # Assign arguments to variables
-PARENT_DIR=$1
 CLASS_DIR="classes"
+PARENT_DIR=$1
 PROGRAM_NAME=$2
 ADD_MAIN=${3:-0}
 
@@ -80,5 +80,6 @@ int	main(void)
 EOF
 
 	# Notify the user of the created file
-	echo "main.cpp created #including headers:\n$INCLUDES"
+	echo "main.cpp created with heading:"
+	echo "$INCLUDES"
 fi

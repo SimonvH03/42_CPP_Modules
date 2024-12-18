@@ -7,7 +7,7 @@ if [ "$#" -lt 2 ]; then
 fi
 
 # Assign arguments to variables
-DEST_DIR=$1
+DEST_DIR="$1/classes"
 shift
 
 # Create the source directory if it doesn't exist
@@ -50,7 +50,7 @@ $CLASS_NAME::~$CLASS_NAME()
 EOF
 
 # Notify the user of the created files
-echo "Created files:"
-echo " - $HEADER_FILE"
-echo " - $SOURCE_FILE"
+echo "Created class files:"
+echo "+ $HEADER_FILE"
+echo "+ $SOURCE_FILE"
 done
