@@ -1,6 +1,11 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
+// Trash because Norm
+FragTrap::FragTrap()
+{
+}
+
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "> FragTrap Constructor called for " << name << '\n';

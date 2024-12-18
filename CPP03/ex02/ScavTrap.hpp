@@ -5,6 +5,11 @@
 
 class ScavTrap : public ClapTrap
 {
+	private:
+		ScavTrap();
+
+		bool guardState;
+	
 	public:
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const &original);
@@ -14,8 +19,6 @@ class ScavTrap : public ClapTrap
 		void	guardGate();
 		void	takeDamage(unsigned int amount);
 		std::string	status();
-	private:
-		bool guardState;
 };
 
 #endif

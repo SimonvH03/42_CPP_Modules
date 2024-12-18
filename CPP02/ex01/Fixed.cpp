@@ -61,7 +61,7 @@ void	Fixed::setRawBits(int const raw)
 	announce("setRawBits member function", "void   Fixed::setRawBits(int const raw)");
 
 	this->value = raw << Fixed::bitCount;
-	std::cout << "Set iValue: " << this->value << '\n';
+	// std::cout << "Set iValue: " << this->value << '\n';
 }
 
 void	Fixed::setRawBits(float const raw)
@@ -70,7 +70,7 @@ void	Fixed::setRawBits(float const raw)
 
 	// this->value = raw * (1 << Fixed::bitCount);
 	this->value = round(raw * (1 << Fixed::bitCount));
-	std::cout << "Set fValue: " << this->value << '\n';
+	// std::cout << "Set fValue: " << this->value << '\n';
 }
 
 int		Fixed::toInt(void) const

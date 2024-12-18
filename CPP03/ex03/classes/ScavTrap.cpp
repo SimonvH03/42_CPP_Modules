@@ -1,6 +1,11 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
+// Trash because Norm
+ScavTrap::ScavTrap()
+{
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::cout << "> ScavTrap Constructor called for " << name << '\n';

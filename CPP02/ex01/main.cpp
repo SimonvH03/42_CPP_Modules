@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 # include <iostream>
 
-std::ostream & operator<<(std::ostream & o, Fixed const & i) {
+std::ostream &operator<<(std::ostream &o, Fixed const &i) {
 	o << i.toFloat();
 	return o;
 }

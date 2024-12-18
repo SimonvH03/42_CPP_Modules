@@ -43,11 +43,10 @@ all: \$(NAME)
 \$(OBJ_DIR):
 	mkdir -p \$(OBJ_DIR)
 
-\$(OBJ_DIR)/%.o: \$(CLS_DIR)/%.cpp
-	@mkdir -p \$(dir \$@)
+\$(OBJ_DIR)/%.o: \$(CLS_DIR)/%.cpp \$(OBJ_DIR)
 	\$(CC) \$(CFLAGS) -o \$@ -c $<
 
-\$(NAME): \$(OBJ) main.cpp
+\$(NAME): \$(OBJ) \$(HDR) main.cpp
 	\$(CC) \$(CFLAGS) \$(OBJ) main.cpp -o \$(NAME)
 
 clean:

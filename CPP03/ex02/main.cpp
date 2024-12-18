@@ -11,7 +11,11 @@ int	main(void)
 	ScavTrap	a(Jim);
 	FragTrap	b(Bob);
 
-	std::cout << "\n\e[35m[ TURN I ]\e[0m\n" << a.status() << '\t' << b.status() << '\n';
+	std::cout << "\nTestcopy: bopy(Bob): \n";
+	FragTrap	bopy(Bob);
+	std::cout << bopy.status() << '\n';
+
+	std::cout << "\n\e[35m[ TURN I ]\e[0m\n" << a.status() << '\t' << b.status() << '\t' << bopy.status() << '\n';
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 

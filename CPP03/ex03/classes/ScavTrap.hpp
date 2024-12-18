@@ -9,6 +9,9 @@ class ScavTrap : virtual public ClapTrap
 		bool 			guardState;
 		unsigned int	guardCost;
 
+	protected:
+		ScavTrap();
+
 	public:
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const &original);

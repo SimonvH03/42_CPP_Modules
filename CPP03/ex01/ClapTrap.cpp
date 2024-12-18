@@ -1,5 +1,10 @@
 #include "ClapTrap.hpp"
 
+// Trash because Norm
+ClapTrap::ClapTrap()
+{
+}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "ClapTrap Constructor called for " << name << '\n';
@@ -31,18 +36,6 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap Destructor called for " << Name << '\n';
-}
-
-std::string	ClapTrap::status()
-{
-    std::ostringstream status;
-
-    status << Name << " \e[2m(" 
-           << getHP() << " HP, " 
-           << getEnergy() << " E, " 
-           << getATK() << " ATK)\e[0m";
-
-    return status.str();
 }
 
 // unsure whether the subject mandates "ClapTrap causes its target to lose <ATK> Health points" means the ClapTrap needs to sniff out another ClapTrap just by name...
@@ -122,6 +115,18 @@ void	ClapTrap::setEnergy(unsigned int energy)
 void	ClapTrap::setATK(unsigned int atk)
 {
 	ATK = atk;
+}
+
+std::string	ClapTrap::status()
+{
+	std::ostringstream status;
+
+	status << Name << " \e[2m("
+		<< getHP() << " HP, "
+		<< getEnergy() << " E, "
+		<< getATK() << " ATK)\e[0m";
+
+	return status.str();
 }
 
 unsigned int ClapTrap::getHP(void) const

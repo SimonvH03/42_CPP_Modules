@@ -1,5 +1,10 @@
 #include "DiamondTrap.hpp"
 
+// Trash because Norm
+DiamondTrap::DiamondTrap()
+{
+}
+
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
 {
 	std::cout << ">> Diamond Constructor called for " << name << " (" << ClapTrap::Name << ")\n";

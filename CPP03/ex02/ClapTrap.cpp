@@ -1,5 +1,10 @@
 #include "ClapTrap.hpp"
 
+// Trash because Norm
+ClapTrap::ClapTrap()
+{
+}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	std::cout << "ClapTrap Constructor called for " << name << '\n';

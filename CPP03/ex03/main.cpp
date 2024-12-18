@@ -18,10 +18,15 @@ int	main(void)
 	ScavTrap	a(Jim);
 	FragTrap	b(Bob);
 	DiamondTrap	c(Zac);
-	DiamondTrap copy(c);
 
+	std::cout << "\nTesting Copies...\n";
+	ScavTrap	aopy(a);
+	FragTrap	bopy(b);
+	DiamondTrap	copy(c);
+
+	std::cout << '\n' << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
+	std::cout << '\n' << aopy.status() << '\n' << bopy.status() << '\n' << copy.status() << "\n\n";
 	copy.whoAmI();
-	std::cout << copy.status() << '\n';
 
 	nl();
 	c.whoAmI();

@@ -1,12 +1,36 @@
 #include "ClapTrap.hpp"
 
-void	ClapTrap::status()
+// Trash because Norm
+ClapTrap::ClapTrap()
 {
-	std::cout << "Name: " << Name
-		<< "\nHit points: " << HP
-		<< "\nEnergy points: " << Energy
-		<< "\nAttack damage: " << ATK
-		<< '\n';
+}
+
+ClapTrap::ClapTrap(std::string name)
+{
+	std::cout << "ClapTrap Constructor called for " << name << '\n';
+	this->Name = name;
+	this->HP = 10;
+	this->Energy = 10;
+	this->ATK = 0;
+}
+
+ClapTrap::ClapTrap(ClapTrap const &original)
+{
+	*this = original;
+}
+
+ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
+{
+	Name	= original.Name;
+	HP		= original.HP;
+	Energy	= original.Energy;
+	ATK		= original.ATK;
+	return (*this);
+}
+
+ClapTrap::~ClapTrap()
+{
+	std::cout << "ClapTrap Destructor called for " << Name << '\n';
 }
 
 // unsure whether the subject mandates "ClapTrap causes its target to lose <ATK> Health points" means the ClapTrap needs to sniff out another ClapTrap just by name...
@@ -68,34 +92,6 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << HP << " Health points left\n";
 }
 
-ClapTrap::ClapTrap(std::string name)
-{
-	std::cout << "ClapTrap Constructor called for " << name << '\n';
-	this->Name = name;
-	this->HP = 10;
-	this->Energy = 10;
-	this->ATK = 0;
-}
-
-ClapTrap::ClapTrap(ClapTrap const &original)
-{
-	*this = original;
-}
-
-ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
-{
-	Name	= original.Name;
-	HP		= original.HP;
-	Energy	= original.Energy;
-	ATK		= original.ATK;
-	return (*this);
-}
-
-ClapTrap::~ClapTrap()
-{
-	std::cout << "ClapTrap Destructor called for " << Name << '\n';
-}
-
 void	ClapTrap::setName(std::string name)
 {
 	Name = name;
@@ -116,22 +112,31 @@ void	ClapTrap::setATK(unsigned int atk)
 	ATK = atk;
 }
 
-unsigned int ClapTrap::getHP(void)
+void	ClapTrap::status() const
+{
+	std::cout << "Name: " << Name
+		<< "\nHit points: " << HP
+		<< "\nEnergy points: " << Energy
+		<< "\nAttack damage: " << ATK
+		<< '\n';
+}
+
+unsigned int ClapTrap::getHP(void) const
 {
 	return (HP);
 }
 
-unsigned int ClapTrap::getEnergy(void)
+unsigned int ClapTrap::getEnergy(void) const
 {
 	return (Energy);
 }
 
-unsigned int ClapTrap::getATK(void)
+unsigned int ClapTrap::getATK(void) const
 {
 	return (ATK);
 }
 
-std::string	ClapTrap::getName(void)
+std::string	ClapTrap::getName(void) const
 {
 	return (Name);
 }

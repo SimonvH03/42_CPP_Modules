@@ -6,6 +6,8 @@
 class ClapTrap
 {
 	protected:
+		ClapTrap();
+
 		std::string		Name;
 		unsigned int	HP;
 		unsigned int	Energy;

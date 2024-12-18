@@ -1,5 +1,5 @@
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -std=c++11
 
 NAME	=	Repetitive\ work
 
@@ -9,13 +9,12 @@ HDR		=	ClapTrap.hpp \
 
 SRC		=	ClapTrap.cpp \
 			FragTrap.cpp \
-			ScavTrap.cpp \
-			main.cpp
+			ScavTrap.cpp
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+$(NAME): $(SRC) $(HDR) main.cpp
+	$(CC) $(CFLAGS) $(SRC) main.cpp -o $(NAME)
 
 clean:
 

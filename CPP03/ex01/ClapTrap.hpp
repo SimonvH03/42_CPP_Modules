@@ -5,6 +5,14 @@
 
 class ClapTrap
 {
+	protected:
+		ClapTrap();
+
+		std::string		Name;
+		unsigned int	HP;
+		unsigned int	Energy;
+		unsigned int	ATK;
+
 	public:
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &original);
@@ -19,16 +27,12 @@ virtual	void	takeDamage(unsigned int amount);
 		void	setHP(unsigned int hp);
 		void	setEnergy(unsigned int energy);
 		void	setATK(unsigned int atk);
+
 virtual std::string		status();
 		std::string		getName(void) const;
 		unsigned int	getHP(void) const;
 		unsigned int	getEnergy(void) const;
 		unsigned int	getATK(void) const;
-	protected:
-		std::string		Name;
-		unsigned int	HP;
-		unsigned int	Energy;
-		unsigned int	ATK;
 };
 
 #endif
