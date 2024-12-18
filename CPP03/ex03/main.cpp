@@ -18,6 +18,10 @@ int	main(void)
 	ScavTrap	a(Jim);
 	FragTrap	b(Bob);
 	DiamondTrap	c(Zac);
+	DiamondTrap copy(c);
+
+	copy.whoAmI();
+	std::cout << copy.status() << '\n';
 
 	nl();
 	c.whoAmI();
