@@ -30,11 +30,15 @@ cat > "$HEADER_FILE" <<EOF
 
 class $CLASS_NAME
 {
-	public:
-		$CLASS_NAME();
-		~$CLASS_NAME();
 	private:
 
+	protected:
+
+	public:
+		$CLASS_NAME();
+		$CLASS_NAME($CLASS_NAME const &original);
+		$CLASS_NAME &operator=($CLASS_NAME const &original);
+		~$CLASS_NAME();
 };
 
 #endif
@@ -46,10 +50,27 @@ cat > "$SOURCE_FILE" <<EOF
 
 $CLASS_NAME::$CLASS_NAME()
 {
+	std::cout << "$CLASS_NAME Default Constructor\n";
+}
+
+$CLASS_NAME::$CLASS_NAME($CLASS_NAME const &original)
+{
+	std::cout << "$CLASS_NAME Copy Constructor\n";
+	*this = original;
+}
+
+$CLASS_NAME &$CLASS_NAME::operator=($CLASS_NAME const &original)
+{
+	std::cout << "$CLASS_NAME Assignment Operator\n";
+	if (this != &original)
+	{
+	}
+	return (*this);
 }
 
 $CLASS_NAME::~$CLASS_NAME()
 {
+	std::cout << "$CLASS_NAME Destructor\n";
 }
 EOF
 

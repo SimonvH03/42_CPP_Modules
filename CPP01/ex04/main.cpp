@@ -11,10 +11,10 @@ size_t	replace(std::string &str, size_t pos, size_t len, std::string const &s2)
 {
 	if (pos > str.length())
 		return (1);
-	std::cout << "- [pos]: "<< pos << '\n'
-		<< '\"' << str << "\"\n"
-		<< "+ [len]: " << len << '\n'
-		<< '\"' << s2 << "\"\n";
+	// std::cout << "- [pos]: "<< pos << '\n'
+	// 	<< '\"' << str << "\"\n"
+	// 	<< "+ [len]: " << len << '\n'
+	// 	<< '\"' << s2 << "\"\n";
 	for (size_t i = 0; pos + i < str.length() && i < len && i < s2.length(); i++)
 	{
 		str[pos + i] = s2[i];
