@@ -22,7 +22,7 @@ Dog &Dog::operator=(Dog const &original)
 		Animal::operator=(original);
 		delete brain;
 		brain = new Brain();
-		original.brain->inception(brain);
+		brain = original.brain;
 	}
 	return (*this);
 }
@@ -41,7 +41,6 @@ void	Dog::makeSound()
 
 void	Dog::think()
 {
-	std::cout << "thought " << levelOfThought << ":\n";
-	std::cout << brain->ideas[levelOfThought] << '\n';
+	std::cout << "thought " << levelOfThought << ": " << brain->ideas[levelOfThought] << '\n';
 	levelOfThought++;
 }
