@@ -2,17 +2,18 @@
 # define ICHARACTER_HPP
 # include <iostream>
 
+#include "AMateria.hpp"
+
+class	AMateria;
+
 class ICharacter
 {
-	private:
-
-	protected:
-
 	public:
-		ICharacter();
-		ICharacter(ICharacter const &original);
-		ICharacter &operator=(ICharacter const &original);
-		~ICharacter();
+		virtual ~ICharacter();
+		virtual void equip(AMateria *materia) = 0;
+		virtual void unequip(int index) = 0;
+		virtual void use(int index, ICharacter &target) = 0;
+		virtual std::string const &getName() const = 0;
 };
 
 #endif

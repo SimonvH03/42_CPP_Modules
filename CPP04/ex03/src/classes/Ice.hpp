@@ -2,7 +2,12 @@
 # define ICE_HPP
 # include <iostream>
 
-class Ice
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
+
+class	ICharacter;
+
+class Ice : public AMateria
 {
 	private:
 
@@ -13,6 +18,9 @@ class Ice
 		Ice(Ice const &original);
 		Ice &operator=(Ice const &original);
 		~Ice();
+
+		AMateria	*clone() const;
+		void		use(ICharacter &target);
 };
 
 #endif

@@ -83,7 +83,7 @@ done
 # Create the Makefile
 cat > "$PARENT_DIR/Makefile" <<EOF
 CC					=	c++
-CFLAGS				=	-Wall -Wextra -Werror -std=c++98
+CFLAGS				=	-std=c++98 -Wall -Wextra -Werror -Wshadow
 
 NAME				=	$PROGRAM_NAME
 
