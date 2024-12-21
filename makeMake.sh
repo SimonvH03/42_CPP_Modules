@@ -15,7 +15,7 @@ ADD_MAIN=${3:-0}
 SUBDIRS=$(find "$PARENT_DIR/$SRC_DIR" -mindepth 1 -type d -exec basename {} \;)
 CATEGORIES=""
 SOURCE="SOURCE_DIR			=	src
-SOURCE				=	\$(SOURCE_DIR)/main.cpp \\"
+SOURCE				=	\$(SOURCE_DIR)/main.cpp"
 
 for DIR in $SUBDIRS; do
 	# Generate CATEGORY_DIR and CATEGORY_SRC for each subdirectory
@@ -27,8 +27,8 @@ for DIR in $SUBDIRS; do
 ${DIR^^}_DIR			=	$DIR
 ${DIR^^}_SRC			=	$CATEGORY_SRC
 "
-	SOURCE="$SOURCE
-						\$(addprefix \$(SOURCE_DIR)/\$(${DIR^^}_DIR)/, \$(${DIR^^}_SRC)) \\"
+	SOURCE="$SOURCE \\
+						\$(addprefix \$(SOURCE_DIR)/\$(${DIR^^}_DIR)/, \$(${DIR^^}_SRC))"
 done
 
 # Create the Makefile

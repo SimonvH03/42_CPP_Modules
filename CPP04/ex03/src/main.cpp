@@ -7,7 +7,6 @@
 #include "classes/ICharacter.hpp"
 #include "classes/IMateriaSource.hpp"
 #include "classes/MateriaSource.hpp"
-#include "test/test.hpp"
 
 int	main(void)
 {

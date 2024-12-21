@@ -12,13 +12,9 @@ CLASSES_SRC			=	AMateria.cpp \
 						IMateriaSource.cpp \
 						MateriaSource.cpp
 
-TEST_DIR			=	test
-TEST_SRC			=	test.cpp
-
 SOURCE_DIR			=	src
 SOURCE				=	$(SOURCE_DIR)/main.cpp \
-						$(addprefix $(SOURCE_DIR)/$(CLASSES_DIR)/, $(CLASSES_SRC)) \
-						$(addprefix $(SOURCE_DIR)/$(TEST_DIR)/, $(TEST_SRC)) \
+						$(addprefix $(SOURCE_DIR)/$(CLASSES_DIR)/, $(CLASSES_SRC))
 
 OBJECTS_DIR			=	objects
 OBJECTS				=	$(SOURCE:$(SOURCE_DIR)/%.cpp=$(OBJECTS_DIR)/%.o)
