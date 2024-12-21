@@ -14,6 +14,8 @@ ADD_MAIN=${3:-0}
 # Detect all subdirectories in project/src and generate CATEGORY_DIR and CATEGORY_SRC
 SUBDIRS=$(find "$PARENT_DIR/$SRC_DIR" -mindepth 1 -type d -exec basename {} \;)
 CATEGORIES=""
+SOURCE="SOURCE_DIR			=	src
+SOURCE				=	\$(SOURCE_DIR)/main.cpp \\"
 
 for DIR in $SUBDIRS; do
 	# Generate CATEGORY_DIR and CATEGORY_SRC for each subdirectory
@@ -25,6 +27,8 @@ for DIR in $SUBDIRS; do
 ${DIR^^}_DIR			=	$DIR
 ${DIR^^}_SRC			=	$CATEGORY_SRC
 "
+	SOURCE="$SOURCE
+						\$(addprefix \$(SOURCE_DIR)/\$(${DIR^^}_DIR)/, \$(${DIR^^}_SRC)) \\"
 done
 
 # Create the Makefile
@@ -33,13 +37,8 @@ CC					=	c++
 CFLAGS				=	-Wall -Wextra -Werror -std=c++98
 
 NAME				=	$PROGRAM_NAME
-
-GET_NEXT_LINE_DIR	=	get_next_line
-GET_NEXT_LINE		=	\$(GET_NEXT_LINE_DIR)/get_next_line.a
 $CATEGORIES
-SOURCE_DIR			=	src
-SOURCE				=	\$(addprefix \$(SOURCE_DIR)/\$(CLASSES_DIR)/, \$(CLASSES_SRC)) \\
-						\$(SOURCE_DIR)/main.cpp
+$SOURCE
 
 OBJECTS_DIR			=	objects
 OBJECTS				=	\$(SOURCE:\$(SOURCE_DIR)/%.cpp=\$(OBJECTS_DIR)/%.o)
@@ -50,11 +49,8 @@ all: \$(NAME)
 	@mkdir -p \$(dir \$@)
 	\$(CC) \$(CFLAGS) -I./ -I\$(SOURCE_DIR) -o \$@ -c \$<
 
-\$(GET_NEXT_LINE):
-	make -C \$(GET_NEXT_LINE_DIR) all -s
-
-\$(NAME): \$(OBJECTS) \$(GET_NEXT_LINE)
-	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(GET_NEXT_LINE) -o \$(NAME)
+\$(NAME): \$(OBJECTS)
+	\$(CC) \$(CFLAGS) \$(OBJECTS) -o \$(NAME)
 
 clean:
 	@if [ -n "\$(OBJECTS_DIR)" ] && [ "\$(OBJECTS_DIR)" != "/" ] && [ -d "\$(OBJECTS_DIR)" ]; then \\
@@ -62,11 +58,9 @@ clean:
 	else \\
 		echo "Error: OBJECTS_DIR is undefined or invalid"; \\
 	fi
-	make -C \$(GET_NEXT_LINE_DIR) clean
 
 fclean: clean
 	rm -f \$(NAME)
-	rm -f \$(GET_NEXT_LINE_DIR)/get_next_line.a
 
 re: clean all
 
