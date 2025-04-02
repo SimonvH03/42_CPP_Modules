@@ -17,21 +17,21 @@ class ClapTrap
 		ClapTrap(ClapTrap const &original);
 		ClapTrap& operator=(ClapTrap const &original);
 		~ClapTrap();
-		
+
 		void	attack(std::string const &targetName);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-
-		void	setName(std::string name);
-		void	setHP(unsigned int hp);
-		void	setEnergy(unsigned int energy);
-		void	setATK(unsigned int atk);
 
 		void			status() const;
 		std::string		getName(void) const;
 		unsigned int	getHP(void) const;
 		unsigned int	getEnergy(void) const;
 		unsigned int	getATK(void) const;
+
+		void	setName(std::string name);
+		void	setHP(unsigned int hp);
+		void	setEnergy(unsigned int energy);
+		void	setATK(unsigned int atk);
 };
 
 #endif

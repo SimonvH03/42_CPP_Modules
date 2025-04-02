@@ -1,9 +1,13 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
-// Trash because Norm
 ScavTrap::ScavTrap()
 {
+	Name = "";
+	HP = 100;
+	Energy = 50;
+	ATK = 20;
+	guardState = false;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)

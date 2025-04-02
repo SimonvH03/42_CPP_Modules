@@ -1,5 +1,5 @@
 CC		=	c++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++11
+CFLAGS	=	-Wall -Werror -Wextra -std=c++11
 
 NAME	=	Repetitive\ work
 

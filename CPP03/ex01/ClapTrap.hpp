@@ -18,21 +18,21 @@ class ClapTrap
 		ClapTrap(ClapTrap const &original);
 		ClapTrap& operator=(ClapTrap const &original);
 		virtual ~ClapTrap();
-		
+
 		void	attack(std::string const &targetName);
 		void	beRepaired(unsigned int amount);
 virtual	void	takeDamage(unsigned int amount);
-
-		void	setName(std::string name);
-		void	setHP(unsigned int hp);
-		void	setEnergy(unsigned int energy);
-		void	setATK(unsigned int atk);
 
 virtual std::string		status();
 		std::string		getName(void) const;
 		unsigned int	getHP(void) const;
 		unsigned int	getEnergy(void) const;
 		unsigned int	getATK(void) const;
+
+		void	setName(std::string name);
+		void	setHP(unsigned int hp);
+		void	setEnergy(unsigned int energy);
+		void	setATK(unsigned int atk);
 };
 
 #endif

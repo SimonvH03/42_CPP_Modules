@@ -1,8 +1,11 @@
 #include "ClapTrap.hpp"
 
-// Trash because Norm
 ClapTrap::ClapTrap()
 {
+	this->Name = "";
+	this->HP = 10;
+	this->Energy = 10;
+	this->ATK = 0;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -103,9 +106,9 @@ std::string	ClapTrap::status() const
 {
 	std::ostringstream status;
 
-	status << Name << " \e[2m(" 
-		   << getHP() << " HP, " 
-		   << getEnergy() << " E, " 
+	status << Name << " \e[2m("
+		   << getHP() << " HP, "
+		   << getEnergy() << " E, "
 		   << getATK() << " ATK)\e[0m";
 
 	return (status.str());

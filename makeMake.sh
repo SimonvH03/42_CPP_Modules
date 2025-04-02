@@ -34,7 +34,7 @@ done
 # Create the Makefile
 cat > "$PARENT_DIR/Makefile" <<EOF
 CC					=	c++
-CFLAGS				=	-std=c++98 -Wall -Wextra -Werror -Wshadow
+CFLAGS				=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 
 NAME				=	$PROGRAM_NAME
 $CATEGORIES

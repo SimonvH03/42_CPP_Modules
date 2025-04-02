@@ -1,6 +1,6 @@
 NAME	=	get_next_line.a
 
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Werror -Wextra
 
 SRC		=	get_next_line_utils.c \
 			get_next_line.c

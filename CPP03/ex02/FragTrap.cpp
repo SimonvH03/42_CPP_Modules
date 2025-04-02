@@ -1,9 +1,12 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
-// Trash because Norm
 FragTrap::FragTrap()
 {
+	Name = "";
+	HP = 100;
+	Energy = 50;
+	ATK = 30;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)

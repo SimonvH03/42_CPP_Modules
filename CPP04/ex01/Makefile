@@ -1,5 +1,5 @@
 CC					=	c++
-CFLAGS				=	-Wall -Wextra -Werror -std=c++98
+CFLAGS				=	-Wall -Werror -Wextra -std=c++98
 
 NAME				=	I\ don\'t\ want\ to\ set\ the\ world\ on\ fire
 

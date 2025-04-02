@@ -589,12 +589,12 @@ Considering target file 'all'.
    Finished prerequisites of target file 'I don\'t want to set the world on fire'.
   Must remake target 'I don\'t want to set the world on fire'.
 Putting child 0x5f62a7ae3b50 (I don\'t want to set the world on fire) PID 22394 on the chain.
-Live child 0x5f62a7ae3b50 (I don\'t want to set the world on fire) PID 22394 
+Live child 0x5f62a7ae3b50 (I don\'t want to set the world on fire) PID 22394
 relinking: File $(NAME) ( = I don't want to set the world on fire) does not exist.
-Reaping winning child 0x5f62a7ae3b50 PID 22394 
-c++ -Wall -Wextra -Werror -std=c++98 objects/classes/Animal.o objects/classes/Brain.o objects/classes/Cat.o objects/classes/Dog.o objects/classes/WrongCat.o objects/classes/WrongAnimal.o objects/main.o get_next_line/get_next_line.a -o I\ don\'t\ want\ to\ set\ the\ world\ on\ fire
-Live child 0x5f62a7ae3b50 (I don\'t want to set the world on fire) PID 22395 
-Reaping winning child 0x5f62a7ae3b50 PID 22395 
+Reaping winning child 0x5f62a7ae3b50 PID 22394
+c++ -Wall -Werror -Wextra -std=c++98 objects/classes/Animal.o objects/classes/Brain.o objects/classes/Cat.o objects/classes/Dog.o objects/classes/WrongCat.o objects/classes/WrongAnimal.o objects/main.o get_next_line/get_next_line.a -o I\ don\'t\ want\ to\ set\ the\ world\ on\ fire
+Live child 0x5f62a7ae3b50 (I don\'t want to set the world on fire) PID 22395
+Reaping winning child 0x5f62a7ae3b50 PID 22395
 Removing child 0x5f62a7ae3b50 PID 22395 from chain.
   Successfully remade target file 'I don\'t want to set the world on fire'.
  Finished prerequisites of target file 'all'.

@@ -1,8 +1,11 @@
 #include "ClapTrap.hpp"
 
-// Trash because Norm
 ClapTrap::ClapTrap()
 {
+	this->Name = "";
+	this->HP = 10;
+	this->Energy = 10;
+	this->ATK = 0;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -92,26 +95,6 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << HP << " Health points left\n";
 }
 
-void	ClapTrap::setName(std::string name)
-{
-	Name = name;
-}
-
-void	ClapTrap::setHP(unsigned int hp)
-{
-	HP = hp;
-}
-
-void	ClapTrap::setEnergy(unsigned int energy)
-{
-	Energy = energy;
-}
-
-void	ClapTrap::setATK(unsigned int atk)
-{
-	ATK = atk;
-}
-
 void	ClapTrap::status() const
 {
 	std::cout << "Name: " << Name
@@ -139,4 +122,24 @@ unsigned int ClapTrap::getATK(void) const
 std::string	ClapTrap::getName(void) const
 {
 	return (Name);
+}
+
+void	ClapTrap::setName(std::string name)
+{
+	Name = name;
+}
+
+void	ClapTrap::setHP(unsigned int hp)
+{
+	HP = hp;
+}
+
+void	ClapTrap::setEnergy(unsigned int energy)
+{
+	Energy = energy;
+}
+
+void	ClapTrap::setATK(unsigned int atk)
+{
+	ATK = atk;
 }

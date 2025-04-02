@@ -4,7 +4,7 @@
 #include "classes/ScavTrap.hpp"
 # include <iostream>
 
-void	nl()
+static void	nl()
 {
 	std::cout << '\n';
 }
