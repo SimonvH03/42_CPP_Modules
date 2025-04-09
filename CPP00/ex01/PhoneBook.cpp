@@ -2,6 +2,7 @@
 
 PhoneBook::PhoneBook()
 {
+	contact_index = 0;
 	contact_count = 0;
 }
 
@@ -29,32 +30,34 @@ void	PhoneBook::add_contact(void)
 {
 	std::string	input;
 
-	if (contact_count < MAXIMUM_CONTACTS)
-		contact_count++;
-	std::cout << "[Adding Contact " << contact_count<< "]\n";
+	std::cout << "[Adding Contact " << contact_index % MAXIMUM_CONTACTS + 1 << "]\n";
 	if (contact_count == MAXIMUM_CONTACTS)
-		std::cout << "!Warning: possibly overwriting last contact!\n";
+		std::cout << "Warning: overwriting oldest contact!\n";
 	if (get_nonempty_input("Enter first name: ", &input))
 		return ;
-	contacts[contact_count - 1].setFirstName(input);
+	contacts[contact_index % MAXIMUM_CONTACTS].setFirstName(input);
 	if (get_nonempty_input("Enter last name: ", &input))
 		return ;
-	contacts[contact_count - 1].setLastName(input);
+	contacts[contact_index % MAXIMUM_CONTACTS].setLastName(input);
 	if (get_nonempty_input("Enter nickname: ", &input))
 		return ;
-	contacts[contact_count - 1].setNickname(input);
+	contacts[contact_index % MAXIMUM_CONTACTS].setNickname(input);
 	if (get_nonempty_input("Enter phone number: ", &input))
 		return ;
-	contacts[contact_count - 1].setPhoneNumber(input);
+	contacts[contact_index % MAXIMUM_CONTACTS].setPhoneNumber(input);
 	if (get_nonempty_input("Enter darkest secret: ", &input))
 		return ;
-	contacts[contact_count - 1].setDarkestSecret(input);
-	std::cout << "Contact " << contact_count << " Added Successfully.\n";
+	contacts[contact_index % MAXIMUM_CONTACTS].setDarkestSecret(input);
+	std::cout << "Contact " << contact_index % MAXIMUM_CONTACTS + 1 << " Added Successfully.\n";
+	contact_index = contact_index % MAXIMUM_CONTACTS + 1;
+	contact_count++;
+	if (contact_count > MAXIMUM_CONTACTS)
+		contact_count = MAXIMUM_CONTACTS;
 }
 
 void	PhoneBook::search_contact(void)
 {
-	if (contact_count == 0)
+	if (contact_index == 0)
 	{
 		std::cout << "No contacts to display.\n";
 		return ;

@@ -15,7 +15,8 @@ class	PhoneBook
 		void		add_contact(void);
 		void		search_contact(void);
 	private:
-		Contact		contacts[8];
+		Contact		contacts[MAXIMUM_CONTACTS];
+		int			contact_index;
 		int			contact_count;
 		void		display_contacts_table(void);
 		void		display_indexed_contact(void);
