@@ -1,6 +1,18 @@
 #include "Zombie.hpp"
 #include <iostream>
 
+static Zombie	*NewZombie(std::string name)
+{
+	Zombie *newZombie = new class Zombie(name);
+	return (newZombie);
+}
+
+static void	RandomChump(std::string name)
+{
+	Zombie newZombie(name);
+	newZombie.announce();
+}
+
 int	main(void)
 {
 	std::cout << "A simple demonstration of Zombies and their Class:\n";

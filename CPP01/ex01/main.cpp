@@ -1,6 +1,17 @@
 #include "Zombie.hpp"
 #include <iostream>
 
+static Zombie	*ZombieHorde(int N, std::string name)
+{
+	Zombie	*zombieHorde = new Zombie[N];
+
+	for (int i = 0; i < N; i++)
+	{
+		zombieHorde[i].setName(name);
+	}
+	return (zombieHorde);
+}
+
 int	main(void)
 {
 	std::cout << "Now let's make a Zombie Horde\n";

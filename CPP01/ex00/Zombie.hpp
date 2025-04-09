@@ -14,7 +14,4 @@ class	Zombie
 		std::string	_name;
 };
 
-Zombie	*NewZombie(std::string name);
-void	RandomChump(std::string name);
-
 #endif

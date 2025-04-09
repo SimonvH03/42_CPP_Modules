@@ -13,35 +13,23 @@ int main(int argc, char **argv)
 	if (argc < 2)
 	{
 		std::cout << "usage: ./harlFilter <LEVEL>\n";
-		return (EINVAL); 
+		return (EINVAL);
 	}
-	// do
-	// {
-	// 	std::cout << "Enter a level: ";
-	// 	std::getline(std::cin, input);
-	// 	if (std::cin.eof())
-	// 	{
-	// 		std::cout << std::endl << "Input error, exiting...\n";
-	// 		return (1);
-	// 	}
-		// switch (harl.getLevel(input))
-		switch (harl.getLevel(argv[1]))
+	switch (harl.getLevel(argv[1]))
+	{
+		default:
 		{
-			default:
-			{
-				std::cout << "harl is confused and unfamiliar with this LEVEL of commentary\n";
-				return (EINVAL);
-			}
-			case 0:
-				harl.complain(harl.levels[0]);
-			case 1:
-				harl.complain(harl.levels[1]);
-			case 2:
-				harl.complain(harl.levels[2]);
-			case 3:
-				harl.complain(harl.levels[3]);
+			std::cout << "harl is confused and unfamiliar with this LEVEL of commentary\n";
+			return (EINVAL);
 		}
-	// } while (input.compare("exit"));
-
+		case 0:
+			harl.complain(harl.levels[0]);
+		case 1:
+			harl.complain(harl.levels[1]);
+		case 2:
+			harl.complain(harl.levels[2]);
+		case 3:
+			harl.complain(harl.levels[3]);
+	}
 	return (0);
 }
