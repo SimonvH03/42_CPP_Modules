@@ -11,7 +11,7 @@ Fixed::Fixed()
 {
 	announce("Default Constructor", "Fixed::Fixed()");
 
-	this->setRawBits(0);
+	setRawBits(0);
 }
 
 Fixed::Fixed(Fixed const &src)
@@ -27,7 +27,7 @@ Fixed	&Fixed::operator=(Fixed const &src)
 
 	if (this != &src)
 	{
-		this->setRawBits(src.getRawBits());
+		setRawBits(src.getRawBits());
 	}
 	return (*this);
 }
@@ -41,12 +41,12 @@ int	Fixed::getRawBits() const
 {
 	announce("getRawBits member function", "int    Fixed::getRawBits() const");
 
-	return (this->numberValue);
+	return (numberValue);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
 	announce("setRawBits member function", "void   Fixed::setRawBits(int const raw)");
 
-	this->numberValue = raw;
+	numberValue = raw;
 }

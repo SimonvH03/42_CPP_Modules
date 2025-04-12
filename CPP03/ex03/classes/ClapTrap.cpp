@@ -2,10 +2,10 @@
 
 ClapTrap::ClapTrap()
 {
-	this->Name = "";
-	this->HP = 10;
-	this->Energy = 10;
-	this->ATK = 0;
+	Name = "";
+	HP = 10;
+	Energy = 10;
+	ATK = 0;
 }
 
 ClapTrap::ClapTrap(std::string name)

@@ -4,14 +4,17 @@
 
 class Harl
 {
+	private:
+		typedef	void		(Harl::*thought) (void);
+
 	public:
 		Harl();
 		~Harl();
-		void	complain(std::string level);
 		int		getLevel(std::string);
+		void	complain(std::string level);
 
-		static const size_t	n_lvl = 4;
-		std::string			levels[n_lvl];
+		static std::string	_levels[];
+		static thought		_thoughts[];
 
 	private:
 		void	debug();
@@ -19,7 +22,5 @@ class Harl
 		void	warning();
 		void	error();
 };
-
-typedef	void	(Harl::*thought) (void);
 
 #endif

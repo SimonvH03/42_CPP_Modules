@@ -23,13 +23,17 @@ int main(int argc, char **argv)
 			return (EINVAL);
 		}
 		case 0:
-			harl.complain(harl.levels[0]);
+			harl.complain(harl._levels[0]);
+			// fall through
 		case 1:
-			harl.complain(harl.levels[1]);
+			harl.complain(harl._levels[1]);
+			// fall through
 		case 2:
-			harl.complain(harl.levels[2]);
+			harl.complain(harl._levels[2]);
+			// fall through
 		case 3:
-			harl.complain(harl.levels[3]);
+			harl.complain(harl._levels[3]);
+			// fall through
 	}
 	return (0);
 }

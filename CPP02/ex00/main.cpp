@@ -7,7 +7,7 @@ int main(void)
 		<< "  The Default constructor sets Fixed.numberValue = 0\n"
 		<< "  Fixed::getRawBits returns Fixed.numberValue\n"
 		<< "  Fixed::operator=(&src) overloads usage of '=' operator on objects of the Fixed Class,\n"
-		<< "    Sets this->numberValue = src.numberValue and returns (*this) as reference to this\n";
+		<< "    Sets numberValue = src.numberValue and returns (*this) as reference to this\n";
 	std::cout << "\nCASE 1:\n1. object a is constructed by the Default Constructor: a.numberValue = 0 by default, \n"
 		<< "2. object b is a copy of a, constructed by the Copy Constructor: b = a:\n    Operator= is overloaded: b.numberValue = a.numberValue\n"
 		<< "Code:\n{\n\tFixed a; \e[2m\e[2m//Default Constructor\e[0m\n\tFixed b( a ); \e[2m//Copy Constructor -> operator=() -> getRawBits()\e[0m\n\tFixed c; \e[2m//Default Constructor\e[0m\n\tc = b; \e[2m//operator=() -> getRawBits()\e[0m\n\tstd::cout << a.getRawBits() << std::endl;\n\tstd::cout << b.getRawBits() << std::endl;\n\tstd::cout << c.getRawBits() << std::endl;\n}\nOutput:\n\n";

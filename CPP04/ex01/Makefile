@@ -12,8 +12,8 @@ CLS			=	Animal.cpp \
 				WrongAnimal.cpp
 
 SRC_DIR		=	src
-SRC			=	$(addprefix $(SRC_DIR)/$(CLS_DIR)/, $(CLS)) \
-				$(SRC_DIR)/main.cpp
+SRC			=	$(SRC_DIR)/main.cpp \
+				$(addprefix $(SRC_DIR)/$(CLS_DIR)/, $(CLS))
 
 OBJ_DIR		=	objects
 OBJ			=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

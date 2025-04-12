@@ -2,15 +2,15 @@
 
 HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {
-	std::cout<< this->_name << " was Constructed (HumanA)\n";
+	std::cout << "HumanA constructed: " << _name  << "\n";
 }
 
 HumanA::~HumanA()
 {
-	std::cout<< this->_name << " was Destructed (HumanA)\n";
+	std::cout << "HumanA destructed: " << _name  << "\n";
 }
 
 void	HumanA::attack()
 {
-	std::cout << this->_name << " attacks with their " << _weapon.getType() << '\n';
+	std::cout << _name << " attacks with their " << _weapon.getType() << '\n';
 }

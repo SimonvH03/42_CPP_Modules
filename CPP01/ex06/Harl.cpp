@@ -1,11 +1,21 @@
 #include "Harl.hpp"
 
+std::string
+	Harl::_levels[] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR"};
+
+Harl::thought
+	Harl::_thoughts[] = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error};
+
 Harl::Harl()
 {
-	levels[0] = "DEBUG";
-	levels[1] = "INFO";
-	levels[2] = "WARNING";
-	levels[3] = "ERROR";
 }
 
 Harl::~Harl()
@@ -17,7 +27,7 @@ int		Harl::getLevel(std::string level)
 	if (level.empty())
 		return (-1);
 	int	i = 0;
-	while (i < 4 && levels[i].compare(level))
+	while (i < 4 && _levels[i].compare(level))
 		i++;
 	if (i == 4)
 		return (-1);
@@ -26,7 +36,6 @@ int		Harl::getLevel(std::string level)
 
 void	Harl::complain(std::string level)
 {
-	thought		thoughts[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	if (level.empty())
 	{
@@ -36,7 +45,7 @@ void	Harl::complain(std::string level)
 	int	i = getLevel(level);
 	if (i != -1)
 	{
-		(this->*thoughts[i])();
+		(this->*_thoughts[i])();
 	}
 }
 
@@ -47,14 +56,14 @@ void	Harl::debug(void)
 
 void	Harl::info(void)
 {
-	std::cout << "I cannot believe adding extra bacon costs more money. You didn't put enough bacon in my burger!\n"
-		<< "If you did, I wouldn't be asking for more!\n";
+	std::cout << "I cannot believe adding extra bacon costs more money.\n"
+		<< "\tYou didn't put enough bacon in my burger!\n\tIf you did, I wouldn't be asking for more!\n";
 }
 
 void	Harl::warning(void)
 {
 	std::cout << "I think I deserve to have some extra bacon for free.\n"
-		<< "I've been coming for years whereas you started working here since last month.\n";
+		<< "\tI've been coming for years whereas you started working here since last month.\n";
 }
 
 void	Harl::error(void)

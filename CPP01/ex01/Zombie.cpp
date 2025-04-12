@@ -2,6 +2,7 @@
 
 Zombie::Zombie()
 {
+	std::cout << "Zombie constructed" << '\n';
 }
 
 Zombie::~Zombie()
@@ -11,7 +12,7 @@ Zombie::~Zombie()
 
 void	Zombie::setName(std::string name)
 {
-	this->_name = name;
+	_name = name;
 	std::cout << "Zombie named: " << _name << '\n';
 }
 
