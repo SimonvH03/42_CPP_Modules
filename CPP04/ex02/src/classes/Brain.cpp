@@ -18,7 +18,7 @@ Brain &Brain::operator=(Brain const &original)
 	std::cout << "Brain Assignment Operator\n";
 	if (this != &original)
 	{
-		std::copy(original.ideas, original.ideas + 100, ideas);
+		std::copy(original.ideas, original.ideas + BRAIN_CAPACITY, ideas);
 	}
 	return (*this);
 }
@@ -30,23 +30,17 @@ Brain::~Brain()
 
 void	Brain::fileStudy(std::string fileName)
 {
-	int		fd = open(fileName.c_str(), O_RDONLY);
-	char	*line;
+	std::ifstream	file(fileName.c_str());
+	std::string		line;
 
-	if (fd == -1)
+	if (!file)
 	{
-		std::cout << "failed to open file " << fileName.c_str() << " for study\n";
+		std::cout << "failed to open file " << fileName << " for study\n";
 		return ;
 	}
-	while (intelligence < BRAIN_CAPACITY)
+	while (intelligence < BRAIN_CAPACITY && std::getline(file, line))
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
 		ideas[intelligence] = line;
-		free(line);
 		intelligence++;
 	}
-	get_next_line(-1);
-	close(fd);
 }

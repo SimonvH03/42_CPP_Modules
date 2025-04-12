@@ -1,6 +1,6 @@
 CXX			=	c++
-CXXFLAGS	=	-std=c++98 -Wall -Wextra -Wshadow
-CXXFLAGS	+=	-Werror -g
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	+=	-Wshadow -g
 
 NAME		=	Interface
 
@@ -30,9 +30,7 @@ $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	@if [ -n "$(OBJ_DIR)" ] \
-	&& [ "$(OBJ_DIR)" != "/" ] \
-	&& [ -d "$(OBJ_DIR)" ]; then \
+	@if [ -n "$(OBJ_DIR)" ] && [ "$(OBJ_DIR)" != "/" ]; then \
 		rm -rf $(OBJ_DIR); \
 	else \
 		echo "Error: OBJ_DIR is undefined or invalid"; \

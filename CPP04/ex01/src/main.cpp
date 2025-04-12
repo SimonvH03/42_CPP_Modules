@@ -1,9 +1,9 @@
+# include <iostream>
 #include "classes/Animal.hpp"
 #include "classes/Cat.hpp"
 #include "classes/Dog.hpp"
 #include "classes/WrongAnimal.hpp"
 #include "classes/WrongCat.hpp"
-# include <iostream>
 
 int	main(void)
 {
@@ -13,20 +13,20 @@ int	main(void)
 
 	std::cout << std::endl;
 
-	std::cout << cat->getType() << ": "; 
+	std::cout << cat->getType() << ": ";
 	cat->makeSound();
-	std::cout << dog->getType() << ": "; 
+	std::cout << dog->getType() << ": ";
 	dog->makeSound();
-	std::cout << animal->getType() << ": "; 
+	std::cout << animal->getType() << ": ";
 	animal->makeSound();
 
 	std::cout << std::endl;
 
-	std::cout << cat->getType() << ": "; 
+	std::cout << cat->getType() << ": ";
 	cat->makeSound();
-	std::cout << dog->getType() << ": "; 
+	std::cout << dog->getType() << ": ";
 	dog->makeSound();
-	std::cout << animal->getType() << ": "; 
+	std::cout << animal->getType() << ": ";
 	animal->makeSound();
 
 	std::cout << std::endl;
@@ -41,7 +41,7 @@ int	main(void)
 
 	std::cout << std::endl;
 
-	std::cout << wrong_cat->getType() << ": "; 
+	std::cout << wrong_cat->getType() << ": ";
 	wrong_cat->makeSound();
 
 	delete wrong_cat;

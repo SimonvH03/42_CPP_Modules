@@ -1,5 +1,4 @@
 # include <iostream>
-
 #include "classes/AMateria.hpp"
 #include "classes/Character.hpp"
 #include "classes/Cure.hpp"

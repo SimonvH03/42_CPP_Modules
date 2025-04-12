@@ -3,9 +3,6 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Abstract\ Class
 
-GNL_DIR		=	get_next_line
-GNL			=	$(GNL_DIR)/get_next_line.a
-
 CLS_DIR		=	classes
 CLS			=	Animal.cpp \
 				Brain.cpp \
@@ -25,25 +22,20 @@ all: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -I./ -I$(SRC_DIR) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) -I ./ -I $(SRC_DIR) -o $@ -c $<
 
-$(GNL):
-	make -C $(GNL_DIR) all -s
-
-$(NAME): $(OBJ) $(GNL)
-	$(CXX) $(CXXFLAGS) $(OBJ) $(GNL) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	@if [ -n "$(OBJ_DIR)" ] && [ "$(OBJ_DIR)" != "/" ] && [ -d "$(OBJ_DIR)" ]; then \
+	@if [ -n "$(OBJ_DIR)" ] && [ "$(OBJ_DIR)" != "/" ]; then \
 		rm -rf $(OBJ_DIR); \
 	else \
 		echo "Error: OBJ_DIR is undefined or invalid"; \
 	fi
-	make -C $(GNL_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(GNL_DIR)/get_next_line.a
 
 re: clean all
 

@@ -1,13 +1,8 @@
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 # include <iostream>
-# include <unistd.h>
-# include <string.h>
-# include <fcntl.h>
-
-extern "C" {
-	#include "../../get_next_line/get_next_line.h"
-}
+# include <fstream>
+# include <string>
 
 #define BRAIN_CAPACITY 100
 
