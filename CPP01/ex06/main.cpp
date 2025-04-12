@@ -1,10 +1,6 @@
 #include "Harl.hpp"
 #include <iostream>
 
-#ifndef EINVAL
-# define EINVAL 22
-#endif
-
 int main(int argc, char **argv)
 {
 	Harl		harl;

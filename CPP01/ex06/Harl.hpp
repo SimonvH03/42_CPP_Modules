@@ -10,6 +10,7 @@ class Harl
 	public:
 		Harl();
 		~Harl();
+
 		int		getLevel(std::string);
 		void	complain(std::string level);
 

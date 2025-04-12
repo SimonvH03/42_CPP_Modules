@@ -4,7 +4,6 @@
 
 class Harl
 {
-
 	public:
 		Harl();
 		~Harl();
@@ -12,11 +11,10 @@ class Harl
 
 	private:
 		typedef	void		(Harl::*thought) (void);
-
 		static std::string	_levels[];
 		static thought		_thoughts[];
-		int		getLevel(std::string);
 
+		int		getLevel(std::string);
 		void	debug();
 		void	info();
 		void	warning();
