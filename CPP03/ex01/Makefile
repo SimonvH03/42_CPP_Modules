@@ -1,18 +1,18 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	Serena,\ my\ love!
+NAME		=	Serena,\ my\ love!
 
-HDR		=	ClapTrap.hpp \
-			ScavTrap.hpp
+HDR			=	ClapTrap.hpp \
+				ScavTrap.hpp
 
-SRC		=	ClapTrap.cpp \
-			ScavTrap.cpp
+SRC			=	ClapTrap.cpp \
+				ScavTrap.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR) main.cpp
-	$(CC) $(CFLAGS) $(SRC) main.cpp -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) main.cpp -o $(NAME)
 
 clean:
 

@@ -19,9 +19,9 @@ int	main(void)
 		if (command == "EXIT")
 			break ;
 		else if (command == "ADD")
-			PhoneBook.add_contact();
+			PhoneBook.addContact();
 		else if (command == "SEARCH")
-			PhoneBook.search_contact();
+			PhoneBook.searchContact();
 		else
 			std::cout << "Invalid command.\n";
 		if (std::cin.eof())

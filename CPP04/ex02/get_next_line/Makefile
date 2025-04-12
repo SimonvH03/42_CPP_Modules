@@ -1,5 +1,6 @@
 NAME	=	get_next_line.a
 
+CC		=	cc
 CFLAGS	=	-Wall -Werror -Wextra
 
 SRC		=	get_next_line_utils.c \
@@ -13,7 +14,7 @@ $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
 %.o: %.c
-	cc $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

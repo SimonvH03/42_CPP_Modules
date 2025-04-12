@@ -1,18 +1,17 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	Moar\ brainz!
+NAME		=	Moar\ brainz!
 
-HDR		=	Zombie.hpp
+HDR			=	Zombie.hpp
 
-SRC		=	Zombie.cpp \
-			ZombieHorde.cpp \
-			main.cpp
+SRC			=	main.cpp \
+				Zombie.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

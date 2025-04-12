@@ -1,17 +1,17 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	My\ First\ Class\ in\ Orthodox\ Canonical\ Form
+NAME		=	My\ First\ Class\ in\ Orthodox\ Canonical\ Form
 
-HDR		=	Fixed.hpp
+HDR			=	Fixed.hpp
 
-SRC		=	Fixed.cpp \
-			main.cpp
+SRC			=	main.cpp \
+				Fixed.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

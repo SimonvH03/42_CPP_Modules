@@ -1,17 +1,17 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	Towards\ a\ more\ useful\ fixed-point\ number\ class
+NAME		=	Towards\ a\ more\ useful\ fixed-point\ number\ class
 
-HDR		=	Fixed.hpp
+HDR			=	Fixed.hpp
 
-SRC		=	Fixed.cpp \
-			main.cpp
+SRC			=	main.cpp \
+				Fixed.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

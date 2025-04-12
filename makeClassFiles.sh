@@ -2,12 +2,12 @@
 
 # Ensure the script is called with the correct number of arguments
 if [ "$#" -lt 2 ]; then
-	echo "Usage: $0 <source_directory> <class_name_1> [<class_name_2> ... <class_name_n>]"
+	echo "Usage: $0 <target_directory> <class_name_1> [class_name_2 ...]"
 	exit 1
 fi
 
 # Assign arguments to variables
-DEST_DIR="$1/classes"
+DEST_DIR="$1/cls"
 shift
 
 # Create the source directory if it doesn't exist

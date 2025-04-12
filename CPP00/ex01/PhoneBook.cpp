@@ -2,8 +2,8 @@
 
 PhoneBook::PhoneBook()
 {
-	contact_index = 0;
-	contact_count = 0;
+	contactIndex = 0;
+	contactCount = 0;
 }
 
 PhoneBook::~PhoneBook()
@@ -26,44 +26,44 @@ static	int	get_nonempty_input(std::string prompt, std::string *input)
 	}
 }
 
-void	PhoneBook::add_contact(void)
+void	PhoneBook::addContact(void)
 {
 	std::string	input;
 
-	std::cout << "[Adding Contact " << contact_index % MAXIMUM_CONTACTS + 1 << "]\n";
-	if (contact_count == MAXIMUM_CONTACTS)
+	std::cout << "[Adding Contact " << contactIndex % MAXIMUM_CONTACTS + 1 << "]\n";
+	if (contactCount == MAXIMUM_CONTACTS)
 		std::cout << "Warning: overwriting oldest contact!\n";
 	if (get_nonempty_input("Enter first name: ", &input))
 		return ;
-	contacts[contact_index % MAXIMUM_CONTACTS].setFirstName(input);
+	contacts[contactIndex % MAXIMUM_CONTACTS].setFirstName(input);
 	if (get_nonempty_input("Enter last name: ", &input))
 		return ;
-	contacts[contact_index % MAXIMUM_CONTACTS].setLastName(input);
+	contacts[contactIndex % MAXIMUM_CONTACTS].setLastName(input);
 	if (get_nonempty_input("Enter nickname: ", &input))
 		return ;
-	contacts[contact_index % MAXIMUM_CONTACTS].setNickname(input);
+	contacts[contactIndex % MAXIMUM_CONTACTS].setNickname(input);
 	if (get_nonempty_input("Enter phone number: ", &input))
 		return ;
-	contacts[contact_index % MAXIMUM_CONTACTS].setPhoneNumber(input);
+	contacts[contactIndex % MAXIMUM_CONTACTS].setPhoneNumber(input);
 	if (get_nonempty_input("Enter darkest secret: ", &input))
 		return ;
-	contacts[contact_index % MAXIMUM_CONTACTS].setDarkestSecret(input);
-	std::cout << "Contact " << contact_index % MAXIMUM_CONTACTS + 1 << " Added Successfully.\n";
-	contact_index = contact_index % MAXIMUM_CONTACTS + 1;
-	contact_count++;
-	if (contact_count > MAXIMUM_CONTACTS)
-		contact_count = MAXIMUM_CONTACTS;
+	contacts[contactIndex % MAXIMUM_CONTACTS].setDarkestSecret(input);
+	std::cout << "Contact " << contactIndex % MAXIMUM_CONTACTS + 1 << " Added Successfully.\n";
+	contactIndex = contactIndex % MAXIMUM_CONTACTS + 1;
+	contactCount++;
+	if (contactCount > MAXIMUM_CONTACTS)
+		contactCount = MAXIMUM_CONTACTS;
 }
 
-void	PhoneBook::search_contact(void)
+void	PhoneBook::searchContact(void)
 {
-	if (contact_index == 0)
+	if (contactIndex == 0)
 	{
 		std::cout << "No contacts to display.\n";
 		return ;
 	}
-	display_contacts_table();
-	display_indexed_contact();
+	displayContactsTable();
+	displayIndexedContact();
 }
 
 static std::string	truncate_table_entry(std::string input, size_t size)
@@ -81,19 +81,31 @@ static std::string	truncate_table_entry(std::string input, size_t size)
 	return (input);
 }
 
-void	PhoneBook::display_contacts_table(void)
+void	PhoneBook::displayContactsTable(void)
 {
 	std::cout << "     index|first name| last name|  nickname\n";
-	for (int i = 0; i < contact_count; i++)
+	std::cout << std::setw(COLUMN_WIDTH)
+		<< "index" << "|";
+	std::cout << std::setw(COLUMN_WIDTH)
+		<< "first name" << "|";
+	std::cout << std::setw(COLUMN_WIDTH)
+		<< "last name" << "|";
+	std::cout << std::setw(COLUMN_WIDTH)
+		<< "nickname" << "|";
+	for (int i = 0; i < contactCount; i++)
 	{
-		std::cout << std::setw(COLUMN_WIDTH) << i + 1 << "|";
-		std::cout << std::setw(COLUMN_WIDTH) << truncate_table_entry(contacts[i].getFirstName(), COLUMN_WIDTH) << "|";
-		std::cout << std::setw(COLUMN_WIDTH) << truncate_table_entry(contacts[i].getLastName(), COLUMN_WIDTH) << "|";
-		std::cout << std::setw(COLUMN_WIDTH) << truncate_table_entry(contacts[i].getNickName(), COLUMN_WIDTH) << '\n';
+		std::cout << std::setw(COLUMN_WIDTH)
+			<< i + 1 << "|";
+		std::cout << std::setw(COLUMN_WIDTH)
+			<< truncate_table_entry(contacts[i].getFirstName(), COLUMN_WIDTH) << "|";
+		std::cout << std::setw(COLUMN_WIDTH)
+			<< truncate_table_entry(contacts[i].getLastName(), COLUMN_WIDTH) << "|";
+		std::cout << std::setw(COLUMN_WIDTH)
+			<< truncate_table_entry(contacts[i].getNickName(), COLUMN_WIDTH) << '\n';
 	}
 }
 
-void	PhoneBook::display_indexed_contact(void)
+void	PhoneBook::displayIndexedContact(void)
 {
 	std::string	input;
 	int			index;
@@ -105,7 +117,7 @@ void	PhoneBook::display_indexed_contact(void)
 		return ;
 	}
 	index = (input.length() == 1) ? input[0] - '1': -1;
-	if (index >= 0 && index < contact_count)
+	if (index >= 0 && index < contactCount)
 	{
 		std::cout << "[Displaying Contact " << index + 1 << "]\n";
 		contacts[index].display_contact();

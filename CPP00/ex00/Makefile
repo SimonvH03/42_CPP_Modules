@@ -1,14 +1,14 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+NAME		=	megaphone
 
-NAME	=	megaphone
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-SRC		=	megaphone.cpp
+SRC			=	megaphone.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

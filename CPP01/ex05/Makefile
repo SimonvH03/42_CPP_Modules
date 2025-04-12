@@ -1,17 +1,17 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	Harl\ 2.0
+NAME		=	Harl\ 2.0
 
-HDR		=	Harl.hpp
+HDR			=	Harl.hpp
 
-SRC		=	Harl.cpp \
-			main.cpp
+SRC			=	main.cpp \
+				Harl.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

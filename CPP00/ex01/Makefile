@@ -1,19 +1,19 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+NAME		=	MyAwesomePhoneBook
 
-NAME	=	MyAwesomePhoneBook
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-HDR		=	PhoneBook.hpp \
-			Contact.hpp
+HDR			=	Contact.hpp \
+				PhoneBook.hpp
 
-SRC		=	PhoneBook.cpp \
-			Contact.cpp \
-			main.cpp
+SRC			=	main.cpp \
+				Contact.cpp \
+				PhoneBook.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

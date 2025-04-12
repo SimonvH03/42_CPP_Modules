@@ -1,20 +1,20 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++11
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++11
 
-NAME	=	Repetitive\ work
+NAME		=	Repetitive\ work
 
-HDR		=	ClapTrap.hpp \
-			FragTrap.hpp \
-			ScavTrap.hpp
+HDR			=	ClapTrap.hpp \
+				FragTrap.hpp \
+				ScavTrap.hpp
 
-SRC		=	ClapTrap.cpp \
-			FragTrap.cpp \
-			ScavTrap.cpp
+SRC			=	ClapTrap.cpp \
+				FragTrap.cpp \
+				ScavTrap.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR) main.cpp
-	$(CC) $(CFLAGS) $(SRC) main.cpp -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) main.cpp -o $(NAME)
 
 clean:
 

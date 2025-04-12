@@ -1,14 +1,14 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	HI\ THIS\ IS\ BRAIN
+NAME		=	HI\ THIS\ IS\ BRAIN
 
-SRC		=	main.cpp
+SRC			=	main.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

@@ -1,16 +1,16 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	Aaaaand...\ OPEN!
+NAME		=	Aaaaand...\ OPEN!
 
-HDR		=	ClapTrap.hpp
+HDR			=	ClapTrap.hpp
 
-SRC		=	ClapTrap.cpp
+SRC			=	ClapTrap.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR) main.cpp
-	$(CC) $(CFLAGS) $(SRC) main.cpp -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) main.cpp -o $(NAME)
 
 clean:
 

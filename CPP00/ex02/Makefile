@@ -1,17 +1,17 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+NAME		=	MissingFileTest
 
-NAME	=	MissingFileTest
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-HDR		=	Account.hpp \
+HDR			=	Account.hpp
 
-SRC		=	Account.cpp \
-			tests.cpp
+SRC			=	tests.cpp \
+				Account.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 

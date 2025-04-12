@@ -12,14 +12,14 @@ class	PhoneBook
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void		add_contact(void);
-		void		search_contact(void);
+		void		addContact(void);
+		void		searchContact(void);
 	private:
 		Contact		contacts[MAXIMUM_CONTACTS];
-		int			contact_index;
-		int			contact_count;
-		void		display_contacts_table(void);
-		void		display_indexed_contact(void);
+		int			contactIndex;
+		int			contactCount;
+		void		displayContactsTable(void);
+		void		displayIndexedContact(void);
 };
 
 #endif

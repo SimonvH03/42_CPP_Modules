@@ -1,21 +1,21 @@
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXX			=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME	=	Unnecessary\ violence
+NAME		=	Unnecessary\ violence
 
-HDR		=	HumanA.hpp \
-			HumanB.hpp \
-			Weapon.hpp
+HDR			=	HumanA.hpp \
+				HumanB.hpp \
+				Weapon.hpp
 
-SRC		=	HumanA.cpp \
-			HumanB.cpp \
-			main.cpp \
-			Weapon.cpp
+SRC			=	main.cpp \
+				HumanA.cpp \
+				HumanB.cpp \
+				Weapon.cpp
 
 all: $(NAME)
 
 $(NAME): $(SRC) $(HDR)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 
