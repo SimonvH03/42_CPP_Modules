@@ -58,17 +58,23 @@ void	Form::checkGrades(void) const
 {
 	if (_gradeToSign < GRADE_UPPER_BOUND
 		|| _gradeToExecute < GRADE_UPPER_BOUND)
+	{
 		throw GradeTooHighException();
+	}
 	else if (_gradeToSign > GRADE_LOWER_BOUND
 		|| _gradeToExecute > GRADE_LOWER_BOUND)
+	{
 		throw GradeTooLowException();
+	}
 }
 
 void	Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	std::cout << "Form to be signed: " << *this << "\n";
 	if (bureaucrat.getGrade() > _gradeToSign)
+	{
 		throw GradeTooLowException();
+	}
 	else
 	{
 		_signed = true;

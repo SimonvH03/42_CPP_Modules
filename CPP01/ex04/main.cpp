@@ -7,17 +7,6 @@ static	int	error(std::string const &msg, int const &code)
 	return (code);
 }
 
-size_t	replace(std::string &str, size_t pos, size_t len, std::string const &s2)
-{
-	if (pos > str.length())
-		return (1);
-	for (size_t i = 0; pos + i < str.length() && i < len && i < s2.length(); i++)
-	{
-		str[pos + i] = s2[i];
-	}
-	return (0);
-}
-
 int	main(int argc, char *argv[])
 {
 	if (argc != 4)
@@ -27,8 +16,8 @@ int	main(int argc, char *argv[])
 	std::string	filenameOut = filenameIn + ".replace";
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
-	std::ifstream fileIn(filenameIn.data());
 
+	std::ifstream fileIn(filenameIn.data());
 	if (!fileIn.is_open())
 		return error("Error: failed to open file", errno);
 	std::ofstream fileOut(filenameOut.data());
@@ -41,8 +30,7 @@ int	main(int argc, char *argv[])
 		size_t pos = 0;
 		while ((pos = line.find(s1, pos)) != std::string::npos)
 		{
-			if (replace(line, pos, s2.length(), s2))
-				return (error("replace() failed", errno));
+			line.replace(pos, s1.length(), s2);
 			pos += s2.length();
 		}
 		fileOut << line << '\n';
