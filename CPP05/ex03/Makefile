@@ -1,11 +1,12 @@
 CXX			=	c++
-CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
+CXXFLAGS	=	-std=c++11 -Wall -Werror -Wextra -Wshadow
 
-NAME		=	No,\ you\ need\ form\ 28B,\ not\ 28C...
+NAME		=	At\ least\ this\ beats\ coffee-making
 
 CLS_DIR		=	cls
 CLS			=	AForm.cpp \
 				Bureaucrat.cpp \
+				Intern.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
 				PresidentialPardonForm.cpp
@@ -32,7 +33,6 @@ clean:
 	else \
 		echo "Error: OBJ_DIR is undefined or invalid"; \
 	fi
-	rm *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)

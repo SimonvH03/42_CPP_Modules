@@ -7,9 +7,9 @@
 
 class Bureaucrat;
 
-# define SHRUBBERY_NAME "ShrubberyCreationForm"
-# define SHRUBBERY_GRADE_TO_SIGN 145
-# define SHRUBBERY_GRADE_TO_EXECUTE 137
+# define SHRUBBERY_NAME				"ShrubberyCreationForm"
+# define SHRUBBERY_GRADE_TO_SIGN	145
+# define SHRUBBERY_GRADE_TO_EXECUTE	137
 
 class ShrubberyCreationForm : public AForm
 {

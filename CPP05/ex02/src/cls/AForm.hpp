@@ -46,6 +46,6 @@ class AForm
 		void	checkExec(Bureaucrat const &executor) const;
 };
 
-std::ostream &operator<<(std::ostream &os, AForm const &form);
+std::ostream	&operator<<(std::ostream &os, AForm const &form);
 
 #endif

@@ -7,9 +7,9 @@
 
 class Bureaucrat;
 
-# define ROBOTOMY_NAME "RobotomyRequestForm"
-# define ROBOTOMY_GRADE_TO_SIGN 72
-# define ROBOTOMY_GRADE_TO_EXECUTE 45
+# define ROBOTOMY_NAME				"RobotomyRequestForm"
+# define ROBOTOMY_GRADE_TO_SIGN		72
+# define ROBOTOMY_GRADE_TO_EXECUTE	45
 
 class RobotomyRequestForm : public AForm
 {

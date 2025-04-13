@@ -6,9 +6,9 @@
 
 class Bureaucrat;
 
-# define PARDON_NAME "PresidentialPardonForm"
-# define PARDON_GRADE_TO_SIGN 25
-# define PARDON_GRADE_TO_EXECUTE 5
+# define PARDON_NAME				"PresidentialPardonForm"
+# define PARDON_GRADE_TO_SIGN		25
+# define PARDON_GRADE_TO_EXECUTE	5
 
 class PresidentialPardonForm : public AForm
 {

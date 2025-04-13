@@ -30,7 +30,7 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &ori
 	*this = original;
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &original)
+PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm const &original)
 {
 	std::cout << "PresidentialPardonForm Assignment Operator: " << *this << " = " << original << "\n";
 	if (this != &original)
@@ -47,15 +47,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	try
-	{
-		AForm::checkExec(executor);
-		std::cout << "PresidentialPardonForm: "
-			<< AForm::getTarget() << " has been pardoned by Zaphod Beeblebrox\n";
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << "\n";
-		return ;
-	}
+	AForm::checkExec(executor);
+	std::cout << "PresidentialPardonForm: "
+		<< AForm::getTarget() << " has been pardoned by Zaphod Beeblebrox\n";
 }

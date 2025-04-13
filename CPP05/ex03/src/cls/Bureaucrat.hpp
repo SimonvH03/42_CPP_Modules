@@ -38,6 +38,6 @@ class Bureaucrat
 		short		getGrade(void) const;
 };
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat);
+std::ostream	&operator<<(std::ostream &os, Bureaucrat const &bureaucrat);
 
 #endif

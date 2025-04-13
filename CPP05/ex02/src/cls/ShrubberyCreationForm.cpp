@@ -30,7 +30,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &origin
 	*this = original;
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &original)
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &original)
 {
 	std::cout << "ShrubberyCreationForm Assignment Operator: " << *this << " = " << original << "\n";
 	if (this != &original)
@@ -47,29 +47,29 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	try
-	{
-		AForm::checkExec(executor);
-		std::string	filename = AForm::getTarget() + "_shrubbery";
-		std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::trunc);
-		if (!ofs.is_open())
-			throw std::ios_base::failure("ShrubberyCreationForm: file open failed");
-		ofs << "      _+_\n"
-			<< "     _-_-_\n"
-			<< "    _+_+_+_\n"
-			<< "   _-_-_-_-_\n"
-			<< "  _+_+_+_+_+_\n"
-			<< " _-_-_-_-_-_-_\n"
-			<< "      | |\n"
-			<< "      | |\n"
-			<< "      | |";
-		ofs.close();
-		std::cout << "ShrubberyCreationForm: Shrubbery was spawned in \""
-			<< AForm::getTarget() << "_shrubbery\n\"";
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << "\n";
-		return ;
-	}
+	AForm::checkExec(executor);
+	std::string	filename = AForm::getTarget() + "_shrubbery";
+	std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::trunc);
+	if (!ofs.is_open())
+		throw std::ios_base::failure("ShrubberyCreationForm: file open failed");
+	ofs << "      '.,\n"
+		<< "        'b      *\n"
+		<< "         '$    #.\n"
+		<< "          $:   #:\n"
+		<< "          *#  @):\n"
+		<< "          :@,@):\n"
+		<< "          ,.**:'\n"
+		<< ",         :@@*: ..**'\n"
+		<< " '#o.    .:(@'.@*''\n"
+		<< "    'bq,..:,@@*'   ,*\n"
+		<< "    ,p$q8,:@)'  .p*'\n"
+		<< "   '    '@@Pp@@*'\n"
+		<< "         Y7'.'\n"
+		<< "        :@):.\n"
+		<< "       .:@:'.\n"
+		<< "     .::(@:.\n"
+		<< "~ courtesy of Sam Blumenstein";
+	ofs.close();
+	std::cout << "ShrubberyCreationForm: Shrubbery was spawned in \""
+		<< AForm::getTarget() << "_shrubbery\n\"";
 }

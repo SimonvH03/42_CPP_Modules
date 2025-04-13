@@ -32,7 +32,6 @@ clean:
 	else \
 		echo "Error: OBJ_DIR is undefined or invalid"; \
 	fi
-	rm *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)

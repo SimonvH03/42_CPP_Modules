@@ -1,6 +1,7 @@
 # include <iostream>
 #include "cls/AForm.hpp"
 #include "cls/Bureaucrat.hpp"
+#include "cls/Intern.hpp"
 #include "cls/ShrubberyCreationForm.hpp"
 #include "cls/RobotomyRequestForm.hpp"
 #include "cls/PresidentialPardonForm.hpp"
@@ -12,65 +13,48 @@ void	nl(void)
 
 int	main(void)
 {
-	Bureaucrat				Alice("Alice", 1);
-	Bureaucrat				Bob("Bob", 150);
+	Bureaucrat	Alice("Alice", 1);
+	Bureaucrat	Bob("Bob", 150);
+	Intern		intern;
 
-	AForm					*form = new ShrubberyCreationForm("abstract");
-	ShrubberyCreationForm	shrubbery("shrubbish");
-	RobotomyRequestForm		robotomy("client");
-	PresidentialPardonForm	pardon("peasant");
-
-	// try
-	// {
-	// 	nl();
-	// 	Alice.executeForm(shrubbery);
-	// 	Alice.signForm(shrubbery);
-	// 	Alice.executeForm(shrubbery);
-	// 	nl();
-	// 	Alice.executeForm(*form);
-	// 	Alice.signForm(*form);
-	// 	Alice.executeForm(*form);
-	// 	nl();
-	// 	Bob.executeForm(shrubbery);
-	// 	Bob.signForm(shrubbery);
-	// 	nl();
-	// 	Bob.executeForm(*form);
-	// 	Bob.signForm(*form);
-	// 	nl();
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cerr << e.what() << "\n";
-	// }
 	try
 	{
+		AForm	*form1 = intern.makeForm(SHRUBBERY_NAME, "home");
+		AForm	*form2 = intern.makeForm(ROBOTOMY_NAME, "Zach");
+		AForm	*form3 = intern.makeForm(PARDON_NAME, "Yuri");
+
 		nl();
-		Alice.executeForm(shrubbery);
-		Alice.signForm(shrubbery);
-		Alice.executeForm(shrubbery);
+		Alice.executeForm(*form1);
+		Alice.signForm(*form1);
+		Alice.executeForm(*form1);
 		nl();
-		Bob.executeForm(shrubbery);
-		Bob.signForm(shrubbery);
+		Bob.executeForm(*form1);
+		Bob.signForm(*form1);
+
 		nl();
-		Alice.executeForm(robotomy);
-		Alice.signForm(robotomy);
-		Alice.executeForm(robotomy);
+		Alice.executeForm(*form2);
+		Alice.signForm(*form2);
+		Alice.executeForm(*form2);
 		nl();
-		Bob.executeForm(robotomy);
-		Bob.signForm(robotomy);
+		Bob.executeForm(*form2);
+		Bob.signForm(*form2);
+
 		nl();
-		Alice.executeForm(pardon);
-		Alice.signForm(pardon);
-		Alice.executeForm(pardon);
+		Alice.executeForm(*form3);
+		Alice.signForm(*form3);
+		Alice.executeForm(*form3);
 		nl();
-		Bob.executeForm(pardon);
-		Bob.signForm(pardon);
+		Bob.executeForm(*form3);
+		Bob.signForm(*form3);
 		nl();
+
+		delete form1;
+		delete form2;
+		delete form3;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << "\n";
 	}
-	delete form;
 	return (0);
 }

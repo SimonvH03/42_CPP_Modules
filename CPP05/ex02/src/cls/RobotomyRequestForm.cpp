@@ -30,7 +30,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &original) :
 	*this = original;
 }
 
-RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &original)
+RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &original)
 {
 	std::cout << "RobotomyRequestForm Assignment Operator: " << *this << " = " << original << "\n";
 	if (this != &original)
@@ -47,20 +47,12 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	try
-	{
-		AForm::checkExec(executor);
-		std::cout << "RobotomyRequestForm: buzz buzz bizz\n";
-		if (std::rand() % 2)
-			std::cout << "RobotomyRequestForm: "
-				<< AForm::getTarget() << " has been robotomized successfully\n";
-		else
-			std::cout << "RobotomyRequestForm: "
-				<< AForm::getTarget() << " robotomy failed\n";
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << "\n";
-		return ;
-	}
+	AForm::checkExec(executor);
+	std::cout << "RobotomyRequestForm: buzz buzz bizz\n";
+	if (std::rand() % 2)
+		std::cout << "RobotomyRequestForm: "
+			<< AForm::getTarget() << " has been robotomized successfully\n";
+	else
+		std::cout << "RobotomyRequestForm: "
+			<< AForm::getTarget() << " robotomy failed\n";
 }

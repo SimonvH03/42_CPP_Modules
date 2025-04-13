@@ -42,7 +42,7 @@ AForm::AForm(AForm const &original) :
 	checkGrades();
 }
 
-AForm &AForm::operator=(AForm const &original)
+AForm	&AForm::operator=(AForm const &original)
 {
 	std::cout << "AForm Assignment Operator: " << *this << " = " << original << "\n";
 	if (this != &original)
@@ -57,17 +57,17 @@ AForm::~AForm()
 	std::cout << "AForm Destructor: " << *this << "\n";
 }
 
-const char *AForm::GradeTooHighException::what() const throw()
+const char	*AForm::GradeTooHighException::what() const throw()
 {
 	return ("AForm grade is too high");
 }
 
-const char *AForm::GradeTooLowException::what() const throw()
+const char	*AForm::GradeTooLowException::what() const throw()
 {
 	return ("AForm grade is too low");
 }
 
-const char *AForm::FormNotSignedException::what() const throw()
+const char	*AForm::FormNotSignedException::what() const throw()
 {
 	return ("AForm is not signed");
 }
@@ -137,7 +137,7 @@ short	AForm::getGradeToExecute(void) const
 	return (_gradeToExecute);
 }
 
-std::ostream &operator<<(std::ostream &os, AForm const &aform)
+std::ostream	&operator<<(std::ostream &os, AForm const &aform)
 {
 	os << "\"" << aform.getName() << "\" ("
 		<< aform.getTarget() << ", "
