@@ -10,9 +10,9 @@ class Harl
 		void	complain(std::string level);
 
 	private:
-		typedef	void		(Harl::*thought) (void);
-		static std::string	_levels[];
-		static thought		_thoughts[];
+		typedef	void				(Harl::*thought)(void);
+		static const std::string	_levels[];
+		static const thought		_thoughts[];
 
 		int		getLevel(std::string);
 		void	debug();

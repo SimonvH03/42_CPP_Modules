@@ -1,13 +1,13 @@
 #include "Harl.hpp"
 
-std::string
+const std::string
 	Harl::_levels[] = {
 		"DEBUG",
 		"INFO",
 		"WARNING",
 		"ERROR"};
 
-Harl::thought
+const Harl::thought
 	Harl::_thoughts[] = {
 		&Harl::debug,
 		&Harl::info,

@@ -2,6 +2,7 @@
 
 Zombie::Zombie()
 {
+	_name = "";
 	std::cout << "Zombie constructed" << '\n';
 }
 

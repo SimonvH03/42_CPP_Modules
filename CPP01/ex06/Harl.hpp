@@ -14,8 +14,8 @@ class Harl
 		int		getLevel(std::string);
 		void	complain(std::string level);
 
-		static std::string	_levels[];
-		static thought		_thoughts[];
+		static const std::string	_levels[];
+		static const thought		_thoughts[];
 
 	private:
 		void	debug();
