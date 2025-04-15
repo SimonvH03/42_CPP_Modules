@@ -8,7 +8,7 @@ int main(void)
 
 	do
 	{
-		std::cout << "Enter a level: ";
+		std::cout << "(DEBUG, INFO, WARNING, ERROR, exit) Enter a level: ";
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 		{
