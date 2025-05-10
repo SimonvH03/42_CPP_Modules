@@ -6,10 +6,9 @@
 class Fixed
 {
 	private:
-	static const
-		int	bitCount = 8;
+		static const int	fractionalBits = 8;
+		int					raw;
 
-		int	numberValue;
 		void	announce(std::string const &name, std::string const &func) const;
 
 	public:
@@ -18,8 +17,8 @@ class Fixed
 		Fixed& operator=(Fixed const &src);
 		~Fixed();
 
-		int		getRawBits() const;
 		void	setRawBits(int const raw);
+		int		getRawBits() const;
 };
 
 #endif
