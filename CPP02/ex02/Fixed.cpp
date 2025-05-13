@@ -2,8 +2,10 @@
 
 void	Fixed::announce(std::string const &name, std::string const &func) const
 {
-	std::cout << "called:\t" << std::setw(27) << name
-		<< "\e[2m\t" << func << "\e[0m\n";
+	(void)name;
+	(void)func;
+	// std::cout << "called:\t" << std::setw(27) << name
+	// 	<< "\e[2m\t" << func << "\e[0m\n";
 }
 
 Fixed::Fixed()
