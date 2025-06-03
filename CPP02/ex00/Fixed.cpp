@@ -36,11 +36,11 @@ Fixed::~Fixed()
 	announce("Destructor", "Fixed::~Fixed()");
 }
 
-void	Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(int const asInt)
 {
 	announce("setRawBits member function", "void   Fixed::setRawBits(int const raw)");
 
-	raw = raw;
+	raw = asInt;
 }
 
 int	Fixed::getRawBits() const
