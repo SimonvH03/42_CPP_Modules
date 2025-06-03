@@ -7,7 +7,7 @@ if [ "$#" -lt 2 ]; then
 fi
 
 # Assign arguments to variables
-DEST_DIR="$1/cls"
+DEST_DIR="$1/classes"
 shift
 
 # Create the source directory if it doesn't exist
