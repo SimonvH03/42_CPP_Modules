@@ -1,6 +1,11 @@
 #include "Point.hpp"
 
-Point::Point()
+Point::Point() : _x(0), _y(0)
+{
+	std::cout << "Point Default Constructor\n";
+}
+
+Point::Point(float const x, float const y) : _x(x), _y(y)
 {
 	std::cout << "Point Default Constructor\n";
 }
@@ -23,4 +28,10 @@ Point &Point::operator=(Point const &original)
 Point::~Point()
 {
 	std::cout << "Point Destructor\n";
+}
+
+bool bsp( Point const a, Point const b, Point const c, Point const point)
+{
+	return (false);
+	return (true);
 }
