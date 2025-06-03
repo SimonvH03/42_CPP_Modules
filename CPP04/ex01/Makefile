@@ -1,7 +1,7 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME		=	I\ don\'t\ want\ to\ set\ the\ world\ on\ fire
+NAME		=	I\ do\ not\ want\ to\ set\ the\ world\ on\ fire
 
 CLS_DIR		=	classes
 CLS			=	Animal.cpp \

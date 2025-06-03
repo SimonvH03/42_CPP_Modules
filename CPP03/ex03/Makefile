@@ -1,7 +1,7 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME		=	Now\ it\'s\ weird!
+NAME		=	Now\ it\ is\ weird!
 
 CLS_DIR		=	classes
 

@@ -1,7 +1,7 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME		=	Now\ we\'re\ talking
+NAME		=	Now\ we\ are\ talking
 
 HDR			=	Fixed.hpp
 
