@@ -1,15 +1,11 @@
 CXX			=	c++
-CXXFLAGS	=	-std=c++11 -Wall -Werror -Wextra -Wshadow
+CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 
-NAME		=	At\ least\ this\ beats\ coffee-making
+NAME		=	RunUnitTests
 
 CLASSES_DIR	=	classes
-CLASSES		=	AForm.cpp \
-				Bureaucrat.cpp \
-				Intern.cpp \
-				ShrubberyCreationForm.cpp \
-				RobotomyRequestForm.cpp \
-				PresidentialPardonForm.cpp
+CLASSES		=	Runner.cpp \
+				UnitTest.cpp
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \

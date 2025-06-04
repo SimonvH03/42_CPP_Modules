@@ -3,8 +3,8 @@ CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 
 NAME		=	No,\ you\ need\ form\ 28B,\ not\ 28C...
 
-CLS_DIR		=	cls
-CLS			=	AForm.cpp \
+CLASSES_DIR	=	classes
+CLASSES		=	AForm.cpp \
 				Bureaucrat.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
@@ -12,7 +12,7 @@ CLS			=	AForm.cpp \
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \
-				$(addprefix $(SRC_DIR)/$(CLS_DIR)/, $(CLS))
+				$(addprefix $(SRC_DIR)/$(CLASSES_DIR)/, $(CLASSES))
 
 OBJ_DIR		=	obj
 OBJ			=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

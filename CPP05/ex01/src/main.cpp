@@ -1,5 +1,5 @@
 # include <iostream>
-#include "cls/Bureaucrat.hpp"
+#include "classes/Bureaucrat.hpp"
 
 void	nl(void)
 {

@@ -3,8 +3,8 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	I\ do\ not\ want\ to\ set\ the\ world\ on\ fire
 
-CLS_DIR		=	classes
-CLS			=	Animal.cpp \
+CLASSES_DIR	=	classes
+CLASSES		=	Animal.cpp \
 				Brain.cpp \
 				Cat.cpp \
 				Dog.cpp \
@@ -13,7 +13,7 @@ CLS			=	Animal.cpp \
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \
-				$(addprefix $(SRC_DIR)/$(CLS_DIR)/, $(CLS))
+				$(addprefix $(SRC_DIR)/$(CLASSES_DIR)/, $(CLASSES))
 
 OBJ_DIR		=	objects
 OBJ			=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

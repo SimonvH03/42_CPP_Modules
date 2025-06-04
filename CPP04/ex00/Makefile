@@ -3,29 +3,29 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Polymorphism
 
-CLS_DIR		=	classes
+CLASSES_DIR	=	classes
 
-HDR			=	$(CLS_DIR)/Animal.hpp \
-				$(CLS_DIR)/Cat.hpp \
-				$(CLS_DIR)/Dog.hpp \
-				$(CLS_DIR)/WrongCat.hpp \
-				$(CLS_DIR)/WrongAnimal.hpp
+HDR			=	$(CLASSES_DIR)/Animal.hpp \
+				$(CLASSES_DIR)/Cat.hpp \
+				$(CLASSES_DIR)/Dog.hpp \
+				$(CLASSES_DIR)/WrongCat.hpp \
+				$(CLASSES_DIR)/WrongAnimal.hpp
 
-SRC			=	$(CLS_DIR)/Animal.cpp \
-				$(CLS_DIR)/Cat.cpp \
-				$(CLS_DIR)/Dog.cpp \
-				$(CLS_DIR)/WrongCat.cpp \
-				$(CLS_DIR)/WrongAnimal.cpp
+SRC			=	$(CLASSES_DIR)/Animal.cpp \
+				$(CLASSES_DIR)/Cat.cpp \
+				$(CLASSES_DIR)/Dog.cpp \
+				$(CLASSES_DIR)/WrongCat.cpp \
+				$(CLASSES_DIR)/WrongAnimal.cpp
 
 OBJ_DIR		=	objects
-OBJ			=	$(SRC:$(CLS_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+OBJ			=	$(SRC:$(CLASSES_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: $(CLS_DIR)/%.cpp $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(CLASSES_DIR)/%.cpp $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 $(NAME): $(OBJ) $(HDR) main.cpp

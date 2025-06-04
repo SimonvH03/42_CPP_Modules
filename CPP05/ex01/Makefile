@@ -3,13 +3,13 @@ CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 
 NAME		=	Form\ up,\ maggots!
 
-CLS_DIR		=	cls
-CLS			=	Bureaucrat.cpp \
+CLASSES_DIR	=	classes
+CLASSES		=	Bureaucrat.cpp \
 				Form.cpp
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \
-				$(addprefix $(SRC_DIR)/$(CLS_DIR)/, $(CLS))
+				$(addprefix $(SRC_DIR)/$(CLASSES_DIR)/, $(CLASSES))
 
 OBJ_DIR		=	obj
 OBJ			=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

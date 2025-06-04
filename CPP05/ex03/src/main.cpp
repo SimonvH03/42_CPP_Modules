@@ -1,10 +1,10 @@
 # include <iostream>
-#include "cls/AForm.hpp"
-#include "cls/Bureaucrat.hpp"
-#include "cls/Intern.hpp"
-#include "cls/ShrubberyCreationForm.hpp"
-#include "cls/RobotomyRequestForm.hpp"
-#include "cls/PresidentialPardonForm.hpp"
+#include "classes/AForm.hpp"
+#include "classes/Bureaucrat.hpp"
+#include "classes/Intern.hpp"
+#include "classes/ShrubberyCreationForm.hpp"
+#include "classes/RobotomyRequestForm.hpp"
+#include "classes/PresidentialPardonForm.hpp"
 
 void	nl(void)
 {

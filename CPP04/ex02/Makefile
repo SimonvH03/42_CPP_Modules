@@ -3,8 +3,8 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Abstract\ Class
 
-CLS_DIR		=	classes
-CLS			=	Animal.cpp \
+CLASSES_DIR	=	classes
+CLASSES		=	Animal.cpp \
 				Brain.cpp \
 				Cat.cpp \
 				Dog.cpp \
@@ -12,7 +12,7 @@ CLS			=	Animal.cpp \
 				WrongCat.cpp
 
 SRC_DIR		=	src
-SRC			=	$(addprefix $(SRC_DIR)/$(CLS_DIR)/, $(CLS)) \
+SRC			=	$(addprefix $(SRC_DIR)/$(CLASSES_DIR)/, $(CLASSES)) \
 				$(SRC_DIR)/main.cpp
 
 OBJ_DIR		=	objects

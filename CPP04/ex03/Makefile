@@ -4,8 +4,8 @@ CXXFLAGS	+=	-Wshadow -g
 
 NAME		=	Interface
 
-CLS_DIR		=	classes
-CLS			=	AMateria.cpp \
+CLASSES_DIR	=	classes
+CLASSES		=	AMateria.cpp \
 				Character.cpp \
 				Cure.cpp \
 				Ice.cpp \
@@ -15,7 +15,7 @@ CLS			=	AMateria.cpp \
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \
-				$(addprefix $(SRC_DIR)/$(CLS_DIR)/, $(CLS))
+				$(addprefix $(SRC_DIR)/$(CLASSES_DIR)/, $(CLASSES))
 
 OBJ_DIR		=	obj
 OBJ			=	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
