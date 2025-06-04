@@ -3,7 +3,7 @@
 #include "classes/Dog.hpp"
 #include "classes/WrongAnimal.hpp"
 #include "classes/WrongCat.hpp"
-# include <iostream>
+#include <iostream>
 
 int	main(void)
 {

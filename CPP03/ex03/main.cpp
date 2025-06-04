@@ -2,7 +2,7 @@
 #include "classes/DiamondTrap.hpp"
 #include "classes/FragTrap.hpp"
 #include "classes/ScavTrap.hpp"
-# include <iostream>
+#include <iostream>
 
 static void	nl()
 {

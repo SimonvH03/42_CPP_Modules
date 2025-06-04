@@ -1,4 +1,4 @@
-# include <iostream>
+#include <iostream>
 #include "classes/AForm.hpp"
 #include "classes/Bureaucrat.hpp"
 #include "classes/Intern.hpp"

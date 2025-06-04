@@ -1,4 +1,4 @@
-# include <iostream>
+#include <iostream>
 #include "classes/Animal.hpp"
 #include "classes/Cat.hpp"
 #include "classes/Dog.hpp"

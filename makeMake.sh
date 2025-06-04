@@ -82,7 +82,7 @@ if [ "$ADD_MAIN" -eq 1 ]; then
 
 	# Create main.cpp
 	cat > "$PARENT_DIR/$SRC_DIR/main.cpp" <<EOF
-# include <iostream>
+#include <iostream>
 $INCLUDES
 
 int	main(void)
