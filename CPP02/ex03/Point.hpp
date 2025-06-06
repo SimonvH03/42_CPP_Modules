@@ -21,4 +21,6 @@ class Point
 		Fixed getY() const;
 };
 
+std::ostream	&operator<<(std::ostream &os, Point const &fixed);
+
 #endif

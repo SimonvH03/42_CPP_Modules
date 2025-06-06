@@ -18,15 +18,16 @@ e_orientation sign(Fixed a)
 	return (parallel);
 }
 
+const char *boolexpand(bool condition)
+{
+	return ((condition) ? "true" : "false");
+}
+
 Fixed	cross_product(Vector2 a, Vector2 b)
 {
 	return (a._x * b._y - b._x * a._y);
 }
 
-// evaluate if P is on the same side of AB as C
-// same for P and B with line AC, etc.
-// if any fails, return (false), otherwise continue
-// until three sides are checked
 bool
 	bsp(Vector2 const a,
 		Vector2 const b,
@@ -41,12 +42,15 @@ bool
 
 int	main(void)
 {
-	Point const	a(0,0);
-	Point const	b(1,0);
-	Point const c(0,1);
+	Point const	a(4, 4);
+	Point const	b(-4, 4);
+	Point const c(4, -4);
 
-	Point const p(0,0);
-
-	std::cout << bsp(a, b, c, p) << std::endl;
-	return (true);
+	std::cout << "Triangle ABC " << a << ">" << b << ">" << c << " Contains the Point:\n";
+	for (int i = -5; i <= 5; i++)
+	{
+		Point const p(i, i);
+		std::cout << p << ": " << boolexpand(bsp(a, b, c, p)) << "\n";
+	}
+	return (0);
 }

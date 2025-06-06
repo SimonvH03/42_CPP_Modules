@@ -2,17 +2,14 @@
 
 Point::Point() : _x(0), _y(0)
 {
-	std::cout << "Point Default Constructor\n";
 }
 
 Point::Point(float const x, float const y) : _x(x), _y(y)
 {
-	std::cout << "Point Default Constructor\n";
 }
 
 Point::Point(Point const &original) : _x(original._x), _y(original._y)
 {
-	std::cout << "Point Copy Constructor\n";
 }
 
 void Point::operator=(Point const &original)
@@ -22,7 +19,6 @@ void Point::operator=(Point const &original)
 
 Point::~Point()
 {
-	std::cout << "Point Destructor\n";
 }
 
 Fixed Point::getX() const
@@ -33,4 +29,10 @@ Fixed Point::getX() const
 Fixed Point::getY() const
 {
 	return (_y);
+}
+
+std::ostream	&operator<<(std::ostream &os, Point const &fixed)
+{
+	os << "(" << fixed.getX() << ", " << fixed.getY() << ")";
+	return (os);
 }
