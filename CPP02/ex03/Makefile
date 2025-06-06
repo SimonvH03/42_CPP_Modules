@@ -1,16 +1,16 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME		=	Now\ we\ are\ talking
-
-HDR			=	Fixed.hpp
+NAME		=	BSP
 
 SRC			=	main.cpp \
-				Fixed.cpp
+				Fixed.cpp \
+				Point.cpp \
+				Vector2.cpp
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(HDR)
+$(NAME): $(SRC)
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:

@@ -32,7 +32,7 @@ void	WrongAnimal::makeSound() const
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n";
 }
 
-std::string	WrongAnimal::getType()
+std::string	WrongAnimal::getType() const
 {
 	return (type);
 }

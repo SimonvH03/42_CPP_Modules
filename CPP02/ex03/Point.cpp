@@ -10,19 +10,14 @@ Point::Point(float const x, float const y) : _x(x), _y(y)
 	std::cout << "Point Default Constructor\n";
 }
 
-Point::Point(Point const &original)
+Point::Point(Point const &original) : _x(original._x), _y(original._y)
 {
 	std::cout << "Point Copy Constructor\n";
-	*this = original;
 }
 
-Point &Point::operator=(Point const &original)
+void Point::operator=(Point const &original)
 {
-	std::cout << "Point Assignment Operator\n";
-	if (this != &original)
-	{
-	}
-	return (*this);
+	(void)original;
 }
 
 Point::~Point()
@@ -30,8 +25,12 @@ Point::~Point()
 	std::cout << "Point Destructor\n";
 }
 
-bool bsp( Point const a, Point const b, Point const c, Point const point)
+Fixed Point::getX() const
 {
-	return (false);
-	return (true);
+	return (_x);
+}
+
+Fixed Point::getY() const
+{
+	return (_y);
 }
