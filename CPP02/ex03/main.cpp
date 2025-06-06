@@ -35,9 +35,9 @@ bool
 		Vector2 const point)
 {
 	e_orientation orientation = sign(cross_product(b - a, c - a));
-	return (sign(cross_product(b - a, point - a)) != -orientation
-		&& sign(cross_product(c - b, point - b)) != -orientation
-		&& sign(cross_product(a - c, point - c)) != -orientation);
+	return (sign(cross_product(b - a, point - a)) == orientation
+		&& sign(cross_product(c - b, point - b)) == orientation
+		&& sign(cross_product(a - c, point - c)) == orientation);
 }
 
 int	main(void)
