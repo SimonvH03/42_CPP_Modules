@@ -1,7 +1,15 @@
 #include <iostream>
-#include "classes/Runner.hpp"
-#include "classes/UnitTest.hpp"
+#include "classes/TestCase.hpp"
+#include "classes/TestRunner.hpp"
+#include "classes/TestRegistrar.hpp"
+
+TEST(addition)
+{
+	ASSERT(2 + 2 == 5);
+}
 
 int	main(void)
 {
+	TestRunner::get().runAll();
+	return (0);
 }
