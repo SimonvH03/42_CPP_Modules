@@ -23,7 +23,7 @@ DiamondTrap::DiamondTrap(DiamondTrap const &original) : ClapTrap(original), Scav
 	*this = original;
 }
 
-// FragTrap does not add any mebers to the base class
+// FragTrap does not have additional members to the base class
 DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &original)
 {
 	std::cout << ">> Diamond Assignment Operator called on " << original.Name << '\n';
