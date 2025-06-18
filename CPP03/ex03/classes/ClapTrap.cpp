@@ -43,8 +43,6 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap Destructor called for " << Name << '\n';
 }
 
-// unsure whether the subject mandates "ClapTrap causes its target to lose <ATK> Health points" means the ClapTrap needs to sniff out another ClapTrap just by name...
-//	I would not design it that way, because it means each ClapTrap needs to be aware of the scene it lives in. For that reason I will not implement this feature.
 void	ClapTrap::attack(std::string const &target)
 {
 	std::cout << Name;
