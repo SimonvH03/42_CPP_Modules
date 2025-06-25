@@ -43,7 +43,7 @@ ClapTrap::~ClapTrap()
 
 void	ClapTrap::attack(std::string const &target)
 {
-	std::cout << Name;
+	std::cout << "ClapTrap " << Name;
 	if (!HP || !Energy)
 	{
 		std::cout << " attempts an Attack on " << target

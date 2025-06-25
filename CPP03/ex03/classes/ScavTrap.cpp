@@ -60,6 +60,28 @@ void	ScavTrap::guardGate()
 		std::cout << " is no longer Guarding\n";
 }
 
+void	ScavTrap::attack(std::string const &target)
+{
+	std::cout << "ScavTrap " << Name;
+	if (!HP || !Energy)
+	{
+		std::cout << " attempts an Attack on " << target
+			<< ", but has insufficient ";
+		if (Energy)
+			std::cout << "HP";
+		else if (HP)
+			std::cout << "Energy";
+		else
+			std::cout << "HP and Energy";
+		std::cout << ": No damage done\n";
+		return;
+	}
+	--Energy;
+	if (guardState)
+		guardGate();
+	std::cout << " Attacks " << target << ": " << ATK << " damage dealt\n";
+}
+
 void	ScavTrap::takeDamage(unsigned int amount)
 {
 	if (guardState)
