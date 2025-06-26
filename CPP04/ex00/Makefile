@@ -22,17 +22,19 @@ OBJ			=	$(SRC:$(CLASSES_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)/%.o: $(CLASSES_DIR)/%.cpp $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(CLASSES_DIR)/%.cpp
+	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 $(NAME): $(OBJ) $(HDR) main.cpp
 	$(CXX) $(CXXFLAGS) $(OBJ) main.cpp -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
+	@if [ -n "$(OBJ_DIR)" ] && [ "$(OBJ_DIR)" != "/" ]; then \
+		rm -rf $(OBJ_DIR); \
+	else \
+		echo "Error: OBJ_DIR is undefined or invalid"; \
+	fi
 
 fclean: clean
 	rm -f $(NAME)
