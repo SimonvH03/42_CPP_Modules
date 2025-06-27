@@ -19,6 +19,8 @@ Character::Character(std::string _name)
 Character::Character(Character const &original)
 {
 	std::cout << "Character Copy Constructor\n";
+	for (int i = 0; i < INVENTORY_CAPACITY; i++)
+		inventory[i] = NULL;
 	*this = original;
 }
 

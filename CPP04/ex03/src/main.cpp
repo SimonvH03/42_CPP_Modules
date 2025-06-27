@@ -106,6 +106,11 @@ int	main(void)
 	delete ground[0];
 	delete ground[1];
 
+	Character	test;
+	test.equip(sorcerer->createMateria(icycle->getType()));
+	Character	test1(test);
+	test1.use(0, test);
+
 	delete icycle;
 	std::cout << "\n";
 	delete medicine;
