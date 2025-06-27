@@ -2,13 +2,12 @@
 #include "classes/Animal.hpp"
 #include "classes/Cat.hpp"
 #include "classes/Dog.hpp"
-#include "classes/WrongAnimal.hpp"
-#include "classes/WrongCat.hpp"
 
 int	main(void)
 {
-	Animal	*cat = new Cat();
+{	Animal	*cat = new Cat();
 	Animal	*dog = new Dog();
+	// Animal	*animal = new Animal();
 
 	std::cout << std::endl;
 
@@ -28,14 +27,21 @@ int	main(void)
 
 	delete cat;
 	delete dog;
-	WrongAnimal	*wrong_cat = new WrongCat();
+}
+{	Dog	dog;
+	Dog	dog2(dog);
 
-	std::cout << std::endl;
+	std::cout << dog.getType() << ": ";
+	dog.makeSound();
+	std::cout << dog2.getType() << ": ";
+	dog2.makeSound();
 
-	std::cout << wrong_cat->getType() << ": ";
-	wrong_cat->makeSound();
+	Dog	dog3(dog);
 
-	delete wrong_cat;
-
+	std::cout << dog.getType() << ": ";
+	dog.makeSound();
+	std::cout << dog3.getType() << ": ";
+	dog3.makeSound();
+}
 	return (0);
 }

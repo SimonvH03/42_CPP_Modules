@@ -7,9 +7,7 @@ CLASSES_DIR	=	classes
 CLASSES		=	Animal.cpp \
 				Brain.cpp \
 				Cat.cpp \
-				Dog.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp
+				Dog.cpp
 
 SRC_DIR		=	src
 SRC			=	$(addprefix $(SRC_DIR)/$(CLASSES_DIR)/, $(CLASSES)) \

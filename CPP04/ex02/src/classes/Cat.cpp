@@ -11,6 +11,7 @@ Cat::Cat()
 Cat::Cat(Cat const &original) : Animal(original)
 {
 	std::cout << "Cat Copy Constructor\n";
+	brain = new Brain();
 	*this = original;
 }
 
@@ -20,9 +21,9 @@ Cat &Cat::operator=(Cat const &original)
 	if (this != &original)
 	{
 		Animal::operator=(original);
+		levelOfThought = original.levelOfThought;
 		delete brain;
-		brain = new Brain();
-		brain = original.brain;
+		brain = new Brain(*original.brain);
 	}
 	return (*this);
 }
