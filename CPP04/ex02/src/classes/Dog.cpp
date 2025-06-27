@@ -5,7 +5,6 @@ Dog::Dog()
 	std::cout << "Dog Default Constructor\n";
 	type = "Dog";
 	brain = new Brain();
-	levelOfThought = 0;
 }
 
 Dog::Dog(Dog const &original) : Animal(original)
@@ -21,7 +20,6 @@ Dog &Dog::operator=(Dog const &original)
 	if (this != &original)
 	{
 		Animal::operator=(original);
-		levelOfThought = original.levelOfThought;
 		delete brain;
 		brain = new Brain(*original.brain);
 	}
@@ -34,14 +32,8 @@ Dog::~Dog()
 	delete brain;
 }
 
-void	Dog::makeSound()
+void	Dog::makeSound() const
 {
 	std::cout << "Bark\n";
-	think();
-}
-
-void	Dog::think()
-{
-	std::cout << "thought " << levelOfThought << ": " << brain->ideas[levelOfThought] << '\n';
-	levelOfThought++;
+	brain->think();
 }

@@ -9,8 +9,6 @@ class Dog : public Animal
 {
 	private:
 		Brain	*brain;
-		int		levelOfThought;
-		void	think();
 
 	public:
 		Dog();
@@ -18,7 +16,7 @@ class Dog : public Animal
 		Dog &operator=(Dog const &original);
 		~Dog();
 
-		void	makeSound();
+		void	makeSound() const;
 };
 
 #endif

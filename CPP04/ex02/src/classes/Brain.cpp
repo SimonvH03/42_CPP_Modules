@@ -3,7 +3,8 @@
 Brain::Brain()
 {
 	std::cout << "Brain Default Constructor\n";
-	intelligence = 0;
+	knowledge = 0;
+	thoughts_had = 0;
 	fileStudy("Lorem_Ipsum_350");
 }
 
@@ -19,6 +20,8 @@ Brain &Brain::operator=(Brain const &original)
 	if (this != &original)
 	{
 		std::copy(original.ideas, original.ideas + BRAIN_CAPACITY, ideas);
+		knowledge = original.knowledge;
+		thoughts_had = original.thoughts_had;
 	}
 	return (*this);
 }
@@ -38,9 +41,17 @@ void	Brain::fileStudy(std::string fileName)
 		std::cout << "failed to open file " << fileName << " for study\n";
 		return ;
 	}
-	while (intelligence < BRAIN_CAPACITY && std::getline(file, line))
+	while (knowledge < BRAIN_CAPACITY && std::getline(file, line))
 	{
-		ideas[intelligence] = line;
-		intelligence++;
+		ideas[knowledge] = line;
+		knowledge++;
 	}
+}
+
+void	Brain::think()
+{
+	if (thoughts_had > knowledge)
+		thoughts_had = 0;
+	std::cout << "thought " << thoughts_had << ": " << ideas[thoughts_had] << '\n';
+	thoughts_had++;
 }

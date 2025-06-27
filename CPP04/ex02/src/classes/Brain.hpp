@@ -9,7 +9,10 @@
 class Brain
 {
 	private:
-		int	intelligence;
+		void		fileStudy(std::string fileName);
+		std::string	ideas[BRAIN_CAPACITY];
+		int			knowledge;
+		int			thoughts_had;
 
 	public:
 		Brain();
@@ -17,8 +20,7 @@ class Brain
 		Brain &operator=(Brain const &original);
 		~Brain();
 
-		std::string	ideas[BRAIN_CAPACITY];
-		void		fileStudy(std::string fileName);
+		void		think();
 };
 
 #endif

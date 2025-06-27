@@ -5,7 +5,6 @@ Cat::Cat()
 	std::cout << "Cat Default Constructor\n";
 	type = "Cat";
 	brain = new Brain();
-	levelOfThought = 0;
 }
 
 Cat::Cat(Cat const &original) : Animal(original)
@@ -21,7 +20,6 @@ Cat &Cat::operator=(Cat const &original)
 	if (this != &original)
 	{
 		Animal::operator=(original);
-		levelOfThought = original.levelOfThought;
 		delete brain;
 		brain = new Brain(*original.brain);
 	}
@@ -34,14 +32,8 @@ Cat::~Cat()
 	delete brain;
 }
 
-void	Cat::makeSound()
+void	Cat::makeSound() const
 {
 	std::cout << "Meow\n";
-	think();
-}
-
-void	Cat::think()
-{
-	std::cout << "thought " << levelOfThought << ": " << brain->ideas[levelOfThought] << '\n';
-	levelOfThought++;
+	brain->think();
 }
