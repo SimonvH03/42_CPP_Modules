@@ -7,7 +7,7 @@
 
 int	main(void)
 {
-	Animal	*cat = new Cat();
+{	Animal	*cat = new Cat();
 	Animal	*dog = new Dog();
 	Animal	*animal = new Animal();
 
@@ -34,8 +34,23 @@ int	main(void)
 	delete cat;
 	delete dog;
 	delete animal;
+}
+{	Dog	dog;
+	Dog	dog2(dog);
 
-	std::cout << std::endl;
+	std::cout << dog.getType() << ": ";
+	dog.makeSound();
+	std::cout << dog2.getType() << ": ";
+	dog2.makeSound();
+
+	Dog	dog3(dog);
+
+	std::cout << dog.getType() << ": ";
+	dog.makeSound();
+	std::cout << dog3.getType() << ": ";
+	dog3.makeSound();
+}
+{	std::cout << std::endl;
 
 	WrongAnimal	*wrong_cat = new WrongCat();
 
@@ -45,6 +60,6 @@ int	main(void)
 	wrong_cat->makeSound();
 
 	delete wrong_cat;
-
+}
 	return (0);
 }

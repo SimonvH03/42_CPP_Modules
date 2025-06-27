@@ -1,5 +1,5 @@
 CXX			=	c++
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -g -std=c++98
 
 NAME		=	I\ do\ not\ want\ to\ set\ the\ world\ on\ fire
 
