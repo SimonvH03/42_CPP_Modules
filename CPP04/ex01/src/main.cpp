@@ -50,6 +50,14 @@ int	main(void)
 	std::cout << dog3.getType() << ": ";
 	dog3.makeSound();
 }
+{	Cat	cat;
+
+	for (int i = 0; i < BRAIN_CAPACITY + 10; i++)
+	{
+		std::cout << cat.getType() << ": ";
+		cat.makeSound();
+	}
+}
 {	std::cout << std::endl;
 
 	WrongAnimal	*wrong_cat = new WrongCat();

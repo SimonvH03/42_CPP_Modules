@@ -1,6 +1,5 @@
 CXX			=	c++
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
-# CXXFLAGS	+=	-Wshadow -g
+CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 
 NAME		=	Interface
 
@@ -24,7 +23,7 @@ all: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -I./ -I$(SRC_DIR) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)

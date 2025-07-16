@@ -48,8 +48,8 @@ void	Brain::fileStudy(std::string fileName)
 
 void	Brain::think()
 {
-	if (thoughts_had > knowledge)
+	if (thoughts_had >= knowledge)
 		thoughts_had = 0;
-	std::cout << "thought " << thoughts_had << ": " << ideas[thoughts_had] << '\n';
+	std::cout << "thought " << thoughts_had + 1 << "/" << knowledge << ": " << ideas[thoughts_had] << '\n';
 	thoughts_had++;
 }
