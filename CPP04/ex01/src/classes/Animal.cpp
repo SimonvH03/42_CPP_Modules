@@ -2,8 +2,8 @@
 
 Animal::Animal()
 {
-	type = "Animal";
 	std::cout << "Animal Default Constructor\n";
+	type = "Animal";
 }
 
 Animal::Animal(Animal const &original)
@@ -27,12 +27,12 @@ Animal::~Animal()
 	std::cout << "Animal Destructor\n";
 }
 
-std::string	Animal::getType() const
-{
-	return (type);
-}
-
 void	Animal::makeSound() const
 {
 	std::cout <<  "I'm an Animal, I swear!\n";
+}
+
+std::string	Animal::getType() const
+{
+	return (type);
 }

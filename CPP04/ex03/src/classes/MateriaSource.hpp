@@ -2,20 +2,18 @@
 # define MATERIASOURCE_HPP
 # include <iostream>
 
-#include "IMateriaSource.hpp"
-#include "AMateria.hpp"
+# include "IMateriaSource.hpp"
+# include "AMateria.hpp"
 
 class AMateria;
 
-#define BOOK_CAPACITY 4
+# define BOOK_CAPACITY 4
 
 class MateriaSource : public IMateriaSource
 {
 	private:
 		AMateria	*typeBook[BOOK_CAPACITY];
 		int			getBookUsage() const;
-
-	protected:
 
 	public:
 		MateriaSource();

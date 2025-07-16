@@ -24,8 +24,8 @@ for DIR in $SUBDIRS; do
 		else printf " \\\n\t\t\t\t%s", $0;
 	}')
 	CATEGORIES="$CATEGORIES
-${DIR^^}_DIR		=	$DIR
-${DIR^^}			=	$CATEGORY_SRC
+${DIR^^}_DIR	=	$DIR
+${DIR^^}		=	$CATEGORY_SRC
 "
 	SOURCE="$SOURCE \\
 				\$(addprefix \$(SRC_DIR)/\$(${DIR^^}_DIR)/, \$(${DIR^^}))"

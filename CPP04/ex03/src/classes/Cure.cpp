@@ -28,9 +28,7 @@ Cure::~Cure()
 	std::cout << "Cure Destructor\n";
 }
 
-AMateria *
-Cure::clone()
-const
+AMateria	*Cure::clone() const
 {
 	AMateria	*clone = new Cure();
 
@@ -38,8 +36,7 @@ const
 	return (clone);
 }
 
-void
-Cure::use(ICharacter& target)
+void	Cure::use(ICharacter& target)
 {
 	std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }

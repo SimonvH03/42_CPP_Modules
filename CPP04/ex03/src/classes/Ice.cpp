@@ -28,9 +28,7 @@ Ice::~Ice()
 	std::cout << "Ice Destructor\n";
 }
 
-AMateria *
-Ice::clone()
-const
+AMateria	*Ice::clone() const
 {
 	AMateria	*clone = new Ice();
 
@@ -38,8 +36,7 @@ const
 	return (clone);
 }
 
-void
-Ice::use(ICharacter &target)
+void	Ice::use(ICharacter &target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }

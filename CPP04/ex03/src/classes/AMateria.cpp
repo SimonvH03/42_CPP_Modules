@@ -31,15 +31,12 @@ AMateria::~AMateria()
 	std::cout << "AMateria Destructor\n";
 }
 
-void
-AMateria::use(ICharacter &target)
+void	AMateria::use(ICharacter &target)
 {
 	std::cout << "AMysterious Material is flung towards " << target.getName() << '\n';
 }
 
-std::string const &
-AMateria::getType()
-const
+std::string const	&AMateria::getType() const
 {
 	return (type);
 }

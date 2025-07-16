@@ -7,10 +7,9 @@ Cat::Cat()
 	brain = new Brain();
 }
 
-Cat::Cat(Cat const &original) : Animal(original)
+Cat::Cat(Cat const &original) : Animal(original), brain(NULL)
 {
 	std::cout << "Cat Copy Constructor\n";
-	brain = new Brain();
 	*this = original;
 }
 

@@ -2,12 +2,12 @@
 # define CHARACTER_HPP
 # include <iostream>
 
-#include "ICharacter.hpp"
-#include "AMateria.hpp"
+# include "ICharacter.hpp"
+# include "AMateria.hpp"
 
 class	Amateria;
 
-#define INVENTORY_CAPACITY 4
+# define INVENTORY_CAPACITY 4
 
 class Character : public ICharacter
 {
@@ -15,8 +15,6 @@ class Character : public ICharacter
 		std::string	name;
 		AMateria	*inventory[INVENTORY_CAPACITY + 1];
 		int			getInventoryUsage() const;
-
-	protected:
 
 	public:
 		Character();

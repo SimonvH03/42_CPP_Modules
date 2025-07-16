@@ -1,10 +1,8 @@
 #include "Brain.hpp"
 
-Brain::Brain()
+Brain::Brain() : knowledge(0), thoughts_had(0)
 {
 	std::cout << "Brain Default Constructor\n";
-	knowledge = 0;
-	thoughts_had = 0;
 	fileStudy("Lorem_Ipsum_350");
 }
 

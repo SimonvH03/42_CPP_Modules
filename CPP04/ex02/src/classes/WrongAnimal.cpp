@@ -2,8 +2,8 @@
 
 WrongAnimal::WrongAnimal()
 {
-	type = "Harl???";
 	std::cout << "WrongAnimal Default Constructor\n";
+	type = "Harl???";
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const &original)

@@ -2,8 +2,8 @@
 
 Animal::Animal()
 {
-	type = "Animal";
 	std::cout << "Animal Default Constructor\n";
+	type = "Animal";
 }
 
 Animal::Animal(Animal const &original)

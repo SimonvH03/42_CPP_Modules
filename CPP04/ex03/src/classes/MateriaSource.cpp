@@ -37,9 +37,7 @@ MateriaSource::~MateriaSource()
 			delete typeBook[i];
 }
 
-int
-MateriaSource::getBookUsage()
-const
+int	MateriaSource::getBookUsage() const
 {
 	int	IQ;
 	
@@ -49,8 +47,7 @@ const
 	return (IQ);
 }
 
-void
-MateriaSource::learnMateria(AMateria *subject)
+void	MateriaSource::learnMateria(AMateria *subject)
 {
 	const int	i = getBookUsage();
 
@@ -60,8 +57,7 @@ MateriaSource::learnMateria(AMateria *subject)
 	std::cout << "MateriaSource learned all about a strange Materia of type " << subject->getType() << ", it can now create it\n";
 }
 
-AMateria *
-MateriaSource::createMateria(std::string const &type)
+AMateria	*MateriaSource::createMateria(std::string const &type)
 {
 	const int	knowledge = getBookUsage();
 	int			i = 0;

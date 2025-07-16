@@ -2,17 +2,13 @@
 # define ICE_HPP
 # include <iostream>
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class	ICharacter;
 
 class Ice : public AMateria
 {
-	private:
-
-	protected:
-
 	public:
 		Ice();
 		Ice(Ice const &original);

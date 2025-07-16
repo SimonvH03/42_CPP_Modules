@@ -1,14 +1,10 @@
 CXX			=	c++
 CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 
-NAME		=	Polymorphism
+NAME		=	convert
 
 CLASSES_DIR	=	classes
-CLASSES		=	Animal.cpp \
-				Cat.cpp \
-				Dog.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp
+CLASSES		=	ScalarConverter.cpp
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \
@@ -21,7 +17,7 @@ all: $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+	$(CXX) $(CXXFLAGS) -I ./ -I $(SRC_DIR) -o $@ -c $<
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
@@ -38,4 +34,6 @@ fclean: clean
 
 re: clean all
 
-.PHONY: all clean fclean re
+fre: fclean all
+
+.PHONY: all clean fclean re fre

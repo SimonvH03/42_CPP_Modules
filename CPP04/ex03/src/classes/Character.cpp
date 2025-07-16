@@ -31,8 +31,7 @@ Character &Character::operator=(Character const &original)
 	{
 		for (int i = 0; i < INVENTORY_CAPACITY; i++)
 		{
-			if (inventory[i])
-				delete inventory[i];
+			delete inventory[i];
 			if (original.inventory[i])
 				inventory[i] = original.inventory[i]->clone();
 		}
@@ -44,13 +43,10 @@ Character::~Character()
 {
 	std::cout << "Character Destructor\n";
 	for (int i = 0; i < INVENTORY_CAPACITY; i++)
-		if (inventory[i])
-			delete inventory[i];
+		delete inventory[i];
 }
 
-int
-Character::getInventoryUsage()
-const
+int	Character::getInventoryUsage() const
 {
 	int	slots;
 	
@@ -60,8 +56,7 @@ const
 	return (slots);
 }
 
-void
-Character::equip(AMateria *materia)
+void	Character::equip(AMateria *materia)
 {
 	const int	i = getInventoryUsage();
 
@@ -71,8 +66,7 @@ Character::equip(AMateria *materia)
 	std::cout << "Equiped AMateria " << materia->getType() << " in slot [" << i << "]\n";
 }
 
-void
-Character::unequip(int index)
+void	Character::unequip(int index)
 {
 	if (index < 0 || index >= INVENTORY_CAPACITY)
 		return ;
@@ -83,8 +77,7 @@ Character::unequip(int index)
 	}
 }
 
-void
-Character::use(int index, ICharacter &target)
+void	Character::use(int index, ICharacter &target)
 {
 	if (index < 0 || index >= INVENTORY_CAPACITY)
 		return ;
@@ -95,9 +88,7 @@ Character::use(int index, ICharacter &target)
 	}
 }
 
-std::string const &
-Character::getName()
-const
+std::string const	&Character::getName() const
 {
 	return (name);
 }

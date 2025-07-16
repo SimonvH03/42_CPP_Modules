@@ -2,17 +2,13 @@
 # define CURE_HPP
 # include <iostream>
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class	ICharacter;
 
 class Cure : public AMateria
 {
-	private:
-
-	protected:
-
 	public:
 		Cure();
 		Cure(Cure const &original);

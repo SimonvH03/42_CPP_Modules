@@ -1,6 +1,6 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
-CXXFLAGS	+=	-Wshadow -g
+# CXXFLAGS	+=	-Wshadow -g
 
 NAME		=	Interface
 
