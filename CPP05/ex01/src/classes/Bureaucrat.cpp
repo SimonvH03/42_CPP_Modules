@@ -1,24 +1,24 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() :
-	_name("Bureaucrat"),
-	_grade(GRADE_LOWER_BOUND)
+Bureaucrat::Bureaucrat()
+	:	_name("Bureaucrat"),
+		_grade(LowerBound)
 {
 	std::cout << "Bureaucrat Default Constructor: " << *this << "\n";
 	checkGrade();
 }
 
-Bureaucrat::Bureaucrat(std::string name, short grade) :
-	_name(name),
-	_grade(grade)
+Bureaucrat::Bureaucrat(std::string name, short grade)
+	:	_name(name),
+		_grade(grade)
 {
 	std::cout << "Bureaucrat Constructor: " << *this << "\n";
 	checkGrade();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &original) :
-	_name(original.getName()),
-	_grade(original.getGrade())
+Bureaucrat::Bureaucrat(Bureaucrat const &original)
+	:	_name(original._name),
+		_grade(original._grade)
 {
 	std::cout << "Bureaucrat Copy Constructor: " << *this << " from " << original << "\n";
 	checkGrade();
@@ -29,7 +29,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &original)
 	std::cout << "Bureaucrat Assignment Operator: " << *this << " = " << original << "\n";
 	if (this != &original)
 	{
-		_grade = original.getGrade();
+		_grade = original._grade;
 	}
 	return (*this);
 }
@@ -49,11 +49,11 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Bureaucrat grade is too high");
 }
 
-void	Bureaucrat::checkGrade(void) const
+void	Bureaucrat::checkGrade() const
 {
-	if (_grade < GRADE_UPPER_BOUND)
+	if (_grade < UpperBound)
 		throw GradeTooHighException();
-	else if (_grade > GRADE_LOWER_BOUND)
+	else if (_grade > LowerBound)
 		throw GradeTooLowException();
 }
 
@@ -71,26 +71,26 @@ void	Bureaucrat::signForm(Form &form) const
 	}
 }
 
-void	Bureaucrat::incrementGrade(void)
+void	Bureaucrat::incrementGrade()
 {
-	_grade--;
+	--_grade;
 	std::cout << "Bureaucrat grade incremented: " << *this << "\n";
 	checkGrade();
 }
 
-void	Bureaucrat::decrementGrade(void)
+void	Bureaucrat::decrementGrade()
 {
-	_grade++;
+	++_grade;
 	std::cout << "Bureaucrat grade decremented: " << *this << "\n";
 	checkGrade();
 }
 
-std::string	Bureaucrat::getName(void) const
+std::string	Bureaucrat::getName() const
 {
 	return (_name);
 }
 
-short	Bureaucrat::getGrade(void) const
+short	Bureaucrat::getGrade() const
 {
 	return (_grade);
 }

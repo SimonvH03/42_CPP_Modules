@@ -18,7 +18,14 @@ class Intern
 		class FormNotFoundException: public std::exception
 		{public:	const char *what() const throw();};
 
-		AForm	*makeForm(std::string formName, std::string target);
+		AForm	*makeForm(std::string formName, std::string target) const;
+
+	private:
+		struct FormTableEntry
+		{
+			std::string									name;
+			std::function<AForm*(const std::string&)>	make;
+		};
 };
 
 #endif

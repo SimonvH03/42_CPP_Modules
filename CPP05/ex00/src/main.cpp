@@ -1,12 +1,12 @@
 #include <iostream>
 #include "classes/Bureaucrat.hpp"
 
-int	main(void)
+int	main()
 {
-	Bureaucrat	alice(1);
+	Bureaucrat	alice("Alice", 1);
 	std::cout << alice << '\n';
 
-	Bureaucrat	bob(150);
+	Bureaucrat	bob("Bob", 150);
 	std::cout << bob << '\n';
 
 	Bureaucrat	carl(alice);

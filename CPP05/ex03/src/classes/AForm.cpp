@@ -1,42 +1,43 @@
 #include "AForm.hpp"
 
-AForm::AForm() :
-	_name("default AForm"),
-	_target(),
-	_gradeToSign(GRADE_LOWER_BOUND),
-	_gradeToExecute(GRADE_LOWER_BOUND),
-	_signed(false)
+AForm::AForm()
+	:	_name("default AForm"),
+		_target("default target"),
+		_signed(false),
+		_gradeToSign(Bureaucrat::LowerBound),
+		_gradeToExecute(Bureaucrat::LowerBound)
 {
 	std::cout << "AForm Default Constructor: " << *this << "\n";
 }
 
-AForm::AForm(std::string name, short gradeToSign, short gradeToExecute) :
-	_name(name),
-	_target("default target"),
-	_gradeToSign(gradeToSign),
-	_gradeToExecute(gradeToExecute),
-	_signed(false)
+AForm::AForm(std::string name, short gradeToSign, short gradeToExecute)
+	:	_name(name),
+		_target("default target"),
+		_signed(false),
+		_gradeToSign(gradeToSign),
+		_gradeToExecute(gradeToExecute)
 {
 	std::cout << "AForm Constructor: " << *this << "\n";
 	checkGrades();
 }
 
-AForm::AForm(std::string name, std::string target, short gradeToSign, short gradeToExecute) :
-	_name(name),
-	_target(target),
-	_gradeToSign(gradeToSign),
-	_gradeToExecute(gradeToExecute),
-	_signed(false)
+AForm::AForm(std::string name, std::string target, short gradeToSign, short gradeToExecute)
+	:	_name(name),
+		_target(target),
+		_signed(false),
+		_gradeToSign(gradeToSign),
+		_gradeToExecute(gradeToExecute)
 {
 	std::cout << "AForm Constructor: " << *this << "\n";
 	checkGrades();
 }
 
-AForm::AForm(AForm const &original) :
-	_name(original.getName()),
-	_gradeToSign(original.getGradeToSign()),
-	_gradeToExecute(original.getGradeToExecute()),
-	_signed(original.getSigned())
+AForm::AForm(AForm const &original)
+	:	_name(original._name),
+		_target(original._target),
+		_signed(original._signed),
+		_gradeToSign(original._gradeToSign),
+		_gradeToExecute(original._gradeToExecute)
 {
 	std::cout << "AForm Copy Constructor: " << *this << " from " << original << "\n";
 	checkGrades();
@@ -47,7 +48,7 @@ AForm	&AForm::operator=(AForm const &original)
 	std::cout << "AForm Assignment Operator: " << *this << " = " << original << "\n";
 	if (this != &original)
 	{
-		_signed = original.getSigned();
+		_signed = original._signed;
 	}
 	return (*this);
 }
@@ -72,15 +73,15 @@ const char	*AForm::FormNotSignedException::what() const throw()
 	return ("AForm is not signed");
 }
 
-void	AForm::checkGrades(void) const
+void	AForm::checkGrades() const
 {
-	if (_gradeToSign < GRADE_UPPER_BOUND
-		|| _gradeToExecute < GRADE_UPPER_BOUND)
+	if (_gradeToSign < Bureaucrat::UpperBound
+		|| _gradeToExecute < Bureaucrat::UpperBound)
 	{
 		throw GradeTooHighException();
 	}
-	else if (_gradeToSign > GRADE_LOWER_BOUND
-		|| _gradeToExecute > GRADE_LOWER_BOUND)
+	else if (_gradeToSign > Bureaucrat::LowerBound
+		|| _gradeToExecute > Bureaucrat::LowerBound)
 	{
 		throw GradeTooLowException();
 	}
@@ -112,27 +113,27 @@ void	AForm::checkExec(Bureaucrat const &executor) const
 	}
 }
 
-std::string	AForm::getName(void) const
+std::string	AForm::getName() const
 {
 	return (_name);
 }
 
-std::string	AForm::getTarget(void) const
+std::string	AForm::getTarget() const
 {
 	return (_target);
 }
 
-bool	AForm::getSigned(void) const
+bool	AForm::getSigned() const
 {
 	return (_signed);
 }
 
-short	AForm::getGradeToSign(void) const
+short	AForm::getGradeToSign() const
 {
 	return (_gradeToSign);
 }
 
-short	AForm::getGradeToExecute(void) const
+short	AForm::getGradeToExecute() const
 {
 	return (_gradeToExecute);
 }

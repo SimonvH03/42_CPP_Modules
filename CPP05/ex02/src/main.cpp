@@ -5,12 +5,12 @@
 #include "classes/RobotomyRequestForm.hpp"
 #include "classes/PresidentialPardonForm.hpp"
 
-void	nl(void)
+void	nl()
 {
 	std::cout << "\n";
 }
 
-int	main(void)
+int	main()
 {
 	Bureaucrat				Alice("Alice", 1);
 	Bureaucrat				Bob("Bob", 150);

@@ -1,30 +1,32 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() :
-	AForm(
-		SHRUBBERY_NAME,
-		SHRUBBERY_GRADE_TO_SIGN,
-		SHRUBBERY_GRADE_TO_EXECUTE)
+const std::string	ShrubberyCreationForm::Name = "ShrubberyCreationForm";
+
+ShrubberyCreationForm::ShrubberyCreationForm()
+	:	AForm(
+			Name,
+			GradeToSign,
+			GradeToExecute)
 {
 	std::cout << "ShrubberyCreationForm Default Constructor: " << *this << "\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
-	AForm(
-		SHRUBBERY_NAME,
-		target,
-		SHRUBBERY_GRADE_TO_SIGN,
-		SHRUBBERY_GRADE_TO_EXECUTE)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+	:	AForm(
+			Name,
+			target,
+			GradeToSign,
+			GradeToExecute)
 {
 	std::cout << "ShrubberyCreationForm Constructor: " << *this << "\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &original) :
-	AForm(
-		original.getName(),
-		original.getTarget(),
-		original.getGradeToSign(),
-		original.getGradeToExecute())
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &original)
+	:	AForm(
+			original.getName(),
+			original.getTarget(),
+			original.getGradeToSign(),
+			original.getGradeToExecute())
 {
 	std::cout << "ShrubberyCreationForm Copy Constructor: " << *this << " from " << original << "\n";
 	*this = original;

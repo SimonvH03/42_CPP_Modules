@@ -7,10 +7,6 @@
 
 class Bureaucrat;
 
-# define ROBOTOMY_NAME				"RobotomyRequestForm"
-# define ROBOTOMY_GRADE_TO_SIGN		72
-# define ROBOTOMY_GRADE_TO_EXECUTE	45
-
 class RobotomyRequestForm : public AForm
 {
 	public:
@@ -21,6 +17,10 @@ class RobotomyRequestForm : public AForm
 		~RobotomyRequestForm();
 
 		void	execute(Bureaucrat const &executor) const;
+
+		static const std::string	Name;
+		static const short			GradeToSign = 72;
+		static const short			GradeToExecute = 45;
 };
 
 #endif

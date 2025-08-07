@@ -6,10 +6,6 @@
 
 class Bureaucrat;
 
-# define PARDON_NAME				"PresidentialPardonForm"
-# define PARDON_GRADE_TO_SIGN		25
-# define PARDON_GRADE_TO_EXECUTE	5
-
 class PresidentialPardonForm : public AForm
 {
 	public:
@@ -20,6 +16,10 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm();
 
 		void	execute(Bureaucrat const &executor) const;
+
+		static const std::string	Name;
+		static const short			GradeToSign = 25;
+		static const short			GradeToExecute = 5;
 };
 
 #endif

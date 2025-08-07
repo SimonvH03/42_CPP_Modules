@@ -1,12 +1,12 @@
 #include <iostream>
 #include "classes/Bureaucrat.hpp"
 
-void	nl(void)
+void	nl()
 {
 	std::cout << '\n';
 }
 
-int	main(void)
+int	main()
 {
 	Bureaucrat	alice("Alice", 43);
 

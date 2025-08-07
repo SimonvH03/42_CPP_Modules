@@ -1,30 +1,32 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() :
-	AForm(
-		ROBOTOMY_NAME,
-		ROBOTOMY_GRADE_TO_SIGN,
-		ROBOTOMY_GRADE_TO_EXECUTE)
+const	std::string	RobotomyRequestForm::Name = "RobotomyRequestForm";
+
+RobotomyRequestForm::RobotomyRequestForm()
+	:	AForm(
+			Name,
+			GradeToSign,
+			GradeToExecute)
 {
 	std::cout << "RobotomyRequestForm Default Constructor: " << *this << "\n";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) :
-	AForm(
-		ROBOTOMY_NAME,
-		target,
-		ROBOTOMY_GRADE_TO_SIGN,
-		ROBOTOMY_GRADE_TO_EXECUTE)
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+	:	AForm(
+			Name,
+			target,
+			GradeToSign,
+			GradeToExecute)
 {
 	std::cout << "RobotomyRequestForm Constructor: " << *this << "\n";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &original) :
-	AForm(
-		original.getName(),
-		original.getTarget(),
-		original.getGradeToSign(),
-		original.getGradeToExecute())
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &original)
+	:	AForm(
+			original.getName(),
+			original.getTarget(),
+			original.getGradeToSign(),
+			original.getGradeToExecute())
 {
 	std::cout << "RobotomyRequestForm Copy Constructor: " << *this << " from " << original << "\n";
 	*this = original;
@@ -51,7 +53,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	std::cout << "RobotomyRequestForm: buzz buzz bizz\n";
 	if (std::rand() % 2)
 		std::cout << "RobotomyRequestForm: "
-			<< AForm::getTarget() << " has been robotomized successfully\n";
+			<< AForm::getTarget() << " has been successfully robotomized\n";
 	else
 		std::cout << "RobotomyRequestForm: "
 			<< AForm::getTarget() << " robotomy failed\n";

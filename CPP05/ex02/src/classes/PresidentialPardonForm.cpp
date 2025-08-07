@@ -1,30 +1,32 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() :
-	AForm(
-		PARDON_NAME,
-		PARDON_GRADE_TO_SIGN,
-		PARDON_GRADE_TO_EXECUTE)
+const std::string	PresidentialPardonForm::Name = "PresidentialPardonForm";
+
+PresidentialPardonForm::PresidentialPardonForm()
+	:	AForm(
+			Name,
+			GradeToSign,
+			GradeToExecute)
 {
 	std::cout << "PresidentialPardonForm Default Constructor: " << *this << "\n";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) :
-	AForm(
-		PARDON_NAME,
-		target,
-		PARDON_GRADE_TO_SIGN,
-		PARDON_GRADE_TO_EXECUTE)
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+	:	AForm(
+			Name,
+			target,
+			GradeToSign,
+			GradeToExecute)
 {
 	std::cout << "PresidentialPardonForm Constructor: " << *this << "\n";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &original) :
-	AForm(
-		original.getName(),
-		original.getTarget(),
-		original.getGradeToSign(),
-		original.getGradeToExecute())
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &original)
+	:	AForm(
+			original.getName(),
+			original.getTarget(),
+			original.getGradeToSign(),
+			original.getGradeToExecute())
 {
 	std::cout << "PresidentialPardonForm Copy Constructor: " << *this << " from " << original << "\n";
 	*this = original;

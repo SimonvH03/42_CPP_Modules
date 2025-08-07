@@ -30,21 +30,15 @@ const char	*Intern::FormNotFoundException::what() const throw()
 	return ("Intern: formName did not match any known Form templates");
 }
 
-AForm	*Intern::makeForm(std::string formName, std::string target)
+AForm	*Intern::makeForm(std::string formName, std::string target) const
 {
-	struct FormTemplate
-	{
-		const char									*name;
-		std::function<AForm*(const std::string&)>	make;
-	};
-	static const FormTemplate formTypes[] =
-	{
-		{SHRUBBERY_NAME,[](const std::string &t){return new ShrubberyCreationForm(t);}},
-		{ROBOTOMY_NAME,	[](const std::string &t){return new RobotomyRequestForm(t);}},
-		{PARDON_NAME,	[](const std::string &t){return new PresidentialPardonForm(t);}}
+	static const FormTableEntry knownForms[] = {
+		{ShrubberyCreationForm::Name,	[](const std::string &t){return new ShrubberyCreationForm(t);}},
+		{RobotomyRequestForm::Name,		[](const std::string &t){return new RobotomyRequestForm(t);}},
+		{PresidentialPardonForm::Name,	[](const std::string &t){return new PresidentialPardonForm(t);}}
 	};
 
-	for (const FormTemplate &entry : formTypes)
+	for (FormTableEntry const &entry : knownForms)
 	{
 		if (formName == entry.name)
 		{

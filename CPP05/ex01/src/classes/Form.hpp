@@ -7,13 +7,6 @@ class Bureaucrat;
 
 class Form
 {
-	private:
-		const std::string	_name;
-		const short			_gradeToSign;
-		const short			_gradeToExecute;
-		bool				_signed;
-		void				checkGrades(void) const;
-
 	public:
 		Form();
 		Form(std::string name, short gradeToSign, short gradeToExecute);
@@ -28,11 +21,18 @@ class Form
 
 		void		beSigned(Bureaucrat const &bureaucrat);
 
-		std::string	getName(void) const;
-		bool		getSigned(void) const;
-		short		getGradeToSign(void) const;
-		short		getGradeToExecute(void) const;
+		std::string	getName() const;
+		bool		getSigned() const;
+		short		getGradeToSign() const;
+		short		getGradeToExecute() const;
 
+	private:
+		const std::string	_name;
+		bool				_signed;
+		const short			_gradeToSign;
+		const short			_gradeToExecute;
+
+		void		checkGrades() const;
 };
 
 std::ostream &operator<<(std::ostream &os, Form const &form);

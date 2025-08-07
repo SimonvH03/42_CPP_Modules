@@ -6,12 +6,12 @@
 #include "classes/RobotomyRequestForm.hpp"
 #include "classes/PresidentialPardonForm.hpp"
 
-void	nl(void)
+void	nl()
 {
 	std::cout << "\n";
 }
 
-int	main(void)
+int	main()
 {
 	Bureaucrat	Alice("Alice", 1);
 	Bureaucrat	Bob("Bob", 150);
@@ -19,9 +19,9 @@ int	main(void)
 
 	try
 	{
-		AForm	*form1 = intern.makeForm(SHRUBBERY_NAME, "home");
-		AForm	*form2 = intern.makeForm(ROBOTOMY_NAME, "Zach");
-		AForm	*form3 = intern.makeForm(PARDON_NAME, "Yuri");
+		AForm	*form1 = intern.makeForm(ShrubberyCreationForm::Name, "home");
+		AForm	*form2 = intern.makeForm(RobotomyRequestForm::Name, "Zach");
+		AForm	*form3 = intern.makeForm(PresidentialPardonForm::Name, "Yuri");
 
 		nl();
 		Alice.executeForm(*form1);

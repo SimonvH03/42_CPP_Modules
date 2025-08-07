@@ -7,10 +7,6 @@
 
 class Bureaucrat;
 
-# define SHRUBBERY_NAME				"ShrubberyCreationForm"
-# define SHRUBBERY_GRADE_TO_SIGN	145
-# define SHRUBBERY_GRADE_TO_EXECUTE	137
-
 class ShrubberyCreationForm : public AForm
 {
 	public:
@@ -21,6 +17,10 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 
 		void	execute(Bureaucrat const &executor) const;
+
+		static const std::string	Name;
+		static const short			GradeToSign = 145;
+		static const short			GradeToExecute = 137;
 };
 
 #endif
