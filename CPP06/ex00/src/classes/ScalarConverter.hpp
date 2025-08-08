@@ -1,32 +1,34 @@
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
+# include <string>
 # include <iostream>
+# include <iomanip>
+# include <sstream>
+# include <limits>
+# include <cmath>
+# include <cstdlib>
+# include <cctype>
 
 class ScalarConverter
 {
+	public:
+		static void	convert(const std::string &input);
+
 	private:
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const &original);
 		ScalarConverter &operator=(ScalarConverter const &original);
 		~ScalarConverter();
 
-		static char		convertToChar(const std::string &string);
-		static int		convertToInt(const std::string &string);
-		static float	convertToFloat(const std::string &string);
-		static double	convertToDouble(const std::string &string);
+		static bool	representsChar(const std::string &input);
+		static bool	representsInt(const std::string &input);
+		static bool	representsFloat(const std::string &input);
+		static bool	representsDouble(const std::string &input);
 
-	public:
-		static int	convert(const std::string &string);
-
-	private:
-		class RangeException : public std::exception
-		{
-			private:
-				std::string _message;
-			public:
-				RangeException(const std::string& message);
-				const char* what() const throw();
-		};
+		static void	convertFromChar(char c);
+		static void	convertFromInt(int i);
+		static void	convertFromFloat(float f);
+		static void	convertFromDouble(double d);
 };
 
 #endif
