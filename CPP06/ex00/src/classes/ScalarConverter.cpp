@@ -25,35 +25,53 @@ ScalarConverter::~ScalarConverter()
 	std::cout << "ScalarConverter Destructor\n";
 }
 
+template<typename TFrom, typename TTo>
+std::string	ScalarConverter::toString(TFrom value)
+{
+	std::ostringstream	oss;
+
+	oss << std::fixed << std::setprecision(1) << static_cast<TTo>(value);
+
+	return (oss.str());
+}
+
 void	ScalarConverter::convert(const std::string &input)
 {
+	Output	output;
+
+	output.charResult << "char: ";
+	output.intResult << "int: ";
+	output.floatResult << "float: ";
+	output.doubleResult << "double: ";
 	if (representsChar(input))
+		convertFromChar(output, input[1]);
+	else if (representsInt(input))
+		try {convertFromInt(output, std::stoi(input));
+		} catch (std::out_of_range const &except) {
+			std::cout << "Error\n" << except.what() << std::endl;
+			return ;
+		}
+	else if (representsFloat(input))
+		try {convertFromFloat(output, std::stof(input));
+		} catch (std::out_of_range const &except) {
+			std::cout << "Error\n" << except.what() << std::endl;
+			return ;
+		}
+	else if (representsDouble(input))
+		try {convertFromDouble(output, std::stod(input));
+		} catch (std::out_of_range const &except) {
+			std::cout << "Error\n" << except.what() << std::endl;
+			return ;
+		}
+	else
 	{
-		convertFromChar(input[1]);
+		std::cout << "Error\nUnknown Format\n";
 		return ;
 	}
-	if (representsInt(input))
-	{
-		try {convertFromInt(std::stoi(input));
-		} catch (...) {
-			std::cout << "Error\nInt out of range\n";
-		} return ;
-	}
-	if (representsFloat(input))
-	{
-		try {convertFromFloat(std::stof(input));
-		} catch (...) {
-			std::cout << "Error\nFloat out of range\n";
-		} return ;
-	}
-	if (representsDouble(input))
-	{
-		try {convertFromDouble(std::stod(input));
-		} catch (...) {
-			std::cout << "Error\nDouble out of range\n";
-		} return ;
-	}
-	std::cout << "Error\nUnknown Format\n";
+	std::cout	<< output.charResult.str()
+				<< output.intResult.str()
+				<< output.floatResult.str()
+				<< output.doubleResult.str();
 }
 
 bool ScalarConverter::representsChar(const std::string& literal)
@@ -66,22 +84,23 @@ bool ScalarConverter::representsChar(const std::string& literal)
 bool ScalarConverter::representsInt(const std::string& literal)
 {
 	char	*end = nullptr;
+	long	n;
 
-	std::strtol(literal.c_str(), &end, 10);
+	n = std::strtol(literal.c_str(), &end, 10);
+	if (n < std::numeric_limits<int>::min() || n > std::numeric_limits<int>::max())
+		return (false);
 	return (*end == '\0');
 }
 
 bool ScalarConverter::representsFloat(const std::string& literal)
 {
-	if (literal.back() != 'f')
-		return (false);
 	if (literal == "+inff" || literal == "-inff" || literal == "nanf")
 		return (true);
 
 	char	*end = nullptr;
 
 	std::strtof(literal.c_str(), &end);
-	return (end == literal.c_str() + literal.size() - 1);
+	return (*end == 'f' && end[1] == '\0');
 }
 
 bool ScalarConverter::representsDouble(const std::string& literal) {
@@ -94,62 +113,64 @@ bool ScalarConverter::representsDouble(const std::string& literal) {
 	return (*end == '\0');
 }
 
-void ScalarConverter::convertFromChar(char c)
+void ScalarConverter::convertFromChar(Output &output, char c)
 {
-	std::cout	<< "char: '" << c << "'\n"
-				<< "int: " << static_cast<int>(c) << "\n"
-				<< "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f\n"
-				<< "double: " << static_cast<double>(c) << "\n";
+	output.charResult << "'" << toString<char, char>(c) << "'\n";
+	output.intResult << toString<char, int>(c) << "\n";
+	output.floatResult << toString<char, float>(c) << "f\n";
+	output.doubleResult << toString<char, double>(c) << "\n";
 }
 
-void ScalarConverter::convertFromInt(int i)
+void ScalarConverter::convertFromInt(Output &output, int i)
 {
-	if (!std::isprint(i))
-		std::cout << "char: not displayable\n";
+	if (i < 0 || i > 127)
+		output.charResult << "impossible\n";
+	else if (!std::isprint(static_cast<unsigned char>(i)))
+		output.charResult << "not displayable\n";
 	else
-		std::cout << "char: '" << static_cast<char>(i) << "'\n";
+		output.charResult << "'" << toString<int, char>(i) << "'\n";
 
-	std::cout	<< "int: " << i << '\n'
-				<< "float: " << static_cast<float>(i) << "f\n"
-			 	<< "double: " << static_cast<double>(i) << '\n';
+	output.intResult << i << '\n';
+	output.floatResult << toString<int, float>(i) << "f\n";
+	output.doubleResult << toString<int, double>(i) << '\n';
 }
 
-void ScalarConverter::convertFromFloat(float f)
+void ScalarConverter::convertFromFloat(Output &output, float f)
 {
 	if (std::isnan(f) || std::isinf(f) || f < 0 || f > 127)
-		std::cout << "char: out of range\n";
-	else if (!std::isprint(static_cast<int>(f)))
-		std::cout << "char: not displayable\n";
+		output.charResult << "impossible\n";
+	else if (!std::isprint(static_cast<unsigned char>(f)))
+		output.charResult << "not displayable\n";
 	else
-		std::cout << "char: '" << static_cast<char>(f) << "'\n";
+		output.charResult << "'" << toString<float, char>(f) << "'\n";
 
 	if (std::isnan(f) || f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
-		std::cout << "int: out of range\n";
+		output.intResult << "impossible\n";
 	else
-		std::cout << "int: " << static_cast<int>(f) << '\n';
+		output.intResult << toString<float, int>(f) << '\n';
 
-	std::cout	<< "float: " << f << "f\n"
-				<< "double: " << static_cast<double>(f) << '\n';
+	output.floatResult << std::fixed << std::setprecision(1) << f << "f\n";
+	output.doubleResult << toString<float, double>(f) << '\n';
 }
 
-void ScalarConverter::convertFromDouble(double d)
+void ScalarConverter::convertFromDouble(Output &output, double d)
 {
 	if (std::isnan(d) || std::isinf(d) || d < 0 || d > 127)
-		std::cout << "char: out of range\n";
-	else if (!std::isprint(static_cast<int>(d)))
-		std::cout << "char: not displayable\n";
+		output.charResult << "impossible\n";
+	else if (!std::isprint(static_cast<unsigned char>(d)))
+		output.charResult << "not displayable\n";
 	else
-		std::cout << "char: '" << static_cast<char>(d) << "'\n";
+		output.charResult << "'" << toString<double, char>(d) << "'\n";
 
 	if (std::isnan(d) || d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
-		std::cout << "int: out of range\n";
+		output.intResult << "impossible\n";
 	else
-		std::cout << "int: " << static_cast<int>(d) << '\n';
+		output.intResult << toString<double, int>(d) << '\n';
 
-	if (d > std::numeric_limits<float>::max() || d < -std::numeric_limits<float>::max())
-		std::cout << "float: out of range\n";
+	if (d > std::numeric_limits<float>::max() || d < std::numeric_limits<float>::lowest())
+		output.floatResult << "impossible\n";
 	else
-		std::cout << "float: " << static_cast<float>(d) << "f\n";
+		output.floatResult << toString<double, float>(d) << "f\n";
 
-	std::cout << "double: " << d << '\n';
+	output.doubleResult << std::fixed << std::setprecision(1) << d << '\n';
 }
