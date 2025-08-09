@@ -1,11 +1,11 @@
 CXX			=	c++
-CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
+CXXFLAGS	=	-std=c++11 -Wall -Werror -Wextra -Wshadow
 
-NAME		=	Whatever
+NAME		=	Arrayer
 
 all: $(NAME)
 
-$(NAME): main.cpp whatever.hpp
+$(NAME): main.cpp Array.hpp Array.tpp
 	$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
 
 clean:

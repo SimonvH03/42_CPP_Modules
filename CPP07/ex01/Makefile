@@ -1,11 +1,11 @@
 CXX			=	c++
 CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 
-NAME		=	Whatever
+NAME		=	Iter
 
 all: $(NAME)
 
-$(NAME): main.cpp whatever.hpp
+$(NAME): main.cpp iter.hpp
 	$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
 
 clean:
