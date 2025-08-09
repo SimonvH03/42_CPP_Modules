@@ -1,10 +1,13 @@
 CXX			=	c++
 CXXFLAGS	=	-std=c++11 -Wall -Werror -Wextra -Wshadow
 
-NAME		=	Conversion
+NAME		=	Identification
 
 CLASSES_DIR	=	classes
-CLASSES		=	ScalarConverter.cpp
+CLASSES		=	Base.cpp \
+				A.cpp \
+				B.cpp \
+				C.cpp
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \
