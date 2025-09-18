@@ -47,7 +47,6 @@ AForm	&AForm::operator=(AForm const &original)
 	if (this != &original)
 	{
 		_signed = original._signed;
-		checkGrades();
 	}
 	return (*this);
 }
