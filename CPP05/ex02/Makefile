@@ -6,6 +6,7 @@ NAME		=	No,\ you\ need\ form\ 28B,\ not\ 28C...
 CLASSES_DIR	=	classes
 CLASSES		=	AForm.cpp \
 				Bureaucrat.cpp \
+				Grade.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
 				PresidentialPardonForm.cpp

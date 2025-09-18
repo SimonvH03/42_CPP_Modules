@@ -2,6 +2,7 @@
 # define INTERN_HPP
 # include <iostream>
 # include <functional>
+
 # include "AForm.hpp"
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
@@ -24,7 +25,7 @@ class Intern
 		struct FormTableEntry
 		{
 			std::string									name;
-			std::function<AForm*(const std::string&)>	make;
+			std::function<AForm*(std::string const &)>	make;
 		};
 };
 

@@ -4,7 +4,8 @@ CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
 NAME		=	Mommy,\ when\ I\ grow\ up,\ I\ want\ to\ be\ a\ bureaucrat!
 
 CLASSES_DIR	=	classes
-CLASSES		=	Bureaucrat.cpp
+CLASSES		=	Bureaucrat.cpp \
+				Grade.cpp
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \

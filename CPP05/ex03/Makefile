@@ -6,6 +6,7 @@ NAME		=	At\ least\ this\ beats\ coffee-making
 CLASSES_DIR	=	classes
 CLASSES		=	AForm.cpp \
 				Bureaucrat.cpp \
+				Grade.cpp \
 				Intern.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \

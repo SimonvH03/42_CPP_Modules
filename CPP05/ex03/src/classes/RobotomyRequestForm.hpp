@@ -2,6 +2,7 @@
 # define ROBOTOMYREQUESTFORM_HPP
 # include <iostream>
 # include <cstdlib>
+
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
@@ -19,8 +20,8 @@ class RobotomyRequestForm : public AForm
 		void	execute(Bureaucrat const &executor) const;
 
 		static const std::string	Name;
-		static const short			GradeToSign = 72;
-		static const short			GradeToExecute = 45;
+		static const Grade			GradeToSign;
+		static const Grade			GradeToExecute;
 };
 
 #endif

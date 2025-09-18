@@ -14,10 +14,9 @@ int	main()
 
 	Form		form("cool Form", 42, 1);
 
-	Form		form2;
-	form2 		= form;
+	Form		form2(form);
 
-	Form		form3(form);
+	Form		form3;
 
 	try
 	{
@@ -25,6 +24,10 @@ int	main()
 		alice.signForm(form);
 		alice.incrementGrade();
 		alice.signForm(form);
+		nl();
+
+		form3 		= form;
+		form3 		= form2;
 		nl();
 
 		bob.signForm(form);

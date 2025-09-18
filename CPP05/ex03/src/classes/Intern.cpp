@@ -27,20 +27,26 @@ Intern::~Intern()
 
 const char	*Intern::FormNotFoundException::what() const throw()
 {
-	return ("Intern: formName did not match any known Form templates");
+	return ("Intern: requested Form name did not match any known Forms");
 }
 
 AForm	*Intern::makeForm(std::string formName, std::string target) const
 {
 	static const FormTableEntry knownForms[] = {
-		{ShrubberyCreationForm::Name,	[](const std::string &t){return new ShrubberyCreationForm(t);}},
-		{RobotomyRequestForm::Name,		[](const std::string &t){return new RobotomyRequestForm(t);}},
-		{PresidentialPardonForm::Name,	[](const std::string &t){return new PresidentialPardonForm(t);}}
+		{ShrubberyCreationForm::Name,
+			[](std::string const &t){
+				return new ShrubberyCreationForm(t);}},
+		{RobotomyRequestForm::Name,	
+			[](std::string const &t){
+				return new RobotomyRequestForm(t);}},
+		{PresidentialPardonForm::Name,
+			[](std::string const &t){
+				return new PresidentialPardonForm(t);}}
 	};
 
 	for (FormTableEntry const &entry : knownForms)
 	{
-		if (formName == entry.name)
+		if (entry.name == formName)
 		{
 			std::cout << "Intern makes " << formName << "\n";
 			return (entry.make(target));

@@ -1,6 +1,7 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
 # define PRESIDENTIALPARDONFORM_HPP
 # include <iostream>
+
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
@@ -18,8 +19,8 @@ class PresidentialPardonForm : public AForm
 		void	execute(Bureaucrat const &executor) const;
 
 		static const std::string	Name;
-		static const short			GradeToSign = 25;
-		static const short			GradeToExecute = 5;
+		static const Grade			GradeToSign;
+		static const Grade			GradeToExecute;
 };
 
 #endif

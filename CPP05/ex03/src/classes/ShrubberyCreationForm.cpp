@@ -1,6 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
 
 const std::string	ShrubberyCreationForm::Name = "ShrubberyCreationForm";
+const Grade			ShrubberyCreationForm::GradeToSign = 145;
+const Grade			ShrubberyCreationForm::GradeToExecute = 137;
 
 ShrubberyCreationForm::ShrubberyCreationForm()
 	:	AForm(
@@ -49,11 +51,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	AForm::checkExec(executor);
+	AForm::checkExecutionClearance(executor);
+
 	std::string	filename = AForm::getTarget() + "_shrubbery";
 	std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::trunc);
 	if (!ofs.is_open())
-		throw std::ios_base::failure("ShrubberyCreationForm: file open failed");
+		throw std::ios_base::failure("ShrubberyCreationForm: failed to open file");
 	ofs << "      '.,\n"
 		<< "        'b      *\n"
 		<< "         '$    #.\n"

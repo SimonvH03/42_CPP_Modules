@@ -2,17 +2,16 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 
+# include "Grade.hpp"
+
 class Bureaucrat
 {
 	public:
 		Bureaucrat();
-		Bureaucrat(std::string name, short grade);
+		Bureaucrat(std::string name, Grade grade);
 		Bureaucrat(Bureaucrat const &original);
 		Bureaucrat &operator=(Bureaucrat const &original);
 		~Bureaucrat();
-
-		static const	short	UpperBound = 1;
-		static const	short	LowerBound = 150;
 
 		class GradeTooHighException: public std::exception
 		{public:	const char *what() const throw();};
@@ -23,11 +22,11 @@ class Bureaucrat
 		void		decrementGrade();
 
 		std::string	getName() const;
-		short		getGrade() const;
+		Grade		getGrade() const;
 
 	private:
-		const std::string	_name;
-		short				_grade;
+		std::string const	_name;
+		Grade				_grade;
 
 		void		checkGrade() const;
 };

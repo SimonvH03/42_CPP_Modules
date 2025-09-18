@@ -1,6 +1,8 @@
 #include "RobotomyRequestForm.hpp"
 
-const	std::string	RobotomyRequestForm::Name = "RobotomyRequestForm";
+const std::string	RobotomyRequestForm::Name = "RobotomyRequestForm";
+const Grade			RobotomyRequestForm::GradeToSign = 72;
+const Grade			RobotomyRequestForm::GradeToExecute = 45;
 
 RobotomyRequestForm::RobotomyRequestForm()
 	:	AForm(
@@ -49,7 +51,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	AForm::checkExec(executor);
+	AForm::checkExecutionClearance(executor);
+
 	std::cout << "RobotomyRequestForm: buzz buzz bizz\n";
 	if (std::rand() % 2)
 		std::cout << "RobotomyRequestForm: "

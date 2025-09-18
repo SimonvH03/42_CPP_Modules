@@ -2,6 +2,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 # include <iostream>
 # include <fstream>
+
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
@@ -19,8 +20,8 @@ class ShrubberyCreationForm : public AForm
 		void	execute(Bureaucrat const &executor) const;
 
 		static const std::string	Name;
-		static const short			GradeToSign = 145;
-		static const short			GradeToExecute = 137;
+		static const Grade			GradeToSign;
+		static const Grade			GradeToExecute;
 };
 
 #endif

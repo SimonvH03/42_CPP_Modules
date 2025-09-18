@@ -1,14 +1,12 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat()
-	:	_name("Bureaucrat"),
-		_grade(LowerBound)
+	:	_name("Bureaucrat")
 {
 	std::cout << "Bureaucrat Default Constructor: " << *this << "\n";
-	checkGrade();
 }
 
-Bureaucrat::Bureaucrat(std::string name, short grade)
+Bureaucrat::Bureaucrat(std::string name, Grade grade)
 	:	_name(name),
 		_grade(grade)
 {
@@ -24,12 +22,13 @@ Bureaucrat::Bureaucrat(Bureaucrat const &original)
 	checkGrade();
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &original)
+Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &original)
 {
 	std::cout << "Bureaucrat Assignment Operator: " << *this << " = " << original << "\n";
 	if (this != &original)
 	{
 		_grade = original._grade;
+		checkGrade();
 	}
 	return (*this);
 }
@@ -39,21 +38,21 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Bureaucrat Destructor: " << *this << "\n";
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Bureaucrat grade is too high");
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw()
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Bureaucrat grade is too high");
+	return ("Bureaucrat grade is too low");
 }
 
 void	Bureaucrat::checkGrade() const
 {
-	if (_grade < UpperBound)
+	if (_grade > Grade::UpperBound)
 		throw GradeTooHighException();
-	else if (_grade > LowerBound)
+	if (_grade < Grade::LowerBound)
 		throw GradeTooLowException();
 }
 
@@ -73,14 +72,14 @@ void	Bureaucrat::signForm(Form &form) const
 
 void	Bureaucrat::incrementGrade()
 {
-	--_grade;
+	++_grade;
 	std::cout << "Bureaucrat grade incremented: " << *this << "\n";
 	checkGrade();
 }
 
 void	Bureaucrat::decrementGrade()
 {
-	++_grade;
+	--_grade;
 	std::cout << "Bureaucrat grade decremented: " << *this << "\n";
 	checkGrade();
 }
@@ -90,13 +89,13 @@ std::string	Bureaucrat::getName() const
 	return (_name);
 }
 
-short	Bureaucrat::getGrade() const
+Grade	Bureaucrat::getGrade() const
 {
 	return (_grade);
 }
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
+std::ostream	&operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
 {
-	os << "\"" << bureaucrat.getName() << "\" (grade " << bureaucrat.getGrade() << ")";
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return (os);
 }

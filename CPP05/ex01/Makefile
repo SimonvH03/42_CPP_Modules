@@ -5,7 +5,8 @@ NAME		=	Form\ up,\ maggots!
 
 CLASSES_DIR	=	classes
 CLASSES		=	Bureaucrat.cpp \
-				Form.cpp
+				Form.cpp \
+				Grade.cpp
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \
