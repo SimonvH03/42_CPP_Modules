@@ -8,15 +8,11 @@ ScalarConverter::ScalarConverter()
 ScalarConverter::ScalarConverter(ScalarConverter const &original)
 {
 	std::cout << "ScalarConverter Copy Constructor\n";
-	*this = original;
 }
 
 ScalarConverter &ScalarConverter::operator=(ScalarConverter const &original)
 {
 	std::cout << "ScalarConverter Assignment Operator\n";
-	if (this != &original)
-	{
-	}
 	return (*this);
 }
 
