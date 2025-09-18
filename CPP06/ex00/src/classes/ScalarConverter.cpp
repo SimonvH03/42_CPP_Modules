@@ -8,11 +8,13 @@ ScalarConverter::ScalarConverter()
 ScalarConverter::ScalarConverter(ScalarConverter const &original)
 {
 	std::cout << "ScalarConverter Copy Constructor\n";
+	(void)original;
 }
 
 ScalarConverter &ScalarConverter::operator=(ScalarConverter const &original)
 {
 	std::cout << "ScalarConverter Assignment Operator\n";
+	(void)original;
 	return (*this);
 }
 
@@ -140,7 +142,7 @@ void ScalarConverter::convertFromFloat(Output &output, float f)
 	else
 		output.charResult << "'" << toString<float, char>(f) << "'\n";
 
-	if (std::isnan(f) || f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
+	if (std::isnan(f) || f < static_cast<float>(std::numeric_limits<int>::min()) || f > static_cast<float>(std::numeric_limits<int>::max()))
 		output.intResult << "impossible\n";
 	else
 		output.intResult << toString<float, int>(f) << '\n';
@@ -158,7 +160,7 @@ void ScalarConverter::convertFromDouble(Output &output, double d)
 	else
 		output.charResult << "'" << toString<double, char>(d) << "'\n";
 
-	if (std::isnan(d) || d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
+	if (std::isnan(d) || d < static_cast<double>(std::numeric_limits<int>::min()) || d > static_cast<double>(std::numeric_limits<int>::max()))
 		output.intResult << "impossible\n";
 	else
 		output.intResult << toString<double, int>(d) << '\n';

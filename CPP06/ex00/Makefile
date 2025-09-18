@@ -1,7 +1,7 @@
 CXX			=	c++
 CXXFLAGS	=	-std=c++11 -Wall -Werror -Wextra -Wshadow
 
-NAME		=	Conversion
+NAME		=	convert
 
 CLASSES_DIR	=	classes
 CLASSES		=	ScalarConverter.cpp
