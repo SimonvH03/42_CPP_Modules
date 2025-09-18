@@ -45,15 +45,15 @@ void	identify(Base *ptr)
 void	identify(Base &ptr)
 {
 	try {
-		dynamic_cast<A&>(ptr);
+		(void)dynamic_cast<A&>(ptr);
 		std::cout << "A";
 	} catch (std::bad_cast &except) {}
 	try {
-		dynamic_cast<B&>(ptr);
+		(void)dynamic_cast<B&>(ptr);
 		std::cout << "B";
 	} catch (std::bad_cast &except) {}
 	try {
-		dynamic_cast<C&>(ptr);
+		(void)dynamic_cast<C&>(ptr);
 		std::cout << "C";
 	} catch (std::bad_cast &except) {}
 }
@@ -63,9 +63,9 @@ int	main(void)
 	Base	*ptr = generate();
 
 	identify(ptr);
-	std::cout << "\n";
+	std::cout << " Pointer Type ID\n";
 	identify(*ptr);
-	std::cout << "\n";
+	std::cout << " Reference Type ID\n";
 	delete ptr;
 	return (0);
 }
