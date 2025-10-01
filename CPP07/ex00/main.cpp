@@ -10,22 +10,22 @@ void	unitTestSwap(T &a, T &b)
 
 	::swap(a, b);
 	std::cout << "swap(" << originalA << ", " << originalB
-		<< "): (" << a << ", " << b << "): "
-		<< ((a == originalB && b == originalA) ? "pass" : "fail") << "\n";
+		<< ") -> (" << a << ", " << b << ")\n"
+		<< ((a == originalB && b == originalA) ? "\e[32mpass" : "\e[31mfail") << "\n\e[0m";
 }
 
 template <typename T>
 void	unitTestMin(T &a, T &b)
 {
-	std::cout << "min(" << a << ", " << b << ") = " << ::min(a, b) << ": "
-		<< ((::min(a, b) == std::min(a, b)) ? "pass" : "fail") << "\n";
+	std::cout << "min (" << a << ", " << b << ") = " << ::min(a, b) << "\n"
+		<< ((::min(a, b) == std::min(a, b)) ? "\e[32mpass" : "\e[31mfail") << "\n\e[0m";
 }
 
 template <typename T>
 void	unitTestMax(T &a, T &b)
 {
-	std::cout << "max(" << a << ", " << b << ") = " << ::max(a, b) << ": "
-		<< ((::max(a, b) == std::max(a, b)) ? "pass" : "fail") << "\n";
+	std::cout << "max (" << a << ", " << b << ") = " << ::max(a, b) << "\n"
+		<< ((::max(a, b) == std::max(a, b)) ? "\e[32mpass" : "\e[31mfail") << "\n\e[0m";
 }
 
 int	main(void)

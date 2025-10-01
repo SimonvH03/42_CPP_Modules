@@ -9,10 +9,10 @@ $(NAME): main.cpp whatever.hpp
 	$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
 
 clean:
-
-fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+fclean: clean
+
+re: clean all
 
 .PHONY: all clean fclean re

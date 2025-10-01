@@ -1,18 +1,18 @@
 CXX			=	c++
-CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
+CXXFLAGS	=	-std=c++11 -Wall -Werror -Wextra -Wshadow
 
 NAME		=	Iter
 
 all: $(NAME)
 
-$(NAME): main.cpp iter.hpp
+$(NAME): main.cpp iter.hpp iterRef.hpp
 	$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
 
 clean:
-
-fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+fclean: clean
+
+re: clean all
 
 .PHONY: all clean fclean re

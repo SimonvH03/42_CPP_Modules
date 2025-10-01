@@ -1,39 +1,44 @@
 #include <iostream>
 
 #include "iter.hpp"
+#include "iterRef.hpp"
 
-void	negateInt(int &element)
+int	negateInt(int &element)
 {
 	element = -element;
-	std::cout << element;
+	return (element);
 }
 
-void	negateIntConst(int const &element)
+int	negatedInt(int const &element)
 {
-	std::cout << -element;
+	return (-element);
 }
 
-void	upperChar(char &element)
+char	lowerChar(char &element)
 {
-	element = std::toupper(element);
-	std::cout << element;
+	element = std::tolower(element);
+	return (element);
 }
 
-void	lowerCharConst(char const &element)
+char	loweredChar(char const &element)
 {
-	std::cout << static_cast<char>(std::tolower(element));
+	return (std::tolower(element));
 }
 
-void	upperString(std::string &element)
-{
-	for (size_t i = 0; i < element.length(); ++i)
-		upperChar(element[i]);
-}
-
-void	lowerStringConst(std::string const &element)
+std::string	lowerString(std::string &element)
 {
 	for (size_t i = 0; i < element.length(); ++i)
-		lowerCharConst(element[i]);
+		lowerChar(element[i]);
+	return (element);
+}
+
+std::string	loweredString(std::string const &element)
+{
+	std::string	result;
+
+	for (size_t i = 0; i < element.length(); ++i)
+		result += loweredChar(element[i]);
+	return (result);
 }
 
 int	main(void)
@@ -42,38 +47,26 @@ int	main(void)
 		int			intArray[] = {1, 2, 3};
 		int const	intArrayConst[] = {42, 69, 420};
 
-		iter(intArray, 3, negateInt);
-		std::cout << '\n';
-		iter(intArray, 3, negateIntConst);
-		std::cout << '\n';
-		// iter(intArrayConst, 3, negateInt);
-		iter(intArrayConst, 3, negateIntConst);
-		std::cout << '\n';
+		iterTest(intArray, 3, negateInt, "Int");
+		iterTest(intArrayConst, 3, negatedInt, "Int const");
+		// iterTest(intArrayConst, 3, negateInt, "Int fail");
 	}
 	{
-		char		charArray[] = {'a', 'b', 'c'};
+		char		charArray[] = {'A', 'B', 'C'};
 		char const	charArrayConst[] = {'X', 'Y', 'Z'};
 
-		iter(charArray, 3, upperChar);
-		std::cout << '\n';
-		iter(charArray, 3, lowerCharConst);
-		std::cout << '\n';
-		// iter(charArrayConst, 3, upperChar);
-		iter(charArrayConst, 3, lowerCharConst);
-		std::cout << '\n';
+		iterTest(charArray, 3, lowerChar, "Char");
+		iterTest(charArrayConst, 3, loweredChar, "Char const");
+		// iterTest(charArrayConst, 3, lowerChar, "Char fail");
 	}
 	{
 		std::string			stringArray[] = {"Hello", ", ", "World", "!"};
 		std::string const	stringArrayConst[] = {"The ", "World ", "Says: ", "HELLO!"};
 
-
-		iter(stringArray, 4, upperString);
-		std::cout << '\n';
-		iter(stringArray, 4, lowerStringConst);
-		std::cout << '\n';
-		// iter(stringArrayConst, 4, upperString);
-		iter(stringArrayConst, 4, lowerStringConst);
-		std::cout << '\n';
+		iterTest(stringArray, 4, lowerString, "String");
+		iterTest(stringArray, 4, loweredString, "String const");
+		// iterTest(stringArrayConst, 4, lowerString, "String fail");
 	}
+
 	return (0);
 }
