@@ -2,24 +2,32 @@
 
 #include "Array.hpp"
 
-#define MAX_VAL 750
-int main(int, char**)
+namespace Config
 {
-	Array<int>	numbers(MAX_VAL);
-	int			*mirror = new int[MAX_VAL];
+	constexpr unsigned int	Size = 750;
+}
+
+int	main(void)
+{
+	// Array<int>	numbers(Config::Size);
+	Array<size_t>	numbers(Config::Size);
+	// int			*mirror = new int[Config::Size];
+	size_t		*mirror = new size_t[Config::Size];
 
 	srand(time(NULL));
-	for (int i = 0; i < MAX_VAL; i++)
+	for (size_t i = 0; i < Config::Size; i++)
 	{
-		const int value = rand();
+		const size_t value = rand();
 		numbers[i] = value;
 		mirror[i] = value;
 	}
 	{
-		Array<int> tmp;
+		// Array<int> tmp;
+		Array<size_t> tmp;
 		tmp = numbers;
-		Array<int> test(tmp);
-		for (int i = 0; i < MAX_VAL; i++)
+		// Array<int> test(tmp);
+		Array<size_t> test(tmp);
+		for (size_t i = 0; i < Config::Size; i++)
 		{
 			if (mirror[i] != numbers[i]
 				|| tmp[i] != numbers[i]
@@ -30,22 +38,22 @@ int main(int, char**)
 					<< mirror[i] << ", arr = original: "
 					<< tmp[i] << ", arr(original): "
 					<< test [i] << std::endl;
-				return 1;
+				break ;
 			}
 		}
 	}
 
 	try {
-		numbers[-2] = 0;// expect: index out of range
+		numbers[-2] = 0;
 	} catch(std::exception const &except) {
-		std::cerr << except.what() << '\n';
+		std::cerr << "exception caught in main(): " << except.what() << '\n';
 	}
 	try {
-		numbers[MAX_VAL] = 0;// expect: index out of range
+		numbers[Config::Size] = 0;
 	} catch(std::exception const &except) {
-		std::cerr << except.what() << '\n';
+		std::cerr << "exception caught in main(): " << except.what() << '\n';
 	}
-	for (int i = 0; i < MAX_VAL; i++)
+	for (size_t i = 0; i < Config::Size; i++)
 	{
 		numbers[i] = rand();
 	}
