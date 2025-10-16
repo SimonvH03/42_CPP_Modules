@@ -26,15 +26,13 @@ cat > "$HEADER_FILE" <<EOF
 
 class $CLASS_NAME
 {
-	private:
-
-	protected:
-
 	public:
 		$CLASS_NAME();
 		$CLASS_NAME($CLASS_NAME const &original);
 		$CLASS_NAME &operator=($CLASS_NAME const &original);
 		~$CLASS_NAME();
+
+	private:
 };
 
 #endif
@@ -55,7 +53,7 @@ $CLASS_NAME::$CLASS_NAME($CLASS_NAME const &original)
 	*this = original;
 }
 
-$CLASS_NAME &$CLASS_NAME::operator=($CLASS_NAME const &original)
+$CLASS_NAME\t&$CLASS_NAME::operator=($CLASS_NAME const &original)
 {
 	std::cout << "$CLASS_NAME Assignment Operator\n";
 	if (this != &original)

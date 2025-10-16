@@ -4,7 +4,7 @@
 # include <algorithm>
 
 template<typename T>
-typename T::const_iterator easyfind(T &haystack, int needle)
+typename T::iterator easyfind(T &haystack, int needle)
 {
 	return (std::find(haystack.begin(), haystack.end(), needle));
 }

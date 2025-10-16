@@ -3,18 +3,18 @@
 
 #include "easyfind.hpp"
 
-static constexpr std::size_t Size = 100;
-
 int main(void)
 {
 	const int			needle = 42;
-	std::vector<int>	numbers(Size, 0);
+	std::vector<int>	haystack(999, 0);
 
 	std::srand(time(NULL));
-	for (size_t i = 0; i < Size; ++i)
-		numbers[i] = std::rand();
-	numbers.push_back(needle);
-	if (*easyfind(numbers, needle) == needle)
+	std::generate(haystack.begin(), haystack.end(), std::rand);
+	haystack.push_back(needle);
+
+	std::vector<int>::iterator	found = easyfind(haystack, needle);
+	*(found - 1) = 43;
+	if (*found == needle)
 		std::cout << "That was easy!\n";
 	return 0;
 }
