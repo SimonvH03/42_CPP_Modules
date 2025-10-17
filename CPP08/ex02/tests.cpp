@@ -4,6 +4,7 @@
 #include "MutantStack.hpp"
 
 #include <list>
+#include <stack>
 
 TEST(Call_Default_Constructor) {
 	MutantStack<int>	mutant;
