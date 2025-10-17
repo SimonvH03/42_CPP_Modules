@@ -1,6 +1,3 @@
-time: 1760576219
+time: 1760695328
 
-Valid_Equality_Comparison_Operator:
-	(src/tests.cpp:155) Check failed: (span != vector) is false
-
-1/17 tests failed.
+0/26 tests failed.

@@ -157,4 +157,94 @@ TEST(Valid_Equality_Comparison_Operator) {
 	}
 }
 
-// addNumber(), addRange(Range), addRange(Iterator Range), shortestSpan(), longestSpan()
+TEST(Call_addNumber) {
+	Span	span(1);
+	span.addNumber(42);
+}
+
+TEST(Except_addNumber) {
+	Span	span;
+	try {
+		span.addNumber(42);
+		throw validationToolsException("expected addnumber() exception");
+	} catch (Span::StorageFullException const &e) {}
+}
+
+TEST(Valid_addNumber) {
+	Span	span(1);
+	span.addNumber(42);
+	CHECK(span.getVector().at(0) == 42);
+}
+
+TEST(Call_addRange) {
+	std::vector<int>	vector{0, 42, -1};
+	{	Span	span(3);
+		span.addRange(vector);
+	}
+	{	Span	span(3);
+		span.addRange(vector.begin(), vector.end());
+	}
+}
+
+TEST(Except_addRange) {
+	std::vector<int>	vector{0, 42, -1};
+	try {
+		Span	span(2);
+		span.addRange(vector);
+		throw validationToolsException("expected addRange() exception");
+	} catch (Span::StorageFullException const &e) {}
+	try {
+		Span	span(2);
+		span.addRange(vector.begin(), vector.end());
+		throw validationToolsException("expected addRange() exception");
+	} catch (Span::StorageFullException const &e) {}
+	try {
+		Span	span(5);
+		span.addRange(vector);
+		span.addRange(vector);
+		throw validationToolsException("expected addRange() exception");
+	} catch (Span::StorageFullException const &e) {}
+}
+
+TEST(Valid_addRange) {
+	std::vector<int>	vector1{0, 42, -1};
+	std::vector<int>	vector2{3, 19, -400};
+	std::vector<int>	combined{0, 42, -1, 3, 19, -400};
+	{	Span	span(6);
+		span.addRange(vector1);
+		span.addRange(vector2);
+		EQUATE(span, combined);
+	}
+	{	Span	span(6);
+		span.addRange(vector1.begin(), vector1.end());
+		span.addRange(vector2.begin(), vector2.end());
+		EQUATE(span, combined);
+	}
+}
+
+TEST(Call_shortestSpan) {
+	Span	span(std::vector<int>{0, 42});
+	span.shortestSpan();
+}
+
+TEST(Except_shortestSpan) {
+	try {
+		Span	span;
+		span.shortestSpan();
+		throw validationToolsException("expected shortestSpan() exception");
+	} catch (Span::SpanningTakesTwo const &e) {}
+	try {
+		Span	span(std::vector<int>{42});
+		span.shortestSpan();
+		throw validationToolsException("expected shortestSpan() exception");
+	} catch (Span::SpanningTakesTwo const &e) {}
+}
+
+TEST(Valid_shortestSpan) {
+	{	Span	span(std::vector<int>{0, 42});
+		CHECK(span.shortestSpan() == 42);
+	}
+	{}
+}
+
+// longestSpan()

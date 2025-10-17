@@ -8,8 +8,8 @@ class	validationToolsException : public std::exception
 {
 	public:
 		validationToolsException(
-			std::source_location const &location = std::source_location::current(),
-			std::string const &message = "No apparent reason...")
+			std::string const &message = "No apparent reason...",
+			std::source_location const &location = std::source_location::current())
 			:	_message(formatLocation(location) + message) {}
 
 		const char *what() const throw() override {
@@ -28,8 +28,8 @@ inline void	check(
 	std::string const &expression, bool result,
 	std::source_location const &location = std::source_location::current())
 {
-	if (!result) throw validationToolsException(location,
-		"Check failed: (" + expression + ") is false");
+	if (!result) throw validationToolsException(
+		"Check failed: (" + expression + ") is false", location);
 }
 # define CHECK(expr) check(#expr, (expr))
 
@@ -42,8 +42,8 @@ void	equate(
 	B const &b,
 	std::source_location const &location = std::source_location::current())
 {
-	if (a != b) throw validationToolsException(location,
-		"Equation failed: " + aStr + " != " + bStr);
+	if (a != b) throw validationToolsException(
+		"Equation failed: " + aStr + " != " + bStr, location);
 }
 # define EQUATE(a, b) equate(#a, #b, a, b)
 
