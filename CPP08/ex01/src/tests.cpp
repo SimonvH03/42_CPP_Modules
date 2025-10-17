@@ -242,9 +242,42 @@ TEST(Except_shortestSpan) {
 
 TEST(Valid_shortestSpan) {
 	{	Span	span(std::vector<int>{0, 42});
-		CHECK(span.shortestSpan() == 42);
+		EQUATE(span.shortestSpan(), 42);
 	}
-	{}
+	{	Span	span(std::vector<int>{0, 128, 170});
+		EQUATE(span.shortestSpan(), 42);
+	}
+	{	Span	span(std::vector<int>{-32, 10, 69});
+		EQUATE(span.shortestSpan(), 42);
+	}
 }
 
-// longestSpan()
+TEST(Call_longestSpan) {
+	Span	span(std::vector<int>{0, 42});
+	span.longestSpan();
+}
+
+TEST(Except_longestSpan) {
+	try {
+		Span	span;
+		span.longestSpan();
+		throw validationToolsException("expected longestSpan() exception");
+	} catch (Span::SpanningTakesTwo const &e) {}
+	try {
+		Span	span(std::vector<int>{42});
+		span.longestSpan();
+		throw validationToolsException("expected longestSpan() exception");
+	} catch (Span::SpanningTakesTwo const &e) {}
+}
+
+TEST(Valid_longestSpan) {
+	{	Span	span(std::vector<int>{0, 42});
+		EQUATE(span.longestSpan(), 42);
+	}
+	{	Span	span(std::vector<int>{127, 128, 169});
+		EQUATE(span.longestSpan(), 42);
+	}
+	{	Span	span(std::vector<int>{-32, 0, 10});
+		EQUATE(span.longestSpan(), 42);
+	}
+}

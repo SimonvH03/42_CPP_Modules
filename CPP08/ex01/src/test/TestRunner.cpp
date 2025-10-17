@@ -64,7 +64,8 @@ void	TestRunner::runAllTests()
 			log(test, e);
 		} ++ran;
 	}
-	std::cout << passed << "/" << ran << " tests passed.\n";
+	std::cout << passed << "/" << ran << " tests passed. \n"
+	<< ((passed == ran) ? "\e[32mgood job" : "\e[31msuck it") << "\e[0m\n";
 	_logFile << ran - passed << "/" << ran << " tests failed.";
 }
 
