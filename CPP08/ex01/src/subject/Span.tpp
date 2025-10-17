@@ -1,7 +1,7 @@
 template <std::ranges::range R>
 	requires std::same_as<std::ranges::range_value_t<R>, int>
 Span::Span(R range)
-	:	_size(std::ranges::size(range)),
+	:	_maxSize(std::ranges::size(range)),
 		_numbers(range.begin(), range.end())
 {
 	std::cout << "Span Range Constructor\n";
@@ -10,7 +10,7 @@ Span::Span(R range)
 template <std::forward_iterator Iter>
 	requires std::same_as<std::iter_value_t<Iter>, int>
 Span::Span(Iter first, Iter last)
-	:	_size(std::distance(first, last)),
+	:	_maxSize(std::distance(first, last)),
 		_numbers(first, last)
 {
 	std::cout << "Span Iterator Range Constructor\n";
@@ -39,7 +39,7 @@ template <std::ranges::range R>
 void	Span::addRange(R range)
 {
 	std::cout << "Span addRange Range\n";
-	if (_numbers.size() + std::ranges::size(range) > _size)
+	if (_numbers.size() + std::ranges::size(range) > _maxSize)
 		throw StorageFullException();
 
 	_numbers.insert(_numbers.end(), range.begin(), range.end());
@@ -50,7 +50,7 @@ template <std::forward_iterator Iter>
 void	Span::addRange(Iter first, Iter last)
 {
 	std::cout << "Span addRange Iterator Range\n";
-	if (_numbers.size() + std::distance(first, last) > _size)
+	if (_numbers.size() + std::distance(first, last) > _maxSize)
 		throw StorageFullException();
 
 	_numbers.insert(_numbers.end(), first, last);

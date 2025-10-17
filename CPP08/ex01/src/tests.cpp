@@ -7,6 +7,8 @@
 #include <vector>
 #include <set>
 
+inline	const int	testSize = 100000;
+
 TEST(Call_Default_Constructor) {
 	Span	span;
 }
@@ -31,29 +33,29 @@ TEST(Call_Assignment_Operator) {
 	assign = span;
 }
 
-TEST(Call_getSize) {
+TEST(Call_getMaxSize) {
 	Span	span;
-	span.getSize();
+	span.getMaxSize();
 }
 
 TEST(Valid_Size_Constructor) {
 	{	const unsigned int	size = 0;
 		Span	span(size);
-		CHECK(span.getSize() == size);
+		CHECK(span.getMaxSize() == size);
 	}
 	{	const unsigned int	size = 42;
 		Span	span(size);
-		CHECK(span.getSize() == size);
+		CHECK(span.getMaxSize() == size);
 	}
 	{	const unsigned int	size = std::numeric_limits<unsigned int>::max();
 		Span	span(size);
-		CHECK(span.getSize() == size);
+		CHECK(span.getMaxSize() == size);
 	}
 }
 
 TEST(Valid_Default_Size) {
 	Span	span;
-	CHECK(span.getSize() == 0);
+	CHECK(span.getMaxSize() == 0);
 }
 
 TEST(Call_getVector) {
@@ -95,7 +97,7 @@ TEST(Valid_Range_Constructor) {
 		Span	span(vector);
 		CHECK(span == vector);
 	}
-	{	std::vector<int> vector(1000, 0);
+	{	std::vector<int> vector(testSize, 0);
 		std::srand(time(NULL));
 		std::ranges::generate(vector, std::rand);
 		Span	span(vector);
@@ -109,12 +111,34 @@ TEST(Valid_Range_Assignment_Operator) {
 		span = vector;
 		CHECK(span == vector);
 	}
-	{	std::vector<int> vector(1000, 0);
+	{	std::vector<int> vector(testSize, 0);
 		std::srand(time(NULL));
 		std::ranges::generate(vector, std::rand);
 		Span	span(vector.size());
 		span = vector;
 		CHECK(span == vector);
+	}
+	{	std::vector<int> vector(testSize, 0);
+		std::srand(time(NULL));
+		std::ranges::generate(vector, std::rand);
+		Span	span(vector.size());
+		span = vector;
+		std::ranges::generate(vector, std::rand);
+		CHECK(span != vector);
+		span = vector;
+		CHECK(span == vector);
+	}
+}
+
+TEST(Except_Range_Assignment_Operator) {
+	{	std::vector<int> vector(testSize, 0);
+		std::srand(time(NULL));
+		std::ranges::generate(vector, std::rand);
+		Span	span(vector.size() / 2);
+		try {
+			span = vector;
+			throw validationToolsException("expected Span.operator=(R const &range) exception");
+		} catch (Span::StorageFullException const &e) {}
 	}
 }
 
@@ -123,7 +147,7 @@ TEST(Valid_Iterator_Range_Constructor) {
 		Span	span(vector.begin(), vector.end());
 		CHECK(span == vector);
 	}
-	{	std::vector<int> vector(1000, 0);
+	{	std::vector<int> vector(testSize, 0);
 		std::ranges::generate(vector, std::rand);
 		std::srand(time(NULL));
 		Span	span(vector.begin(), vector.end());
@@ -140,7 +164,7 @@ TEST(Valid_Equality_Comparison_Operator) {
 			CHECK(span != inequal);
 		}
 	}
-	{	std::vector<int> vector(1000, 0);
+	{	std::vector<int> vector(testSize, 0);
 		std::srand(time(NULL));
 		std::ranges::generate(vector, std::rand);
 		Span	span(vector);
@@ -150,9 +174,27 @@ TEST(Valid_Equality_Comparison_Operator) {
 		{	Span	inequal(vector.size());
 			CHECK(span != inequal);
 		}
-		{	Span	inequal(1001);
+		{	Span	inequal(100001);
 			inequal = vector;
 			CHECK(span != inequal);
+		}
+	}
+}
+
+TEST(Valid_Range_Equality_Comparison_Operator) {
+	{	std::vector<int> vector(testSize, 0);
+		std::srand(time(NULL));
+		std::ranges::generate(vector, std::rand);
+		Span	span(vector);
+		{	Span	equal(vector);
+			CHECK(equal == vector);
+		}
+		{	Span	inequal(vector.size());
+			CHECK(inequal != vector);
+		}
+		{	Span	inequal(100001);
+			inequal = vector;
+			CHECK(inequal == vector);
 		}
 	}
 }
@@ -250,6 +292,12 @@ TEST(Valid_shortestSpan) {
 	{	Span	span(std::vector<int>{-32, 10, 69});
 		EQUATE(span.shortestSpan(), 42);
 	}
+	{	std::vector<int> vector(testSize, 0);
+		std::srand(time(NULL));
+		std::ranges::generate(vector, std::rand);
+		Span	span(vector);
+		CHECK(span.shortestSpan() < 1000);
+	}
 }
 
 TEST(Call_longestSpan) {
@@ -279,5 +327,14 @@ TEST(Valid_longestSpan) {
 	}
 	{	Span	span(std::vector<int>{-32, 0, 10});
 		EQUATE(span.longestSpan(), 42);
+	}
+	{	std::vector<int> vector(testSize, 0);
+		std::srand(time(NULL));
+		std::ranges::generate(vector, std::rand);
+		vector.push_back(std::numeric_limits<int>::min());
+		Span	span(vector);
+		CHECK(span.longestSpan()
+			== static_cast<long>(*std::ranges::max_element(span.getVector()))
+			-  static_cast<long>(*std::ranges::min_element(span.getVector())));
 	}
 }

@@ -5,15 +5,15 @@ Span::Span()
 	std::cout << "Span Default Constructor\n";
 }
 
-Span::Span(unsigned int n)
-	:	_size(n)
+Span::Span(unsigned int N)
+	:	_maxSize(N)
 {
-	_numbers.reserve(_size);
+	_numbers.reserve(_maxSize);
 	std::cout << "Span Size Constructor\n";
 }
 
 Span::Span(Span const &original)
-	:	_size(original._size)
+	:	_maxSize(original._maxSize)
 	,	_numbers(original._numbers)
 {
 	std::cout << "Span Copy Constructor\n";
@@ -39,32 +39,33 @@ bool	Span::operator==(Span const &other) const
 {
 	std::cout << "Span Equality Comparison Operator\n";
 	return (this == &other
-		|| (_size == other._size
+		|| (_maxSize == other._maxSize
 		&&	_numbers == other._numbers));
 }
 
 void	Span::addNumber(int number)
 {
-	if (_numbers.size() + 1 > _size)
+	if (_numbers.size() + 1 > _maxSize)
 		throw StorageFullException();
 
 	_numbers.emplace_back(std::move(number));
 }
 
-int	Span::shortestSpan() const
+long	Span::shortestSpan() const
 {
 	if (_numbers.size() < 2)
 		throw SpanningTakesTwo();
 
-	int (*minimumDifference)(std::vector<int> const &) =
-		[](std::vector<int> const &sorted) -> int
+	long (*minimumDifference)(std::vector<int> const &) =
+		[](std::vector<int> const &sorted) -> long
 		{
-			int	minDistance = std::numeric_limits<int>::max();
+			long	minDistance = std::numeric_limits<int>::max();
 			for (std::vector<int>::const_iterator iterator = sorted.cbegin();
 				(iterator + 1) != sorted.cend();
 				++iterator)
 			{
-				minDistance = std::min(minDistance, *(iterator + 1) - *iterator);
+				minDistance = std::min(minDistance,
+					static_cast<long>(*(iterator + 1)) - static_cast<long>(*iterator));
 				if (minDistance == 0)
 					break ;
 			}
@@ -81,19 +82,27 @@ int	Span::shortestSpan() const
 	}
 }
 
-int	Span::longestSpan() const
+long	Span::longestSpan() const
 {
 	if (_numbers.size() < 2)
 		throw SpanningTakesTwo();
 
-	if (std::ranges::is_sorted(_numbers))
-		return (_numbers.back() - _numbers.front());
-	else
-		return (*std::ranges::max_element(_numbers) - *std::ranges::min_element(_numbers));
+	long	max;
+	long	min;
+
+	if (std::ranges::is_sorted(_numbers)) {
+		max = _numbers.back();
+		min = _numbers.front();
+	}
+	else {
+		max = *std::ranges::max_element(_numbers);
+		min = *std::ranges::min_element(_numbers);
+	}
+	return (max - min);
 }
 
-unsigned int	Span::getSize() const {
-	return (_size);
+unsigned int	Span::getMaxSize() const {
+	return (_maxSize);
 }
 
 std::vector<int> const	&Span::getVector() const {

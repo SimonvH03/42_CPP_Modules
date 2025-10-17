@@ -12,7 +12,7 @@ class Span
 {
 public:
 	Span();
-	Span(unsigned int n);
+	Span(unsigned int N);
 	Span(Span const &original);
 	~Span();
 
@@ -21,8 +21,8 @@ public:
 
 	void	addNumber(int number);
 
-	int		shortestSpan() const;
-	int		longestSpan() const;
+	long	shortestSpan() const;
+	long	longestSpan() const;
 
 
 	template <std::ranges::range R>
@@ -46,7 +46,7 @@ public:
 	void	addRange(Iter first, Iter last);
 
 
-	unsigned int			getSize() const;
+	unsigned int			getMaxSize() const;
 	std::vector<int> const	&getVector() const;
 
 	class	StorageFullException : public std::exception
@@ -55,7 +55,7 @@ public:
 	{public:	const char *what() const throw();};
 
 private:
-	unsigned int const	_size = 0;
+	unsigned int const	_maxSize = 0;
 	std::vector<int>	_numbers;
 };
 
