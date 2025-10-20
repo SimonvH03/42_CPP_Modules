@@ -1,19 +1,17 @@
 MAKEFLAGS	=	-r -R
 
 CXX			=	c++
-CXXFLAGS	=	-std=c++20
-CXXFLAGS	+=	-MMD -MP
+CXXFLAGS	=	-MMD -MP -std=c++20
 CXXFLAGS	+=	-Wall -Werror -Wextra -Wshadow
 # CXXFLAGS	+=	-D VERBOSE
 
 NAME		=	run
 
-LIB_TF_DIR	=	../TestFramework
+LIB_TF_DIR	=	../../TestFramework
 LIB_TF_BIN	:=	$(LIB_TF_DIR)/libTestRunner.a
 LIB_TF_INC	:=	$(LIB_TF_DIR)/include
 
-INCLUDE_DIRS=	$(TEST_DIR) \
-				$(SUBJECT_DIR) \
+INCLUDE_DIRS=	$(SUBJECT_DIR) \
 				$(LIB_TF_INC)
 INCLUDE		=	$(addprefix -I , $(INCLUDE_DIRS))
 
@@ -51,9 +49,11 @@ clean:
 	else \
 		echo "Warning: OBJ_DIR is undefined"; \
 	fi
+	$(MAKE) -C $(LIB_TF_DIR) fclean -s
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f failLog.txt
 
 re: clean all
 
