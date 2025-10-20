@@ -24,6 +24,24 @@ class	validationToolsException : public std::exception
 		}
 };
 
+template <typename T>
+concept Printable = requires(std::ostream &os, T const &t)
+{
+	os << t;
+};
+
+template <typename T>
+std::string	toString(T const &t)
+{
+	if constexpr (Printable<T>) {
+		std::ostringstream	oss;
+		oss << t;
+		return (oss.str());
+	} else {
+		return ("{not displayable}");
+	}
+}
+
 inline void	check(
 	std::string const &expression, bool result,
 	std::source_location const &location = std::source_location::current())
@@ -43,7 +61,8 @@ void	equate(
 	std::source_location const &location = std::source_location::current())
 {
 	if (a != b) throw validationToolsException(
-		"Equation failed: " + aStr + " != " + bStr, location);
+		"Equation failed: " + aStr + " != " + bStr
+		+ " \t(" + toString(a) + " != " + toString(b) + ")", location);
 }
 # define EQUATE(a, b) equate(#a, #b, a, b)
 

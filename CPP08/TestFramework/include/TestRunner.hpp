@@ -16,12 +16,13 @@ public:
 	void	runAllTests();
 
 private:
-	TestRunner();
+	explicit	TestRunner();
 	~TestRunner();
-	std::vector<std::unique_ptr<TestCase>>	_tests;
 
-	std::ofstream	_logFile;
-	void			log(std::unique_ptr<TestCase> const &test, std::exception const &e);
+	void	log(std::unique_ptr<TestCase> const &test, std::exception const &e);
+
+	std::vector<std::unique_ptr<TestCase>>	_tests;
+	std::ofstream							_logFile;
 };
 
 #endif

@@ -6,15 +6,15 @@
 class TestCase
 {
 	public:
-		virtual ~TestCase();
-		TestCase(std::string const &testName);
+		TestCase() = delete;
+		explicit	TestCase(std::string const &testName);
+		virtual		~TestCase();
 
+		virtual void		run() const = 0;
 		std::string const	&getName() const;
 
-		virtual void run() const = 0;
-
 	private:
-		std::string _name;
+		std::string	_name;
 };
 
 #endif

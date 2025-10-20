@@ -2,31 +2,43 @@
 
 Span::Span()
 {
+#ifdef VERBOSE
 	std::cout << "Span Default Constructor\n";
+#endif
 }
 
 Span::Span(unsigned int N)
 	:	_maxSize(N)
 {
-	_numbers.reserve(_maxSize);
+#ifdef VERBOSE
 	std::cout << "Span Size Constructor\n";
+#endif
+
+	_numbers.reserve(_maxSize);
 }
 
 Span::Span(Span const &original)
 	:	_maxSize(original._maxSize)
 	,	_numbers(original._numbers)
 {
+#ifdef VERBOSE
 	std::cout << "Span Copy Constructor\n";
+#endif
 }
 
 Span::~Span()
 {
+#ifdef VERBOSE
 	std::cout << "Span Destructor\n";
+#endif
 }
 
 Span	&Span::operator=(Span const &original)
 {
+#ifdef VERBOSE
 	std::cout << "Span Assignment Operator\n";
+#endif
+
 	if (this != &original)
 	{
 		_numbers.clear();
@@ -37,7 +49,10 @@ Span	&Span::operator=(Span const &original)
 
 bool	Span::operator==(Span const &other) const
 {
+#ifdef VERBOSE
 	std::cout << "Span Equality Comparison Operator\n";
+#endif
+
 	return (this == &other
 		|| (_maxSize == other._maxSize
 		&&	_numbers == other._numbers));
@@ -45,6 +60,10 @@ bool	Span::operator==(Span const &other) const
 
 void	Span::addNumber(int number)
 {
+#ifdef VERBOSE
+	std::cout << "Span addNumber()\n";
+#endif
+
 	if (_numbers.size() + 1 > _maxSize)
 		throw StorageFullException();
 
@@ -53,6 +72,10 @@ void	Span::addNumber(int number)
 
 long	Span::shortestSpan() const
 {
+#ifdef VERBOSE
+	std::cout << "Span shortestSpan()\n";
+#endif
+
 	if (_numbers.size() < 2)
 		throw SpanningTakesTwo();
 
@@ -84,6 +107,10 @@ long	Span::shortestSpan() const
 
 long	Span::longestSpan() const
 {
+#ifdef VERBOSE
+	std::cout << "Span longestSpan()\n";
+#endif
+
 	if (_numbers.size() < 2)
 		throw SpanningTakesTwo();
 
@@ -93,8 +120,7 @@ long	Span::longestSpan() const
 	if (std::ranges::is_sorted(_numbers)) {
 		max = _numbers.back();
 		min = _numbers.front();
-	}
-	else {
+	} else {
 		max = *std::ranges::max_element(_numbers);
 		min = *std::ranges::min_element(_numbers);
 	}

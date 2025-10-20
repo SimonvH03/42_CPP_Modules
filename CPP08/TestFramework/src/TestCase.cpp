@@ -17,9 +17,5 @@ TestCase::~TestCase()
 
 std::string const	&TestCase::getName() const
 {
-#ifdef VERBOSE
-	std::cout << "TestCase getName()\n";
-#endif
-
 	return (_name);
 }

@@ -7,20 +7,13 @@
 # include "TestCase.hpp"
 # include "TestRunner.hpp"
 
-class TestRegistrarBase
-{
-	public:
-		TestRegistrarBase();
-		virtual	~TestRegistrarBase();
-};
-
 template<typename T>
-class TestRegistrar : public TestRegistrarBase
+class TestRegistrar
 {
 	public:
+		TestRegistrar() = delete;
 		explicit TestRegistrar(const std::string& testName);
 		~TestRegistrar();
-	private:
 };
 
 # include "TestRegistrar.tpp"
