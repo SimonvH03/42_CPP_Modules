@@ -7,23 +7,24 @@ class	Contact
 	public:
 		Contact();
 		~Contact();
-		void		display_contact(void);
-		void		setFirstName(std::string _firstName);
-		void		setLastName(std::string _lastName);
-		void		setNickname(std::string nickname);
-		void		setPhoneNumber(std::string phone_number);
-		void		setDarkestSecret(std::string darkest_secret);
-		std::string	getFirstName(void);
-		std::string	getLastName(void);
-		std::string	getNickName(void);
-		std::string	getPhoneNumber(void);
-		std::string	getDarkestSecret(void);
+
+		struct	Content
+		{
+			std::string	firstName;
+			std::string	lastName;
+			std::string	nickname;
+			std::string	phoneNumber;
+			std::string	darkestSecret;
+
+			Content();
+			Content &operator=(Content const &other);
+		};
+	
+		void			setContent(Content const &content);
+		Content	const 	&getContent() const;
+
 	private:
-		std::string	_firstName;
-		std::string	_lastName;
-		std::string	_nickname;
-		std::string	_phoneNumber;
-		std::string	_darkestSecret;
+		Content	_content;
 };
 
 #endif

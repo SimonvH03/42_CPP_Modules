@@ -8,20 +8,20 @@ int	main(void)
 
 	std::cout << "My Awesome PhoneBook\n"
 		<< "Please Enter one of the Commands: ADD, SEARCH, EXIT\n";
-	while (1)
+	while (true)
 	{
-		std::cout << std::endl << "Enter Command: ";
+		std::cout << "\nEnter Command: ";
 		if (!std::getline(std::cin, command))
 		{
-			std::cout << std::endl << "Input error, exiting...\n";
+			std::cout << "\nInput error, exiting...\n";
 			return (1);
 		}
-		if (command == "EXIT")
-			break ;
-		else if (command == "ADD")
+		if (command == "ADD")
 			PhoneBook.addContact();
 		else if (command == "SEARCH")
 			PhoneBook.searchContact();
+		else if	(command == "EXIT")
+			break ;
 		else
 			std::cout << "Invalid command.\n";
 		if (std::cin.eof())
