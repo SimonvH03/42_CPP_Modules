@@ -2,10 +2,16 @@
 
 Contact::Contact()
 {
+#ifdef	VERBOSE
+	std::cout << "Contact Default Constructor\n";
+#endif
 }
 
 Contact::~Contact()
 {
+#ifdef	VERBOSE
+	std::cout << "Contact Destructor\n";
+#endif
 }
 
 Contact::Content::Content()
@@ -15,10 +21,24 @@ Contact::Content::Content()
 	,	phoneNumber("")
 	,	darkestSecret("")
 {
+#ifdef	VERBOSE
+	std::cout << "Contact::Content Default Constructor\n";
+#endif
+}
+
+Contact::Content::~Content()
+{
+#ifdef	VERBOSE
+	std::cout << "Contact::Content Destructor\n";
+#endif
 }
 
 Contact::Content &Contact::Content::operator=(Contact::Content const &other)
 {
+#ifdef	VERBOSE
+	std::cout << "Contact::Content Assignment Operator\n";
+#endif
+
 	if (this != &other)
 	{
 		firstName = other.firstName;
@@ -32,6 +52,10 @@ Contact::Content &Contact::Content::operator=(Contact::Content const &other)
 
 void	Contact::setContent(Contact::Content const &content)
 {
+#ifdef	VERBOSE
+	std::cout << "Contact setContent()\n";
+#endif
+
 	_content = content;
 }
 

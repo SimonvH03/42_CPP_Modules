@@ -3,7 +3,7 @@
 
 void	nl()
 {
-	std::cout << '\n';
+	std::cout << "\n";
 }
 
 int	main()
@@ -44,7 +44,7 @@ int	main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Bureaucracy failed because: " << e.what() << '\n';
+		std::cerr << "Bureaucracy failed because: " << e.what() << "\n";
 	}
 	return (0);
 }

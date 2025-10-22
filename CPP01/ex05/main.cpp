@@ -1,10 +1,10 @@
-#include "Harl.hpp"
 #include <iostream>
+
+#include "Harl.hpp"
 
 int main(void)
 {
 	std::string input;
-	Harl		harl;
 
 	do
 	{
@@ -15,7 +15,7 @@ int main(void)
 			std::cout << std::endl << "Input error, exiting...\n";
 			return (1);
 		}
-		harl.complain(input);
+		Harl::complain(input);
 	} while (input.compare("exit"));
 
 	return (0);

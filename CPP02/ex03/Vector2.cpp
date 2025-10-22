@@ -35,7 +35,8 @@ Vector2 &Vector2::operator=(Point const &original)
 	return (*this);
 }
 
-Vector2	Vector2::operator-(Vector2 const &num) const
+Vector2	Vector2::operator-(Vector2 const &num)
+const
 {
 	Vector2	result(*this);
 	result._x -= num._x;

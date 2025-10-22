@@ -17,6 +17,7 @@ class	Contact
 			std::string	darkestSecret;
 
 			Content();
+			~Content();
 			Content &operator=(Content const &other);
 		};
 	

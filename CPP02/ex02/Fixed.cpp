@@ -1,6 +1,7 @@
 #include "Fixed.hpp"
 
-void	Fixed::announce(std::string const &name, std::string const &func) const
+void	Fixed::announce(std::string const &name, std::string const &func)
+const
 {
 	(void)name;
 	(void)func;
@@ -52,58 +53,68 @@ Fixed::~Fixed()
 	announce("Destructor", "Fixed::~Fixed()");
 }
 
-bool	Fixed::operator>(Fixed const &num) const
+bool	Fixed::operator>(Fixed const &num)
+const
 {
 	return (raw > num.raw);
 }
 
-bool	Fixed::operator<(Fixed const &num) const
+bool	Fixed::operator<(Fixed const &num)
+const
 {
 	return (raw < num.raw);
 }
 
-bool	Fixed::operator>=(Fixed const &num) const
+bool	Fixed::operator>=(Fixed const &num)
+const
 {
 	return (raw >= num.raw);
 }
 
-bool	Fixed::operator<=(Fixed const &num) const
+bool	Fixed::operator<=(Fixed const &num)
+const
 {
 	return (raw <= num.raw);
 }
 
-bool	Fixed::operator==(Fixed const &num) const
+bool	Fixed::operator==(Fixed const &num)
+const
 {
 	return (raw == num.raw);
 }
 
-bool	Fixed::operator!=(Fixed const &num) const
+bool	Fixed::operator!=(Fixed const &num)
+const
 {
 	return (raw != num.raw);
 }
 
-Fixed	Fixed::operator+(Fixed const &num) const
+Fixed	Fixed::operator+(Fixed const &num)
+const
 {
 	Fixed	result(*this);
 	result.raw += num.raw;
 	return (result);
 }
 
-Fixed	Fixed::operator-(Fixed const &num) const
+Fixed	Fixed::operator-(Fixed const &num)
+const
 {
 	Fixed	result(*this);
 	result.raw -= num.raw;
 	return (result);
 }
 
-Fixed	Fixed::operator*(Fixed const &num) const
+Fixed	Fixed::operator*(Fixed const &num)
+const
 {
 	Fixed	result;
 	result.raw = (int64_t)raw * num.raw >> fractionalBits;
 	return (result);
 }
 
-Fixed	Fixed::operator/(Fixed const &num) const
+Fixed	Fixed::operator/(Fixed const &num)
+const
 {
 	Fixed	result;
 	result.raw = (int64_t)(raw << fractionalBits) / num.raw;
@@ -160,12 +171,14 @@ Fixed	Fixed::operator--(int)
 	return (temp);
 }
 
-int		Fixed::toInt(void) const
+int		Fixed::toInt(void)
+const
 {
 	return (raw >> fractionalBits);
 }
 
-float	Fixed::toFloat(void) const
+float	Fixed::toFloat(void)
+const
 {
 	return (raw / (float)(1 << fractionalBits));
 }
@@ -180,7 +193,8 @@ void	Fixed::setRawBits(float const asFloat)
 	raw = asFloat * (1 << fractionalBits);
 }
 
-int		Fixed::getRawBits() const
+int		Fixed::getRawBits()
+const
 {
 	return (raw);
 }

@@ -71,7 +71,8 @@ const char	*AForm::FormNotSignedException::what() const throw()
 	return ("Form is not signed");
 }
 
-void	AForm::checkGrades() const
+void	AForm::checkGrades()
+const
 {
 	if (_gradeToExecute > Grade::UpperBound
 		|| _gradeToSign > Grade::UpperBound)
@@ -98,7 +99,8 @@ void	AForm::beSigned(Bureaucrat const &bureaucrat)
 	}
 }
 
-void	AForm::checkExecutionClearance(Bureaucrat const &executor) const
+void	AForm::checkExecutionClearance(Bureaucrat const &executor)
+const
 {
 	std::cout << "Form to be executed: " << *this << "\n";
 	if (executor.getGrade() < _gradeToExecute)
@@ -111,27 +113,32 @@ void	AForm::checkExecutionClearance(Bureaucrat const &executor) const
 	}
 }
 
-std::string	AForm::getName() const
+std::string	AForm::getName()
+const
 {
 	return (_name);
 }
 
-std::string	AForm::getTarget() const
+std::string	AForm::getTarget()
+const
 {
 	return (_target);
 }
 
-bool	AForm::getSigned() const
+bool	AForm::getSigned()
+const
 {
 	return (_signed);
 }
 
-Grade	AForm::getGradeToSign() const
+Grade	AForm::getGradeToSign()
+const
 {
 	return (_gradeToSign);
 }
 
-Grade	AForm::getGradeToExecute() const
+Grade	AForm::getGradeToExecute()
+const
 {
 	return (_gradeToExecute);
 }

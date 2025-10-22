@@ -49,7 +49,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cout << "RobotomyRequestForm Destructor: " << *this << "\n";
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
+void	RobotomyRequestForm::execute(Bureaucrat const &executor)
+const
 {
 	AForm::checkExecutionClearance(executor);
 

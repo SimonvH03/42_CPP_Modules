@@ -16,8 +16,8 @@ int	main(void)
 	ICharacter		*Jim = new Character("Jim");
 
 	std::cout << "\n\e[32mour original AMaterias\e[0m\n";
-	std::cout << icycle->getType() << '\n';
-	std::cout << medicine->getType() << '\n';
+	std::cout << icycle->getType() << "\n";
+	std::cout << medicine->getType() << "\n";
 
 	std::cout << "\n\e[32mcreating things we don't yet know about\e[0m\n";
 	// creating things we don't yet know about

@@ -1,16 +1,27 @@
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
+HumanA::HumanA(std::string const &name, Weapon &weapon)
+	:	Human(name)
+	,	_weapon(weapon)
 {
-	std::cout << "HumanA constructed: " << _name  << "\n";
+#ifdef	VERBOSE
+	std::cout << "HumanA Name & Weapon Constructor\n";
+#endif
 }
 
 HumanA::~HumanA()
 {
-	std::cout << "HumanA destructed: " << _name  << "\n";
+#ifdef	VERBOSE
+	std::cout << "HumanA Destructor\n";
+#endif
 }
 
 void	HumanA::attack()
+const
 {
-	std::cout << _name << " attacks with their " << _weapon.getType() << '\n';
+#ifdef	VERBOSE
+	std::cout << "HumanA attack()\n";
+#endif
+
+	std::cout << _name << " attacks with their " << _weapon.getType() << "\n";
 }

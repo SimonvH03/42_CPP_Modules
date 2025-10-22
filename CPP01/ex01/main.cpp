@@ -1,5 +1,6 @@
-#include "Zombie.hpp"
 #include <iostream>
+
+#include "Zombie.hpp"
 
 static Zombie	*ZombieHorde(int N, std::string name)
 {
@@ -17,15 +18,16 @@ int	main(void)
 	int			N = 10;
 	std::string	name = "Bob";
 
-	std::cout << "Now let's make a Zombie Horde\n";
-	std::cout << "\nWe call NewZombieHorde() to make " << N << " Zombies named " << name
+	std::cout
+		<< "Now let's make a Zombie Horde\n"
+		<< "\nWe call NewZombieHorde() to make " << N << " Zombies named " << name
 		<< "\nThen let each Zombie in the Horde announce itself\n\n";
 
-	Zombie	*ProbablyBob = ZombieHorde(N, name);
+	Zombie	*Bobs = ZombieHorde(N, name);
 	for (int i = 0; i < N; i++)
 	{
-		ProbablyBob[i].announce();
+		Bobs[i].announce();
 	}
-	delete[] ProbablyBob;
+	delete[] Bobs;
 	return (0);
 }

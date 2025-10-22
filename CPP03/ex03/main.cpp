@@ -6,7 +6,7 @@
 
 static void	nl()
 {
-	std::cout << '\n';
+	std::cout << "\n";
 }
 
 int	main(void)
@@ -24,14 +24,14 @@ int	main(void)
 	FragTrap	bopy(b);
 	DiamondTrap	copy(c);
 
-	std::cout << '\n' << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
-	std::cout << '\n' << aopy.status() << '\n' << bopy.status() << '\n' << copy.status() << "\n\n";
+	std::cout << "\n" << a.status() << "\n" << b.status() << "\n" << c.status() << "\n\n";
+	std::cout << "\n" << aopy.status() << "\n" << bopy.status() << "\n" << copy.status() << "\n\n";
 	copy.whoAmI();
 
 	nl();
 	c.whoAmI();
 	nl();
-	std::cout << "\e[35m[ TURN I ]\e[0m\n" << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
+	std::cout << "\e[35m[ TURN I ]\e[0m\n" << a.status() << "\n" << b.status() << "\n" << c.status() << "\n\n";
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 	nl();
@@ -40,7 +40,7 @@ int	main(void)
 	c.attack(b.getName());
 	b.takeDamage(c.getATK());
 	nl();
-	std::cout << "\e[35m[ TURN II ]\e[0m\n" << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
+	std::cout << "\e[35m[ TURN II ]\e[0m\n" << a.status() << "\n" << b.status() << "\n" << c.status() << "\n\n";
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 	nl();
@@ -50,7 +50,7 @@ int	main(void)
 	nl();
 	b.setATK(a.getHP() - 10);
 	std::cout << "\e[31mAdmin intervention:\e[0m Bob high fived\n";
-	std::cout << "\e[35m[ TURN III ]\e[0m\n" << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
+	std::cout << "\e[35m[ TURN III ]\e[0m\n" << a.status() << "\n" << b.status() << "\n" << c.status() << "\n\n";
 	a.guardGate();
 	nl();
 	b.attack(a.getName());
@@ -58,7 +58,7 @@ int	main(void)
 	nl();
 	c.guardGate();
 	nl();
-	std::cout << "\e[35m[ TURN IV ]\e[0m\n" << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
+	std::cout << "\e[35m[ TURN IV ]\e[0m\n" << a.status() << "\n" << b.status() << "\n" << c.status() << "\n\n";
 	a.beRepaired(a.getATK());
 	nl();
 	b.attack(a.getName());
@@ -67,7 +67,7 @@ int	main(void)
 	c.attack(b.getName());
 	b.takeDamage(c.getATK());
 	nl();
-	std::cout << "\e[35m[ TURN V ]\e[0m\n" << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
+	std::cout << "\e[35m[ TURN V ]\e[0m\n" << a.status() << "\n" << b.status() << "\n" << c.status() << "\n\n";
 	a.beRepaired(a.getEnergy());
 	nl();
 	b.attack(c.getName());
@@ -81,7 +81,7 @@ int	main(void)
 	b.setEnergy(10);
 	c.setEnergy(0);
 	std::cout << "\e[31mAdmin intervention:\e[0m Energy drained\n";
-	std::cout << "\e[35m[ TURN VI ]\e[0m\n" << a.status() << '\n' << b.status() << '\n' << c.status() << "\n\n";
+	std::cout << "\e[35m[ TURN VI ]\e[0m\n" << a.status() << "\n" << b.status() << "\n" << c.status() << "\n\n";
 	a.attack(Bob);
 	b.attack(Zac);
 	c.attack(Jim);

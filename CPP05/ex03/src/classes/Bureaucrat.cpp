@@ -48,7 +48,8 @@ const char	*Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Bureaucrat grade is too low");
 }
 
-void	Bureaucrat::checkGrade() const
+void	Bureaucrat::checkGrade()
+const
 {
 	if (_grade > Grade::UpperBound)
 		throw GradeTooHighException();
@@ -56,7 +57,8 @@ void	Bureaucrat::checkGrade() const
 		throw GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(AForm &form) const
+void	Bureaucrat::signForm(AForm &form)
+const
 {
 	try
 	{
@@ -70,7 +72,8 @@ void	Bureaucrat::signForm(AForm &form) const
 	}
 }
 
-void	Bureaucrat::executeForm(AForm const &form) const
+void	Bureaucrat::executeForm(AForm const &form)
+const
 {
 	try
 	{
@@ -98,12 +101,14 @@ void	Bureaucrat::decrementGrade()
 	checkGrade();
 }
 
-std::string	Bureaucrat::getName() const
+std::string	Bureaucrat::getName()
+const
 {
 	return (_name);
 }
 
-Grade	Bureaucrat::getGrade() const
+Grade	Bureaucrat::getGrade()
+const
 {
 	return (_grade);
 }

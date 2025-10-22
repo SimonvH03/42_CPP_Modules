@@ -1,6 +1,7 @@
 #include "Fixed.hpp"
 
-void	Fixed::announce(std::string const &name, std::string const &func) const
+void	Fixed::announce(std::string const &name, std::string const &func)
+const
 {
 	std::cout << "called:\t" << std::setw(27) << name
 		<< "\e[2m\t" << func << "\e[0m\n";
@@ -43,7 +44,8 @@ void	Fixed::setRawBits(int const asInt)
 	raw = asInt;
 }
 
-int	Fixed::getRawBits() const
+int	Fixed::getRawBits()
+const
 {
 	announce("getRawBits member function", "int    Fixed::getRawBits() const");
 

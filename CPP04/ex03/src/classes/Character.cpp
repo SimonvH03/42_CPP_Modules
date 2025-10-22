@@ -46,7 +46,8 @@ Character::~Character()
 		delete inventory[i];
 }
 
-int	Character::getInventoryUsage() const
+int	Character::getInventoryUsage()
+const
 {
 	int	slots;
 	
@@ -88,7 +89,8 @@ void	Character::use(int index, ICharacter &target)
 	}
 }
 
-std::string const	&Character::getName() const
+std::string const	&Character::getName()
+const
 {
 	return (name);
 }

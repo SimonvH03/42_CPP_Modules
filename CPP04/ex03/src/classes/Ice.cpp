@@ -28,7 +28,8 @@ Ice::~Ice()
 	std::cout << "Ice Destructor\n";
 }
 
-AMateria	*Ice::clone() const
+AMateria	*Ice::clone()
+const
 {
 	AMateria	*clone = new Ice();
 

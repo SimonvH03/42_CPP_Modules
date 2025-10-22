@@ -12,7 +12,7 @@ ScavTrap::ScavTrap()
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "> ScavTrap Constructor called for " << name << '\n';
+	std::cout << "> ScavTrap Constructor called for " << name << "\n";
 	HP = 100;
 	Energy = 50;
 	ATK = 20;
@@ -22,13 +22,13 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
 {
-	std::cout	<< "> ScavTrap Copy Constructor called on " << original.Name << '\n';
+	std::cout	<< "> ScavTrap Copy Constructor called on " << original.Name << "\n";
 	*this = original;
 }
 
 ScavTrap& ScavTrap::operator=(ScavTrap const &original)
 {
-	std::cout	<< "> ScavTrap Assignment Operator called on " << original.Name << '\n';
+	std::cout	<< "> ScavTrap Assignment Operator called on " << original.Name << "\n";
 	if (this != &original)
 	{
 		ClapTrap::operator=(original);
@@ -39,7 +39,7 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &original)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "> ScavTrap Destructor called for " << Name << '\n';
+	std::cout << "> ScavTrap Destructor called for " << Name << "\n";
 }
 
 void	ScavTrap::guardGate()
@@ -93,7 +93,8 @@ void	ScavTrap::takeDamage(unsigned int amount)
 		ClapTrap::takeDamage(amount);
 }
 
-std::string	ScavTrap::status() const
+std::string	ScavTrap::status()
+const
 {
 	std::string	status = ClapTrap::status();
 

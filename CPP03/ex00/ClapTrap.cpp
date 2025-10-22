@@ -10,7 +10,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "ClapTrap Constructor called for " << name << '\n';
+	std::cout << "ClapTrap Constructor called for " << name << "\n";
 	Name = name;
 	HP = 10;
 	Energy = 10;
@@ -33,7 +33,7 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Destructor called for " << Name << '\n';
+	std::cout << "ClapTrap Destructor called for " << Name << "\n";
 }
 
 // unsure whether the subject mandates "ClapTrap causes its target to lose <ATK> Health points" means the ClapTrap needs to sniff out another ClapTrap just by name...
@@ -95,31 +95,36 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << HP << " Health points left\n";
 }
 
-void	ClapTrap::status() const
+void	ClapTrap::status()
+const
 {
 	std::cout << "Name: " << Name
 		<< "\nHit points: " << HP
 		<< "\nEnergy points: " << Energy
 		<< "\nAttack damage: " << ATK
-		<< '\n';
+		<< "\n";
 }
 
-unsigned int ClapTrap::getHP(void) const
+unsigned int ClapTrap::getHP(void)
+const
 {
 	return (HP);
 }
 
-unsigned int ClapTrap::getEnergy(void) const
+unsigned int ClapTrap::getEnergy(void)
+const
 {
 	return (Energy);
 }
 
-unsigned int ClapTrap::getATK(void) const
+unsigned int ClapTrap::getATK(void)
+const
 {
 	return (ATK);
 }
 
-std::string	ClapTrap::getName(void) const
+std::string	ClapTrap::getName(void)
+const
 {
 	return (Name);
 }

@@ -60,7 +60,8 @@ T &Array<T>::operator[](unsigned int n)
 }
 
 template<typename T>
-T const &Array<T>::operator[](unsigned int n) const
+T const &Array<T>::operator[](unsigned int n)
+const
 {
 	if (n >= _size)
 		throw std::out_of_range("index out of range");
@@ -68,7 +69,8 @@ T const &Array<T>::operator[](unsigned int n) const
 }
 
 template<typename T>
-unsigned int	Array<T>::size() const
+unsigned int	Array<T>::size()
+const
 {
 	return (_size);
 }

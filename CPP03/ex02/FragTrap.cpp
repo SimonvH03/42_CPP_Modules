@@ -11,7 +11,7 @@ FragTrap::FragTrap()
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "> FragTrap Constructor called for " << name << '\n';
+	std::cout << "> FragTrap Constructor called for " << name << "\n";
 	HP = 100;
 	Energy = 50;
 	ATK = 30;
@@ -19,12 +19,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 
 FragTrap::FragTrap(FragTrap const &original) : ClapTrap(original)
 {
-	std::cout	<< "> FragTrap Copy Constructor called on " << original.Name << '\n';
+	std::cout	<< "> FragTrap Copy Constructor called on " << original.Name << "\n";
 }
 
 FragTrap& FragTrap::operator=(FragTrap const &original)
 {
-	std::cout	<< "> FragTrap Assignment Operator called on " << original.Name << '\n';
+	std::cout	<< "> FragTrap Assignment Operator called on " << original.Name << "\n";
 	if (this != &original)
 	{
 		ClapTrap::operator=(original);
@@ -34,7 +34,7 @@ FragTrap& FragTrap::operator=(FragTrap const &original)
 
 FragTrap::~FragTrap()
 {
-	std::cout << "> FragTrap Destructor called for " << Name << '\n';
+	std::cout << "> FragTrap Destructor called for " << Name << "\n";
 }
 
 void	FragTrap::highFiveGuys()

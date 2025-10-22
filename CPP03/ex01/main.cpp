@@ -10,38 +10,38 @@ int	main(void)
 	ScavTrap	a(Jim);
 	ScavTrap	b(Bob);
 
-	std::cout << "\n\e[35m[ TURN I ]\e[0m\n" << a.status() << '\t' << b.status() << '\n';
+	std::cout << "\n\e[35m[ TURN I ]\e[0m\n" << a.status() << '\t' << b.status() << "\n";
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 
 	b.beRepaired(b.getATK());
 
-	std::cout << "\n\e[35m[ TURN II ]\e[0m\n" << a.status() << '\t' << b.status() << '\n';
+	std::cout << "\n\e[35m[ TURN II ]\e[0m\n" << a.status() << '\t' << b.status() << "\n";
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 
 	b.guardGate();
 
-	std::cout << "\n\e[35m[ TURN III ]\e[0m\n" << a.status() << '\t' << b.status() << '\n';
+	std::cout << "\n\e[35m[ TURN III ]\e[0m\n" << a.status() << '\t' << b.status() << "\n";
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 
 	a.setEnergy(0);
 	b.setATK(a.getHP());
 	b.setEnergy(1);
-	std::cout << "\n\e[31mAdmin intervention:\e[0m ScavTraps modified\n" << a.status() << '\t' << b.status() << '\n';
+	std::cout << "\n\e[31mAdmin intervention:\e[0m ScavTraps modified\n" << a.status() << '\t' << b.status() << "\n";
 
 
 	b.attack(a.getName());
 	a.takeDamage(b.getATK());
 
-	std::cout << "\n\e[35m[ TURN IV ]\e[0m\n" << a.status() << '\t' << b.status() << '\n';
+	std::cout << "\n\e[35m[ TURN IV ]\e[0m\n" << a.status() << '\t' << b.status() << "\n";
 	a.attack(b.getName());
 	a.beRepaired(a.getEnergy());
 
 	b.attack(a.getName());
 	b.beRepaired(b.getATK());
 
-	std::cout << '\n';
+	std::cout << "\n";
 	return (0);
 }

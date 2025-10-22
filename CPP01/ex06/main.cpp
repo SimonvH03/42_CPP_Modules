@@ -7,15 +7,13 @@
 
 int main(int argc, char **argv)
 {
-	Harl		harl;
-	std::string input;
-
 	if (argc != 2)
 	{
-		std::cout << "usage: ./harlFilter <LEVEL(DEBUG:INFO:WARNING:ERROR)>\n";
+		std::cout << "usage: " << argv[0] << " <LEVEL(DEBUG:INFO:WARNING:ERROR)>\n";
 		return (EINVAL);
 	}
-	switch (harl.getLevel(argv[1]))
+
+	switch (Harl::getLevelIndex(argv[1]))
 	{
 		default:
 		{
@@ -23,16 +21,16 @@ int main(int argc, char **argv)
 			return (EINVAL);
 		}
 		case 0:
-			harl.complain(harl._levels[0]);
-			// fall through
+			Harl::complain(Harl::_levels[0]);
+			// fallsthrough
 		case 1:
-			harl.complain(harl._levels[1]);
+			Harl::complain(Harl::_levels[1]);
 			// fall through
 		case 2:
-			harl.complain(harl._levels[2]);
+			Harl::complain(Harl::_levels[2]);
 			// fall through
 		case 3:
-			harl.complain(harl._levels[3]);
+			Harl::complain(Harl::_levels[3]);
 			// fall through
 	}
 	return (0);

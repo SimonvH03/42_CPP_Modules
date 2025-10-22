@@ -1,26 +1,37 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string const &name)
+	:	Human(name)
+	,	_weapon(NULL)
 {
-	_name = name;
-	_weapon = NULL;
-	std::cout<< _name << " was Constructed (HumanB)\n";
+#ifdef	VERBOSE
+	std::cout << "HumanB Name Constructor\n";
+#endif
 }
 
 HumanB::~HumanB()
 {
-	std::cout<< _name << " was Destructed (HumanB)\n";
+#ifdef	VERBOSE
+	std::cout << "HumanB Destructor\n";
+#endif
 }
 
 void	HumanB::setWeapon(Weapon *weapon)
 {
+#ifdef	VERBOSE
+	std::cout << "HumanB setWeapon()\n";
+#endif
+
 	_weapon = weapon;
 }
 
 void	HumanB::attack()
+const
 {
-	if (_weapon == NULL)
-		std::cout << _name << " fails to attack for lack of a weapon\n";
-	else
-		std::cout << _name << " attacks with their " << (*_weapon).getType() << '\n';
+#ifdef	VERBOSE
+	std::cout << "HumanB attack()\n";
+#endif
+
+	std::cout << _name << " attacks with their "
+		<< ((_weapon != NULL) ? _weapon->getType() : "bare hands") << "\n";
 }

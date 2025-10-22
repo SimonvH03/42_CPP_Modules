@@ -1,17 +1,26 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie(std::string name)
+	:	_name(name)
 {
-	_name = name;
-	std::cout << "Zombie constructed: " << _name << '\n';
+#ifdef	VERBOSE
+	std::cout << "Zombie Default Constructor\n";
+#endif
 }
 
 Zombie::~Zombie()
 {
-	std::cout << "Zombie  destructed: " << _name << '\n';
+#ifdef	VERBOSE
+	std::cout << "Zombie Destructor\n";
+#endif
 }
 
 void	Zombie::announce(void)
+const
 {
+#ifdef	VERBOSE
+	std::cout << "Zombie announce()\n";
+#endif
+
 	std::cout << _name << ": BraiiiiiiinnnzzzZ...\n";
 }

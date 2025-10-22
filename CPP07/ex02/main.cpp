@@ -46,12 +46,12 @@ int	main(void)
 	try {
 		numbers[-2] = 0;
 	} catch(std::exception const &except) {
-		std::cerr << "exception caught in main(): " << except.what() << '\n';
+		std::cerr << "exception caught in main(): " << except.what() << "\n";
 	}
 	try {
 		numbers[Config::Size] = 0;
 	} catch(std::exception const &except) {
-		std::cerr << "exception caught in main(): " << except.what() << '\n';
+		std::cerr << "exception caught in main(): " << except.what() << "\n";
 	}
 	for (size_t i = 0; i < Config::Size; i++)
 	{

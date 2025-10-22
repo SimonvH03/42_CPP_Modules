@@ -4,10 +4,16 @@ PhoneBook::PhoneBook()
 	:	_contactCount(0)
 	,	_contactIndex(0)
 {
+#ifdef	VERBOSE
+	std::cout << "PhoneBook Default Constructor\n";
+#endif
 }
 
 PhoneBook::~PhoneBook()
 {
+#ifdef	VERBOSE
+	std::cout << "PhoneBook Destructor\n";
+#endif
 }
 
 bool	PhoneBook::getValidField(std::string &input, std::string const &field)
@@ -29,6 +35,10 @@ bool	PhoneBook::getValidField(std::string &input, std::string const &field)
 
 void	PhoneBook::addContact()
 {
+#ifdef	VERBOSE
+	std::cout << "PhoneBook addContact()\n";
+#endif
+
 	std::string			input;
 	Contact::Content	content;
 
@@ -61,6 +71,10 @@ void	PhoneBook::addContact()
 
 void	PhoneBook::searchContact()
 {
+#ifdef	VERBOSE
+	std::cout << "PhoneBook searchContact()\n";
+#endif
+
 	if (_contactCount == 0)	
 	{
 		std::cout << "No contacts to display.\n";
@@ -107,11 +121,11 @@ const
 	index = input[0] - '1';
 	std::cout << "[ Displaying Contact " << index + 1 << " ]\n";
 	content = _contacts[index].getContent();
-	std::cout	<< "    First name: " << content.firstName << '\n'
-				<< "     Last name: " << content.lastName << '\n'
-				<< "      Nickname: " << content.nickname << '\n'
-				<< "  Phone number: " << content.phoneNumber << '\n'
-				<< "Darkest secret: " << content.darkestSecret << '\n';
+	std::cout	<< "    First name: " << content.firstName << "\n"
+				<< "     Last name: " << content.lastName << "\n"
+				<< "      Nickname: " << content.nickname << "\n"
+				<< "  Phone number: " << content.phoneNumber << "\n"
+				<< "Darkest secret: " << content.darkestSecret << "\n";
 }
 
 bool	PhoneBook::getValidIndex(std::string &input)

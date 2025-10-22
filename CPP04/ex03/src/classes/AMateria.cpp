@@ -33,10 +33,11 @@ AMateria::~AMateria()
 
 void	AMateria::use(ICharacter &target)
 {
-	std::cout << "AMysterious Material is flung towards " << target.getName() << '\n';
+	std::cout << "AMysterious Material is flung towards " << target.getName() << "\n";
 }
 
-std::string const	&AMateria::getType() const
+std::string const	&AMateria::getType()
+const
 {
 	return (type);
 }

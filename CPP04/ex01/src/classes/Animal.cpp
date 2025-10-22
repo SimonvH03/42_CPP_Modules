@@ -27,12 +27,14 @@ Animal::~Animal()
 	std::cout << "Animal Destructor\n";
 }
 
-void	Animal::makeSound() const
+void	Animal::makeSound()
+const
 {
 	std::cout <<  "I'm an Animal, I swear!\n";
 }
 
-std::string	Animal::getType() const
+std::string	Animal::getType()
+const
 {
 	return (type);
 }

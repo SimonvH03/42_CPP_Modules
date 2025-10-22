@@ -24,22 +24,26 @@ Grade &Grade::operator=(Grade const &original)
 Grade::~Grade()
 {}
 
-bool	Grade::operator<(Grade const &other) const
+bool	Grade::operator<(Grade const &other)
+const
 {
 	return (_grade > other._grade);
 }
 
-bool	Grade::operator>(Grade const &other) const
+bool	Grade::operator>(Grade const &other)
+const
 {
 	return (_grade < other._grade);
 }
 
-bool	Grade::operator<(int n) const
+bool	Grade::operator<(int n)
+const
 {
 	return (_grade > n);
 }
 
-bool	Grade::operator>(int n) const
+bool	Grade::operator>(int n)
+const
 {
 	return (_grade < n);
 }
@@ -56,7 +60,8 @@ Grade	&Grade::operator--()
 	return (*this);
 }
 
-Grade::operator int() const
+Grade::operator int()
+const
 {
 	return (_grade);
 }

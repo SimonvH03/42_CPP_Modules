@@ -1,6 +1,7 @@
 #include "Fixed.hpp"
 
-void	Fixed::announce(std::string const &name, std::string const &func) const
+void	Fixed::announce(std::string const &name, std::string const &func)
+const
 {
 	std::cout << "called:\t" << std::setw(27) << name
 		<< "\e[2m\t" << func << "\e[0m\n";
@@ -50,12 +51,14 @@ Fixed::~Fixed()
 	announce("Destructor", "Fixed::~Fixed()");
 }
 
-int		Fixed::toInt(void) const
+int		Fixed::toInt(void)
+const
 {
 	return (raw >> fractionalBits);
 }
 
-float	Fixed::toFloat(void) const
+float	Fixed::toFloat(void)
+const
 {
 	return (raw / (float)(1 << fractionalBits));
 }
@@ -76,7 +79,8 @@ void	Fixed::setRawBits(float const asFloat)
 	// std::cout << "Set raw raw: " << raw << " (" << asFloat << ")\n";
 }
 
-int		Fixed::getRawBits() const
+int		Fixed::getRawBits()
+const
 {
 	announce("getRawBits member function", "int    Fixed::getRawBits() const");
 

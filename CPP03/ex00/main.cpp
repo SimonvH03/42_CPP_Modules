@@ -9,10 +9,10 @@ int	main(void)
 	a.setATK(3);
 	b.setATK(a.getHP());
 
-	std::cout << '\n';
+	std::cout << "\n";
 	a.status();
 	b.status();
-	std::cout << '\n';
+	std::cout << "\n";
 
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
@@ -22,10 +22,10 @@ int	main(void)
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 
-	std::cout << '\n';
+	std::cout << "\n";
 	a.status();
 	b.status();
-	std::cout << '\n';
+	std::cout << "\n";
 
 	b.attack(a.getName());
 	a.takeDamage(b.getATK());
@@ -46,6 +46,6 @@ int	main(void)
 	b.beRepaired(1);
 	b.attack(a.getName());
 
-	std::cout << '\n';
+	std::cout << "\n";
 	return (0);
 }

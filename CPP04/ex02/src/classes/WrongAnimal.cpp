@@ -27,12 +27,14 @@ WrongAnimal::~WrongAnimal()
 	std::cout << "WrongAnimal Destructor\n";
 }
 
-void	WrongAnimal::makeSound() const
+void	WrongAnimal::makeSound()
+const
 {
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n";
 }
 
-std::string	WrongAnimal::getType() const
+std::string	WrongAnimal::getType()
+const
 {
 	return (type);
 }

@@ -35,7 +35,8 @@ Span	&Span::operator=(R const &range)
 
 template <std::ranges::range R>
 	requires std::equality_comparable_with<std::ranges::range_value_t<R>, int>
-bool	Span::operator==(R const &range) const
+bool	Span::operator==(R const &range)
+const
 {
 #ifdef VERBOSE
 	std::cout << "Span Range Equality Comparison Operator\n";

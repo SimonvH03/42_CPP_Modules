@@ -128,9 +128,9 @@ void ScalarConverter::convertFromInt(Output &output, int i)
 	else
 		output.charResult << "'" << toString<int, char>(i) << "'\n";
 
-	output.intResult << i << '\n';
+	output.intResult << i << "\n";
 	output.floatResult << toString<int, float>(i) << "f\n";
-	output.doubleResult << toString<int, double>(i) << '\n';
+	output.doubleResult << toString<int, double>(i) << "\n";
 }
 
 void ScalarConverter::convertFromFloat(Output &output, float f)
@@ -145,10 +145,10 @@ void ScalarConverter::convertFromFloat(Output &output, float f)
 	if (std::isnan(f) || f < static_cast<float>(std::numeric_limits<int>::min()) || f > static_cast<float>(std::numeric_limits<int>::max()))
 		output.intResult << "impossible\n";
 	else
-		output.intResult << toString<float, int>(f) << '\n';
+		output.intResult << toString<float, int>(f) << "\n";
 
 	output.floatResult << std::fixed << std::setprecision(1) << f << "f\n";
-	output.doubleResult << toString<float, double>(f) << '\n';
+	output.doubleResult << toString<float, double>(f) << "\n";
 }
 
 void ScalarConverter::convertFromDouble(Output &output, double d)
@@ -163,12 +163,12 @@ void ScalarConverter::convertFromDouble(Output &output, double d)
 	if (std::isnan(d) || d < static_cast<double>(std::numeric_limits<int>::min()) || d > static_cast<double>(std::numeric_limits<int>::max()))
 		output.intResult << "impossible\n";
 	else
-		output.intResult << toString<double, int>(d) << '\n';
+		output.intResult << toString<double, int>(d) << "\n";
 
 	if (d > std::numeric_limits<float>::max() || d < std::numeric_limits<float>::lowest())
 		output.floatResult << "impossible\n";
 	else
 		output.floatResult << toString<double, float>(d) << "f\n";
 
-	output.doubleResult << std::fixed << std::setprecision(1) << d << '\n';
+	output.doubleResult << std::fixed << std::setprecision(1) << d << "\n";
 }

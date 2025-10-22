@@ -28,7 +28,8 @@ Cure::~Cure()
 	std::cout << "Cure Destructor\n";
 }
 
-AMateria	*Cure::clone() const
+AMateria	*Cure::clone()
+const
 {
 	AMateria	*clone = new Cure();
 

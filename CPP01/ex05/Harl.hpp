@@ -5,20 +5,20 @@
 class Harl
 {
 	public:
-		Harl();
-		~Harl();
-		void	complain(std::string level);
+		static void	complain(std::string level);
 
 	private:
-		typedef	void				(Harl::*thought)(void);
-		static const std::string	_levels[];
-		static const thought		_thoughts[];
+		typedef	void	(*thought)();
 
-		int		getLevel(std::string);
-		void	debug();
-		void	info();
-		void	warning();
-		void	error();
+		static const	thought		_thoughts[];
+		static const	std::string	_levels[];
+
+		static	void	debug();
+		static	void	info();
+		static	void	warning();
+		static	void	error();
+
+		static	int	getLevelIndex(std::string const &level);
 };
 
 #endif

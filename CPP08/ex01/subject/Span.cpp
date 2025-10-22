@@ -47,7 +47,8 @@ Span	&Span::operator=(Span const &original)
 	return (*this);
 }
 
-bool	Span::operator==(Span const &other) const
+bool	Span::operator==(Span const &other)
+const
 {
 #ifdef VERBOSE
 	std::cout << "Span Equality Comparison Operator\n";
@@ -70,7 +71,8 @@ void	Span::addNumber(int number)
 	_numbers.emplace_back(std::move(number));
 }
 
-long	Span::shortestSpan() const
+long	Span::shortestSpan()
+const
 {
 #ifdef VERBOSE
 	std::cout << "Span shortestSpan()\n";
@@ -105,7 +107,8 @@ long	Span::shortestSpan() const
 	}
 }
 
-long	Span::longestSpan() const
+long	Span::longestSpan()
+const
 {
 #ifdef VERBOSE
 	std::cout << "Span longestSpan()\n";

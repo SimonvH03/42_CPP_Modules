@@ -31,7 +31,8 @@ Cat::~Cat()
 	delete brain;
 }
 
-void	Cat::makeSound() const
+void	Cat::makeSound()
+const
 {
 	std::cout << "Meow\n";
 	brain->think();

@@ -10,7 +10,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "ClapTrap Constructor called for " << name << '\n';
+	std::cout << "ClapTrap Constructor called for " << name << "\n";
 	Name = name;
 	HP = 10;
 	Energy = 10;
@@ -21,13 +21,13 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(ClapTrap const &original)
 {
-	std::cout << "ClapTrap Copy Constructor called on " << original.Name << '\n';
+	std::cout << "ClapTrap Copy Constructor called on " << original.Name << "\n";
 	*this = original;
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 {
-	std::cout	<< "ClapTrap Assignment Operator called on " << original.Name << '\n';
+	std::cout	<< "ClapTrap Assignment Operator called on " << original.Name << "\n";
 	if (this != &original)
 	{
 		Name	= original.Name;
@@ -40,7 +40,7 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Destructor called for " << Name << '\n';
+	std::cout << "ClapTrap Destructor called for " << Name << "\n";
 }
 
 void	ClapTrap::attack(std::string const &target)
@@ -100,7 +100,8 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << HP << " Health points left\n";
 }
 
-std::string	ClapTrap::status() const
+std::string	ClapTrap::status()
+const
 {
 	std::ostringstream status;
 
@@ -132,22 +133,26 @@ void	ClapTrap::setATK(unsigned int atk)
 	ATK = atk;
 }
 
-unsigned int ClapTrap::getHP(void) const
+unsigned int ClapTrap::getHP(void)
+const
 {
 	return (HP);
 }
 
-unsigned int ClapTrap::getEnergy(void) const
+unsigned int ClapTrap::getEnergy(void)
+const
 {
 	return (Energy);
 }
 
-unsigned int ClapTrap::getATK(void) const
+unsigned int ClapTrap::getATK(void)
+const
 {
 	return (ATK);
 }
 
-std::string	ClapTrap::getName(void) const
+std::string	ClapTrap::getName(void)
+const
 {
 	return (Name);
 }

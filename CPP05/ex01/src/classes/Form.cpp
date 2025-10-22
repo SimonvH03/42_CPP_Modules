@@ -52,7 +52,8 @@ const char	*Form::GradeTooLowException::what() const throw()
 	return ("Form grade is too low");
 }
 
-void	Form::checkGrades() const
+void	Form::checkGrades()
+const
 {
 	if (_gradeToExecute > Grade::UpperBound
 		|| _gradeToSign > Grade::UpperBound)
@@ -76,22 +77,26 @@ void	Form::beSigned(Bureaucrat const &bureaucrat)
 	_signed = true;
 }
 
-std::string	Form::getName() const
+std::string	Form::getName()
+const
 {
 	return (_name);
 }
 
-bool	Form::getSigned() const
+bool	Form::getSigned()
+const
 {
 	return (_signed);
 }
 
-Grade	Form::getGradeToSign() const
+Grade	Form::getGradeToSign()
+const
 {
 	return (_gradeToSign);
 }
 
-Grade	Form::getGradeToExecute() const
+Grade	Form::getGradeToExecute()
+const
 {
 	return (_gradeToExecute);
 }

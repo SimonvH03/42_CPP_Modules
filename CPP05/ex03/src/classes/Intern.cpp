@@ -30,7 +30,8 @@ const char	*Intern::FormNotFoundException::what() const throw()
 	return ("Intern: requested Form name did not match any known Forms");
 }
 
-AForm	*Intern::makeForm(std::string formName, std::string target) const
+AForm	*Intern::makeForm(std::string formName, std::string target)
+const
 {
 	static const FormTableEntry knownForms[] = {
 		{ShrubberyCreationForm::Name,

@@ -19,14 +19,14 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 
 DiamondTrap::DiamondTrap(DiamondTrap const &original) : ClapTrap(original), ScavTrap(original), FragTrap(original)
 {
-	std::cout << ">> Diamond Copy Constructor called on " << original.Name << '\n';
+	std::cout << ">> Diamond Copy Constructor called on " << original.Name << "\n";
 	*this = original;
 }
 
 // FragTrap does not have additional members to the base class
 DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &original)
 {
-	std::cout << ">> Diamond Assignment Operator called on " << original.Name << '\n';
+	std::cout << ">> Diamond Assignment Operator called on " << original.Name << "\n";
 	if (this == &original)
 		return (*this);
 	ClapTrap::operator=(original);
@@ -43,5 +43,5 @@ DiamondTrap::~DiamondTrap()
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "I am " << Name << ", formally known as " << ClapTrap::Name << '\n';
+	std::cout << "I am " << Name << ", formally known as " << ClapTrap::Name << "\n";
 }

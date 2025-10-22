@@ -37,7 +37,8 @@ MateriaSource::~MateriaSource()
 			delete typeBook[i];
 }
 
-int	MateriaSource::getBookUsage() const
+int	MateriaSource::getBookUsage()
+const
 {
 	int	IQ;
 	
