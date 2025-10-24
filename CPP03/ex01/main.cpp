@@ -14,7 +14,7 @@ int	main(void)
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 
-	b.beRepaired(b.getATK());
+	b.recover(b.getATK());
 
 	std::cout << "\n\e[35m[ TURN II ]\e[0m\n" << a.status() << '\t' << b.status() << "\n";
 	a.attack(b.getName());
@@ -37,10 +37,10 @@ int	main(void)
 
 	std::cout << "\n\e[35m[ TURN IV ]\e[0m\n" << a.status() << '\t' << b.status() << "\n";
 	a.attack(b.getName());
-	a.beRepaired(a.getEnergy());
+	a.recover(a.getEnergy());
 
 	b.attack(a.getName());
-	b.beRepaired(b.getATK());
+	b.recover(b.getATK());
 
 	std::cout << "\n";
 	return (0);

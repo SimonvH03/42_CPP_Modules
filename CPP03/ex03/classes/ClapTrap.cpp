@@ -1,33 +1,42 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap()
+	:	Name		("")
+	,	HP			(10)
+	,	Energy		(10)
+	,	ATK			(0)
+	,	attackCost	(30)
+	,	recoverCost	(20)
 {
-	Name = "";
-	HP = 10;
-	Energy = 10;
-	ATK = 0;
+	std::cout << "ClapTrap Default Constructor\n";
 }
 
 ClapTrap::ClapTrap(std::string name)
+	:	Name		(name)
+	,	HP			(10)
+	,	Energy		(10)
+	,	ATK			(0)
+	,	attackCost	(30)
+	,	recoverCost	(20)
 {
-	std::cout << "ClapTrap Constructor called for " << name << "\n";
-	Name = name;
-	HP = 10;
-	Energy = 10;
-	ATK = 0;
-	attackCost = 30;
-	repairCost = 20;
+	std::cout << "ClapTrap Name Constructor\n";
 }
 
 ClapTrap::ClapTrap(ClapTrap const &original)
+	:	Name		(original.Name)
+	,	HP			(original.HP)
+	,	Energy		(original.Energy)
+	,	ATK			(original.ATK)
+	,	attackCost	(original.attackCost)
+	,	recoverCost	(original.recoverCost)
 {
-	std::cout << "ClapTrap Copy Constructor called on " << original.Name << "\n";
-	*this = original;
+	std::cout << "ClapTrap Copy Constructor\n";
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 {
-	std::cout	<< "ClapTrap Assignment Operator called on " << original.Name << "\n";
+	std::cout << "ClapTrap Assignment Operator\n";
+
 	if (this != &original)
 	{
 		Name	= original.Name;
@@ -40,11 +49,13 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Destructor called for " << Name << "\n";
+	std::cout << "ClapTrap Destructor\n";
 }
 
 void	ClapTrap::attack(std::string const &target)
 {
+	std::cout << "ClapTrap attack()\n";
+
 	std::cout << Name;
 	if (!HP || Energy < attackCost)
 	{
@@ -63,12 +74,14 @@ void	ClapTrap::attack(std::string const &target)
 	std::cout << " Attacks " << target << ": " << ATK << " damage dealt\n";
 }
 
-void	ClapTrap::beRepaired(unsigned int amount)
+void	ClapTrap::recover(unsigned int amount)
 {
+	std::cout << "ClapTrap recover()\n";
+
 	std::cout << Name;
-	if (!HP || Energy < repairCost)
+	if (!HP || Energy < recoverCost)
 	{
-		std::cout << " attempts to repair itself, but has insufficient ";
+		std::cout << " attempts to recover, but has insufficient ";
 		if (Energy)
 			std::cout << "HP";
 		else if (HP)
@@ -78,17 +91,19 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << ": No Health points restored\n";
 		return;
 	}
-	Energy -= repairCost;
+	Energy -= recoverCost;
 	HP += amount;
 	if (HP < amount)
-		std::cout << " attempts to repair itself, but the laws of nature screwed it over real bad: ";
+		std::cout << " attempts to recover, but the laws of nature screwed it over real bad: ";
 	else
-		std::cout << " repairs itself: " << amount << " Health points are restored: ";
-	std::cout << HP << " Health points left\n";
+		std::cout << " repairs itself: " << amount << " Health points are restored: "
+			<< HP << " Health points left\n";
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	std::cout << "ClapTrap takeDamage()\n";
+
 	std::cout << Name << " takes " << amount << " damage: ";
 	if (HP <= amount)
 		HP = 0;
@@ -98,19 +113,6 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "The Baby F*cking Dies\n";
 	else
 		std::cout << HP << " Health points left\n";
-}
-
-std::string	ClapTrap::status()
-const
-{
-	std::ostringstream status;
-
-	status << Name << " \e[2m("
-		   << getHP() << " HP, "
-		   << getEnergy() << " E, "
-		   << getATK() << " ATK)\e[0m";
-
-	return (status.str());
 }
 
 void	ClapTrap::setName(std::string name)
@@ -155,4 +157,13 @@ std::string	ClapTrap::getName(void)
 const
 {
 	return (Name);
+}
+
+std::ostream	&operator<<(std::ostream &os, ClapTrap const &claptrap)
+{
+	os	<< claptrap.getName() << " \e[2m("
+		<< claptrap.getHP() << " HP, "
+		<< claptrap.getEnergy() << " E, "
+		<< claptrap.getATK() << " ATK)\e[0m";
+	return (os);
 }

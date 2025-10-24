@@ -17,7 +17,7 @@ int	main(void)
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
 
-	b.beRepaired(a.getATK());
+	b.recover(a.getATK());
 
 	a.attack(b.getName());
 	b.takeDamage(a.getATK());
@@ -30,20 +30,20 @@ int	main(void)
 	b.attack(a.getName());
 	a.takeDamage(b.getATK());
 
-	a.beRepaired(10);
+	a.recover(10);
 	a.attack(b.getName());
 
-	b.beRepaired(1);
-	b.beRepaired(1);
-	b.beRepaired(1);
-	b.beRepaired(1);
-	b.beRepaired(1);
-	b.beRepaired(1);
-	b.beRepaired(1);
-	b.beRepaired(1);
-	b.beRepaired(1);
+	b.recover(1);
+	b.recover(1);
+	b.recover(1);
+	b.recover(1);
+	b.recover(1);
+	b.recover(1);
+	b.recover(1);
+	b.recover(1);
+	b.recover(1);
 	b.takeDamage(b.getHP());
-	b.beRepaired(1);
+	b.recover(1);
 	b.attack(a.getName());
 
 	std::cout << "\n";

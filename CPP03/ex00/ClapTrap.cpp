@@ -58,12 +58,12 @@ void	ClapTrap::attack(std::string const &target)
 	std::cout << " Attacks " << target << ": " << ATK << " damage dealt\n";
 }
 
-void	ClapTrap::beRepaired(unsigned int amount)
+void	ClapTrap::recover(unsigned int amount)
 {
 	std::cout << "ClapTrap " << Name;
 	if (!HP || !Energy)
 	{
-		std::cout << " attempts to repair itself, but has insufficient ";
+		std::cout << " attempts to recover, but has insufficient ";
 		if (Energy)
 			std::cout << "HP";
 		else if (HP)
@@ -76,7 +76,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	--Energy;
 	HP += amount;
 	if (HP < amount)
-		std::cout << " attempts to repair itself, but the laws of nature screwed it over real bad: ";
+		std::cout << " attempts to recover, but the laws of nature screwed it over real bad: ";
 	else
 		std::cout << " repairs itself: " << amount << " Health points are restored: ";
 	std::cout << HP << " Health points left\n";

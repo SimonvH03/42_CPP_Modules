@@ -20,7 +20,7 @@ class ClapTrap
 		virtual ~ClapTrap();
 
 virtual	void	attack(std::string const &targetName);
-		void	beRepaired(unsigned int amount);
+		void	recover(unsigned int amount);
 virtual	void	takeDamage(unsigned int amount);
 
 virtual std::string		status();

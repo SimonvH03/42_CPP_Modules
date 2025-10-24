@@ -18,11 +18,14 @@ class ScavTrap : virtual public ClapTrap
 		ScavTrap &operator=(ScavTrap const &original);
 		~ScavTrap();
 
-		void	guardGate();
+		bool	getGuardState() const;
 
 		void	attack(std::string const &target);
+		void	guardGate();
+
 		void	takeDamage(unsigned int amount);
-		std::string	status() const;
 };
+
+std::ostream	&operator<<(std::ostream &os, ScavTrap const &scavtrap);
 
 #endif

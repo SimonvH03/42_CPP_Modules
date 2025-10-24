@@ -14,8 +14,8 @@ class ClapTrap
 		unsigned int	ATK;
 
 	private:
-		unsigned int	repairCost;
 		unsigned int	attackCost;
+		unsigned int	recoverCost;
 
 	public:
 		ClapTrap(std::string name);
@@ -24,18 +24,20 @@ class ClapTrap
 		virtual ~ClapTrap();
 		
 virtual	void	attack(std::string const &targetName);
-		void	beRepaired(unsigned int amount);
+		void	recover(unsigned int amount);
 virtual	void	takeDamage(unsigned int amount);
 
 		void	setName(std::string name);
 		void	setHP(unsigned int hp);
 		void	setEnergy(unsigned int energy);
 		void	setATK(unsigned int atk);
-virtual std::string		status()		const;
+
 		std::string		getName(void)	const;
 		unsigned int	getHP(void)		const;
 		unsigned int	getEnergy(void)	const;
 		unsigned int	getATK(void)	const;
 };
+
+std::ostream	&operator<<(std::ostream &os, ClapTrap const &claptrap);
 
 #endif

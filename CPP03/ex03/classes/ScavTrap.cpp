@@ -93,12 +93,15 @@ void	ScavTrap::takeDamage(unsigned int amount)
 		ClapTrap::takeDamage(amount);
 }
 
-std::string	ScavTrap::status()
+bool	ScavTrap::getGuardState(void)
 const
 {
-	std::string	status = ClapTrap::status();
+	return (guardState);
+}
 
-	if (guardState)
-		status += " G";
-	return (status);
+std::ostream	&operator<<(std::ostream &os, ScavTrap const &scavtrap)
+{
+	os	<< (ClapTrap &)(scavtrap)
+		<< ((scavtrap.getGuardState()) ? " Guarding" : " Vulnerable");
+	return (os);
 }
