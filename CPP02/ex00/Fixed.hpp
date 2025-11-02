@@ -9,8 +9,6 @@ class Fixed
 		static const int	fractionalBits = 8;
 		int					raw;
 
-		void	announce(std::string const &name, std::string const &func) const;
-
 	public:
 		Fixed();
 		Fixed(Fixed const &src);

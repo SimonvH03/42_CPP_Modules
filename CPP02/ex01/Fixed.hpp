@@ -9,8 +9,6 @@ class Fixed
 		static const int	fractionalBits = 8;
 		int					raw;
 
-		void	announce(std::string const &name, std::string const &func) const;
-
 	public:
 		Fixed();
 		Fixed(int const iValue);
@@ -19,12 +17,12 @@ class Fixed
 		Fixed& operator=(Fixed const &src);
 		~Fixed();
 
-		float	toFloat() const;
-		int		toInt() const;
-
 		void	setRawBits(int const raw);
 		void	setRawBits(float const raw);
+
 		int		getRawBits() const;
+		int		toInt() const;
+		float	toFloat() const;
 };
 
 std::ostream	&operator<<(std::ostream &os, Fixed const &fixed);

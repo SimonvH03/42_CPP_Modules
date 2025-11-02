@@ -39,17 +39,17 @@ class Fixed
 		Fixed	operator++(int);
 		Fixed	operator--(int);
 
-		float	toFloat() const;
-		int		toInt() const;
-
-		void	setRawBits(int const raw);
-		void	setRawBits(float const raw);
-		int		getRawBits() const;
-
 		static Fixed&		min(Fixed &a, Fixed &b);
 		static Fixed const&	min(Fixed const &a, Fixed const &b);
 		static Fixed&		max(Fixed &a, Fixed &b);
 		static Fixed const&	max(Fixed const &a, Fixed const &b);
+
+		void	setRawBits(int const raw);
+		void	setRawBits(float const raw);
+
+		int		getRawBits() const;
+		int		toInt() const;
+		float	toFloat() const;
 };
 
 std::ostream	&operator<<(std::ostream &os, Fixed const &fixed);

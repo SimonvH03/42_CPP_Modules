@@ -1,45 +1,46 @@
 #include "Fixed.hpp"
 
-void	Fixed::announce(std::string const &name, std::string const &func)
-const
-{
-	std::cout << "called:\t" << std::setw(27) << name
-		<< "\e[2m\t" << func << "\e[0m\n";
-}
-
 Fixed::Fixed()
+	:	raw(0)
 {
-	announce("Default Constructor", "Fixed::Fixed()");
-
-	setRawBits(0);
+#ifdef VERBOSE
+	std::cout << "Fixed Default Constructor\n";
+#endif
 }
 
 Fixed::Fixed(Fixed const &src)
+	:	raw(src.raw)
 {
-	announce("Copy Constructor", "Fixed::Fixed(Fixed const &src)");
-
-	*this = src;
+#ifdef VERBOSE
+	std::cout << "Fixed Copy Constructor\n";
+#endif
 }
 
 Fixed	&Fixed::operator=(Fixed const &src)
 {
-	announce("Copy assignment operator", "Fixed  &Fixed::operator=(Fixed const &src)");
+#ifdef VERBOSE
+	std::cout << "Fixed Assignment Operator\n";
+#endif
 
 	if (this != &src)
 	{
-		setRawBits(src.getRawBits());
+		raw = src.raw;
 	}
 	return (*this);
 }
 
 Fixed::~Fixed()
 {
-	announce("Destructor", "Fixed::~Fixed()");
+#ifdef VERBOSE
+	std::cout << "Fixed Destructor\n";
+#endif
 }
 
 void	Fixed::setRawBits(int const asInt)
 {
-	announce("setRawBits member function", "void   Fixed::setRawBits(int const raw)");
+#ifdef VERBOSE
+	std::cout << "Fixed setRawBits()\n";
+#endif
 
 	raw = asInt;
 }
@@ -47,7 +48,5 @@ void	Fixed::setRawBits(int const asInt)
 int	Fixed::getRawBits()
 const
 {
-	announce("getRawBits member function", "int    Fixed::getRawBits() const");
-
 	return (raw);
 }

@@ -1,54 +1,83 @@
 #include "Fixed.hpp"
 
-void	Fixed::announce(std::string const &name, std::string const &func)
-const
-{
-	std::cout << "called:\t" << std::setw(27) << name
-		<< "\e[2m\t" << func << "\e[0m\n";
-}
-
 Fixed::Fixed()
+	:	raw(0)
 {
-	announce("Default Constructor", "Fixed::Fixed()");
-
-	setRawBits(0);
-}
-
-Fixed::Fixed(int const iValue)
-{
-	announce("Int Constructor", "Fixed::Fixed(int const iValue)");
-
-	setRawBits(iValue);
-}
-
-Fixed::Fixed(float const fValue)
-{
-	announce("Float Constructor", "Fixed::Fixed(float const fValue)");
-
-	setRawBits(fValue);
+#ifdef VERBOSE
+	std::cout << "Fixed Default Constructor\n";
+#endif
 }
 
 Fixed::Fixed(Fixed const &src)
+	:	raw(src.raw)
 {
-	announce("Copy Constructor", "Fixed::Fixed(Fixed const &src)");
+#ifdef VERBOSE
+	std::cout << "Fixed Copy Constructor\n";
+#endif
+}
 
-	*this = src;
+Fixed::Fixed(int const asInt)
+	:	raw(0)
+{
+#ifdef VERBOSE
+	std::cout << "Fixed Int Constructor\n";
+#endif
+
+	setRawBits(asInt);
+}
+
+Fixed::Fixed(float const asFloat)
+	:	raw(0)
+{
+#ifdef VERBOSE
+	std::cout << "Fixed Float Constructor\n";
+#endif
+
+	setRawBits(asFloat);
 }
 
 Fixed	&Fixed::operator=(Fixed const &src)
 {
-	announce("Copy assignment operator", "Fixed  &Fixed::operator=(Fixed const &src)");
+#ifdef VERBOSE
+	std::cout << "Fixed Assignment Operator\n";
+#endif
 
 	if (this != &src)
 	{
-		raw = src.getRawBits();
+		raw = src.raw;
 	}
 	return (*this);
 }
 
 Fixed::~Fixed()
 {
-	announce("Destructor", "Fixed::~Fixed()");
+#ifdef VERBOSE
+	std::cout << "Fixed Destructor\n";
+#endif
+}
+
+void	Fixed::setRawBits(int const asInt)
+{
+#ifdef VERBOSE
+	std::cout << "Fixed setRawBits(int)\n";
+#endif
+
+	raw = asInt << fractionalBits;
+}
+
+void	Fixed::setRawBits(float const asFloat)
+{
+#ifdef VERBOSE
+	std::cout << "Fixed setRawBits(float)\n";
+#endif
+
+	raw = asFloat * (1 << fractionalBits);
+}
+
+int	Fixed::getRawBits()
+const
+{
+	return (raw);
 }
 
 int		Fixed::toInt(void)
@@ -60,31 +89,7 @@ const
 float	Fixed::toFloat(void)
 const
 {
-	return (raw / (float)(1 << fractionalBits));
-}
-
-void	Fixed::setRawBits(int const asInt)
-{
-	announce("setRawBits member function", "void   Fixed::setRawBits(int const asInt)");
-
-	raw = asInt << fractionalBits;
-	// std::cout << "Set raw raw: " << raw << " (" << asInt << ")\n";
-}
-
-void	Fixed::setRawBits(float const asFloat)
-{
-	announce("setRawBits member function", "void   Fixed::setRawBits(float const asFloat)");
-
-	raw = asFloat * (1 << fractionalBits);
-	// std::cout << "Set raw raw: " << raw << " (" << asFloat << ")\n";
-}
-
-int		Fixed::getRawBits()
-const
-{
-	announce("getRawBits member function", "int    Fixed::getRawBits() const");
-
-	return (raw);
+	return (raw / static_cast<float>(1 << fractionalBits));
 }
 
 std::ostream	&operator<<(std::ostream &os, Fixed const &fixed)
