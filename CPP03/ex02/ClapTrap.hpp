@@ -23,7 +23,7 @@ virtual	void	attack(std::string const &targetName);
 		void	recover(unsigned int amount);
 virtual	void	takeDamage(unsigned int amount);
 
-		void	setName(std::string name);
+		void	setName(std::string const &name);
 		void	setHP(unsigned int hp);
 		void	setEnergy(unsigned int energy);
 		void	setATK(unsigned int atk);

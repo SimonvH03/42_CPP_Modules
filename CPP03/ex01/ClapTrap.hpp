@@ -29,7 +29,7 @@ virtual std::string		status();
 		unsigned int	getEnergy(void) const;
 		unsigned int	getATK(void) const;
 
-		void	setName(std::string name);
+		void	setName(std::string const &name);
 		void	setHP(unsigned int hp);
 		void	setEnergy(unsigned int energy);
 		void	setATK(unsigned int atk);

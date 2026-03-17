@@ -76,7 +76,7 @@ void	ScavTrap::attack(std::string const &target)
 		std::cout << ": No damage done\n";
 		return;
 	}
-	--Energy;
+	Energy -= attackCost;
 	if (guardState)
 		guardGate();
 	std::cout << " Attacks " << target << ": " << ATK << " damage dealt\n";

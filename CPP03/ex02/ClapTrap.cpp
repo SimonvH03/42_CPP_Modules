@@ -110,7 +110,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << HP << " Health points left\n";
 }
 
-void	ClapTrap::setName(std::string name)
+void	ClapTrap::setName(std::string const &name)
 {
 	Name = name;
 }

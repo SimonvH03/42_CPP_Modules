@@ -134,7 +134,7 @@ const
 	return (Name);
 }
 
-void	ClapTrap::setName(std::string name)
+void	ClapTrap::setName(std::string const &name)
 {
 	Name = name;
 }

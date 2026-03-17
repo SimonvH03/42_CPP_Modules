@@ -1,41 +1,46 @@
 #include "ClapTrap.hpp"
 
+const unsigned int	ClapTrap::attackCost = 30;
+const unsigned int	ClapTrap::recoverCost = 20;
+
 ClapTrap::ClapTrap()
-	:	Name		("")
-	,	HP			(10)
-	,	Energy		(10)
-	,	ATK			(0)
-	,	attackCost	(30)
-	,	recoverCost	(20)
+	:	Name	("ClapTrap")
+	,	HP		(10)
+	,	Energy	(10)
+	,	ATK		(0)
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap Default Constructor\n";
+#endif
 }
 
 ClapTrap::ClapTrap(std::string name)
-	:	Name		(name)
-	,	HP			(10)
-	,	Energy		(10)
-	,	ATK			(0)
-	,	attackCost	(30)
-	,	recoverCost	(20)
+	:	Name	(name)
+	,	HP		(10)
+	,	Energy	(10)
+	,	ATK		(0)
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap Name Constructor\n";
+#endif
 }
 
 ClapTrap::ClapTrap(ClapTrap const &original)
-	:	Name		(original.Name)
-	,	HP			(original.HP)
-	,	Energy		(original.Energy)
-	,	ATK			(original.ATK)
-	,	attackCost	(original.attackCost)
-	,	recoverCost	(original.recoverCost)
+	:	Name	(original.Name)
+	,	HP		(original.HP)
+	,	Energy	(original.Energy)
+	,	ATK		(original.ATK)
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap Copy Constructor\n";
+#endif
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap Assignment Operator\n";
+#endif
 
 	if (this != &original)
 	{
@@ -49,12 +54,16 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &original)
 
 ClapTrap::~ClapTrap()
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap Destructor\n";
+#endif
 }
 
 void	ClapTrap::attack(std::string const &target)
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap attack()\n";
+#endif
 
 	std::cout << Name;
 	if (!HP || Energy < attackCost)
@@ -76,7 +85,9 @@ void	ClapTrap::attack(std::string const &target)
 
 void	ClapTrap::recover(unsigned int amount)
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap recover()\n";
+#endif
 
 	std::cout << Name;
 	if (!HP || Energy < recoverCost)
@@ -102,7 +113,9 @@ void	ClapTrap::recover(unsigned int amount)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+#ifdef VERBOSE
 	std::cout << "ClapTrap takeDamage()\n";
+#endif
 
 	std::cout << Name << " takes " << amount << " damage: ";
 	if (HP <= amount)
@@ -115,7 +128,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		std::cout << HP << " Health points left\n";
 }
 
-void	ClapTrap::setName(std::string name)
+void	ClapTrap::setName(std::string const &name)
 {
 	Name = name;
 }

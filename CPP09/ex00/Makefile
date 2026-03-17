@@ -1,5 +1,5 @@
 CXX			=	c++
-CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -Wshadow
+CXXFLAGS	=	-std=c++20 -Wall -Werror -Wextra -Wshadow
 
 NAME		=	btc
 

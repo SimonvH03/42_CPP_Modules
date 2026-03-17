@@ -5,13 +5,8 @@
 
 class ScavTrap : virtual public ClapTrap
 {
-	private:
-		bool 			guardState;
-		unsigned int	guardCost;
-
 	protected:
 		ScavTrap();
-
 	public:
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const &original);
@@ -24,6 +19,11 @@ class ScavTrap : virtual public ClapTrap
 		void	guardGate();
 
 		void	takeDamage(unsigned int amount);
+
+	private:
+		bool	guardState;
+
+		static const unsigned int	guardCost;
 };
 
 std::ostream	&operator<<(std::ostream &os, ScavTrap const &scavtrap);
