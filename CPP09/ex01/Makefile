@@ -2,10 +2,10 @@ CXX			=	c++
 CXXFLAGS	=	-MMD -MP -std=c++20
 CXXFLAGS	+=	-Wall -Werror -Wextra -Wshadow
 
-NAME		=	btc
+NAME		=	RPN
 
 CLASSES_DIR	=	classes
-CLASSES		=	BitcoinExchange.cpp
+CLASSES		=	RPN.cpp
 
 SRC_DIR		=	src
 SRC			=	$(SRC_DIR)/main.cpp \

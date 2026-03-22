@@ -54,6 +54,44 @@ BitcoinExchange::BitcoinExchange()
 	}
 }
 
+void
+BitcoinExchange::report(std::string const &file)
+const {
+	const std::string	Format("date | value");
+
+	// std::cout << "BitcoinExchange::report()\n";
+
+	std::ifstream	content(file);
+	std::string		line;
+
+	std::getline(content, line);
+	if (line != Format)
+		throw std::runtime_error(line + "\nexpected: " + Format);
+
+	while (std::getline(content, line))
+		std::cout << reportLine(line) << "\n";
+}
+
+BitcoinExchange::BitcoinExchange(BitcoinExchange const &original)
+{
+	// std::cout << "BitcoinExchange Copy Constructor\n";
+	*this = original;
+}
+
+BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &original)
+{
+	// std::cout << "BitcoinExchange Assignment Operator\n";
+	if (this != &original) {
+		_dataBase = original._dataBase;
+	}
+	return (*this);
+}
+
+BitcoinExchange::~BitcoinExchange()
+{
+	// std::cout << "BitcoinExchange Destructor\n";
+}
+
 std::string
 BitcoinExchange::reportLine(std::string const &line)
 const {
@@ -96,44 +134,6 @@ const {
 
 		return (output.str());
 	}
-}
-
-void
-BitcoinExchange::report(std::string const &file)
-const {
-	const std::string	Format("date | value");
-
-	// std::cout << "BitcoinExchange::report()\n";
-
-	std::ifstream	content(file);
-	std::string		line;
-
-	std::getline(content, line);
-	if (line != Format)
-		throw std::runtime_error(line + "\nexpected: " + Format);
-
-	while (std::getline(content, line))
-		std::cout << reportLine(line) << "\n";
-}
-
-BitcoinExchange::BitcoinExchange(BitcoinExchange const &original)
-{
-	// std::cout << "BitcoinExchange Copy Constructor\n";
-	*this = original;
-}
-
-BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &original)
-{
-	// std::cout << "BitcoinExchange Assignment Operator\n";
-	if (this != &original) {
-		_dataBase = original._dataBase;
-	}
-	return (*this);
-}
-
-BitcoinExchange::~BitcoinExchange()
-{
-	// std::cout << "BitcoinExchange Destructor\n";
 }
 
 float

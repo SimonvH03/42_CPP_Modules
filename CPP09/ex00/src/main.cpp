@@ -4,8 +4,8 @@
 
 int	main(int argc, char *argv[])
 {
-	if (argc < 2) {
-		std::cerr << "Usage: " << argv[0] << " input.csv\n";
+	if (argc != 2) {
+		std::cerr << "Usage: " << argv[0] << " <input.csv>\n";
 		return (EINVAL);
 	}
 
