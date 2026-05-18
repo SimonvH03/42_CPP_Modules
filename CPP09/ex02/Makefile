@@ -5,7 +5,7 @@ CXXFLAGS	+=	-Wall -Werror -Wextra -Wshadow
 NAME		=	PmergeMe
 
 CLASSES_DIR	=	classes
-CLASSES		=	MergeSort.cpp	\
+CLASSES		=	MergeInsort.cpp	\
 				Timer.cpp		\
 
 SRC_DIR		=	src

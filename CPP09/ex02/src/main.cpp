@@ -2,10 +2,10 @@
 #include <span>
 
 #include "classes/Timer.hpp"
-#include "classes/MergeSort.hpp"
+#include "classes/MergeInsort.hpp"
 #include "classes/Bucket.hpp"
 
-constexpr	unsigned int	Iterations = 100;
+constexpr	unsigned int	Iterations = 1000;
 
 int	main(int argc, char *argv[])
 {
@@ -20,28 +20,33 @@ int	main(int argc, char *argv[])
 	Bucket<Timer::Clock::duration>	dequeBucket;
 	Bucket<Timer::Clock::duration>	vectorBucket;
 
-	MergeSort	sortable{std::istringstream(argv[1])};
+	MergeInsort	sortable{std::istringstream(argv[1])};
+
+	(void)sortable.jacobsthalSequence(sortable.getDeque().size());
 
 	for (unsigned int i = 0; i < Iterations; ++i)
 	{
+		sortable.reset();
 		start	= Timer::Clock::now();
 		sortable.sort_deque();
 		end		= Timer::Clock::now();
 		dequeBucket.add(end - start);
-		sortable.reset();
-	}
 
-	for (unsigned int i = 0; i < Iterations; ++i)
-	{
 		start	= Timer::Clock::now();
 		sortable.sort_vector();
 		end		= Timer::Clock::now();
 		vectorBucket.add(end - start);
-		sortable.reset();
 	}
 
-	Timer::report(std::cout << "deque average sort time: ", dequeBucket.average()) << "\n";
+	std::cout << "Sorted:";
+	for (int n : sortable.getVector()) {
+		std::cout << " " << n;
+	}
+	std::cout << "\n";
+
+	Timer::report(std::cout << "deque  average sort time: ", dequeBucket.average()) << "\n";
 	Timer::report(std::cout << "vector average sort time: ", vectorBucket.average()) << "\n";
+	std::cout << "(" << Iterations << " Iterations)\n";
 
 	return (0);
 }
