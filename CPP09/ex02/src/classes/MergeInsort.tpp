@@ -1,39 +1,35 @@
 #include "MergeInsort.hpp"
 
-template <
-	template <
-		typename,
-		typename...>
-		class Container,
-	typename Iterator,
-	class Comparator>
+template <typename T>
 void
 MergeInsort::sort(
-	Iterator begin,
-	Iterator end,
-	Comparator lt)
+	T container)
 {
-	using	Value	= std::iterator_traits<Iterator>::value_type;
-	using	Pair	= std::pair<Value, Value>;
-
-	if (std::distance(begin, end) <= 1)
+	if (container.size() <= 1)
 		return;
 
-	Container<Pair> pairs;
+	T B{container.begin(), container.begin() + container.size() / 2};
+	T A{container.begin() + container.size() / 2, container.end()};
 
-	for (Iterator it = begin; it != end; ++it)
-	{
-		Value	first = *it++;
-		if (it == end) {
-			break;
-		}
-		Value	second = *it;
+	for (T::iterator bit = B.begin(), T::iterator ait = A.begin();
+		bit != B.end();
+		++bit, ++ait)
+		if (*bit < *ait)
+			std::swap(*ait, *bit);
 
-		if (lt(second, first))
-			std::swap(second, first);
+	T b(B);
+	T a(A);
 
-		pairs.push_back(std::make_pair(first, second));
-	}
+	sort(b);
+	for (size_t i = 0;
+		i < B.size();
+		++i)
+		for (size_t j = 0;
+			j < b.size();
+			++j)
+			if (B[i] == b[j])
+				b[j] = -1, a.at(i) = A[j];
+
 
 	sort<Container>(pairs.begin(), pairs.end(), CompareSecond<Pair>());
 

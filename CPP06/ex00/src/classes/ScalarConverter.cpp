@@ -41,8 +41,10 @@ void	ScalarConverter::convert(const std::string &input)
 	output.intResult << "int: ";
 	output.floatResult << "float: ";
 	output.doubleResult << "double: ";
-	if (representsChar(input))
+
+	if (representsChar(input)) {
 		convertFromChar(output, input[1]);
+	}
 	else if (representsInt(input))
 		try {convertFromInt(output, std::stoi(input));
 		} catch (std::out_of_range const &except) {
@@ -74,7 +76,7 @@ void	ScalarConverter::convert(const std::string &input)
 
 bool ScalarConverter::representsChar(const std::string& literal)
 {
-	return (literal.length() == 3 
+	return (literal.length() == 3
 		&& literal.front() == '\''
 		&& literal.back() == '\'');
 }

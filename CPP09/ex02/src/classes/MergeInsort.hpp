@@ -9,12 +9,10 @@
 class	MergeInsort
 {
 	private:
-		template <typename T>
-		struct CompareSecond {
-			bool operator()(const T& a, const T& b) const {
-				return a.second < b.second;
-			}
-		};
+		struct {
+			int	value;
+			int	index;
+		}	IndexedValue;
 
 	public:
 		MergeInsort(std::istringstream arg);
@@ -38,17 +36,11 @@ class	MergeInsort
 		std::size_t	jacobsthalSequence(std::size_t n);
 
 	private:
-		template <
-			template <
-				typename,
-				typename...>
-				class Container,
-			typename Iterator,
-			class Comparator>
-		void sort(
-			Iterator begin,
-			Iterator end,
-			Comparator lt);
+		template <typename T>
+		void sort(T container);
+
+		template <typename T>
+		void sortIndexed(T container);
 };
 
 # include "MergeInsort.tpp"

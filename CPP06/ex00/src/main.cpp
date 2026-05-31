@@ -1,7 +1,7 @@
 #include <iostream>
 #include "classes/ScalarConverter.hpp"
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{

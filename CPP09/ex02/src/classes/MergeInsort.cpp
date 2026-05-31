@@ -19,11 +19,11 @@ MergeInsort::reset()
 }
 
 void MergeInsort::sort_deque() {
-	sort<std::deque>(_deque.begin(), _deque.end(), std::less<int>());
+	sort(_deque);
 }
 
 void MergeInsort::sort_vector() {
-	sort<std::vector>(_vector.begin(), _vector.end(), std::less<int>());
+	sort(_vector);
 }
 
 std::size_t
