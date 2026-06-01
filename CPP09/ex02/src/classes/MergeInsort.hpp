@@ -8,24 +8,17 @@
 
 class	MergeInsort
 {
-	private:
-		struct {
-			int	value;
-			int	index;
-		}	IndexedValue;
-
 	public:
-		MergeInsort(std::istringstream arg);
-		~MergeInsort() = default;
+		MergeInsort()	= default;
+		~MergeInsort()	= default;
 
 	private:
-		std::vector<int>	_input;
-
 		std::vector<int>	_vector;
 		std::deque<int>		_deque;
 
 	public:
-		void	reset();
+		template <typename T>
+		void	set(T &toSort);
 
 		void	sort_vector();
 		void	sort_deque();
@@ -37,10 +30,7 @@ class	MergeInsort
 
 	private:
 		template <typename T>
-		void sort(T container);
-
-		template <typename T>
-		void sortIndexed(T container);
+		void sort(T &container);
 };
 
 # include "MergeInsort.tpp"

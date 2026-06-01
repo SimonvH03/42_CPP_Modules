@@ -5,7 +5,7 @@
 #include "classes/MergeInsort.hpp"
 #include "classes/Bucket.hpp"
 
-constexpr	unsigned int	Iterations = 1000;
+constexpr	unsigned int	Iterations = 10000;
 
 int	main(int argc, char *argv[])
 {
@@ -14,19 +14,34 @@ int	main(int argc, char *argv[])
 		return (EINVAL);
 	}
 
+	std::vector<int>	input;
+	std::istringstream	arg(argv[1]);
+	std::string			token;
+
+	while (arg >> token)
+	{
+		try {
+			int	i = std::stoi(token);
+			input.push_back(i);
+		} catch (std::invalid_argument &e) {
+			std::cerr << "Error\n"
+				<< "Invalid Element: " << token << "\n"
+				<< "In Argument: \"" << argv[1] << "\"\n";
+			return (EINVAL);
+		}
+	}
+
+	MergeInsort	sortable;
+
 	Timer::TimePoint	start;
 	Timer::TimePoint	end;
 
 	Bucket<Timer::Clock::duration>	dequeBucket;
 	Bucket<Timer::Clock::duration>	vectorBucket;
 
-	MergeInsort	sortable{std::istringstream(argv[1])};
-
-	(void)sortable.jacobsthalSequence(sortable.getDeque().size());
-
 	for (unsigned int i = 0; i < Iterations; ++i)
 	{
-		sortable.reset();
+		sortable.set(input);
 		start	= Timer::Clock::now();
 		sortable.sort_deque();
 		end		= Timer::Clock::now();
@@ -39,9 +54,8 @@ int	main(int argc, char *argv[])
 	}
 
 	std::cout << "Sorted:";
-	for (int n : sortable.getVector()) {
+	for (int n : sortable.getVector())
 		std::cout << " " << n;
-	}
 	std::cout << "\n";
 
 	Timer::report(std::cout << "deque  average sort time: ", dequeBucket.average()) << "\n";

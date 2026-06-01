@@ -1,23 +1,5 @@
 #include "MergeInsort.hpp"
 
-MergeInsort::MergeInsort(std::istringstream arg)
-{
-	std::string	token;
-
-	while (arg >> token)
-	{
-		int	i = std::stoi(token);
-		_input.push_back(i);
-	}
-}
-
-void
-MergeInsort::reset()
-{
-	_vector.assign(_input.begin(), _input.end());
-	 _deque.assign(_input.begin(), _input.end());
-}
-
 void MergeInsort::sort_deque() {
 	sort(_deque);
 }
