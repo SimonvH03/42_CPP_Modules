@@ -5,7 +5,7 @@
 #include "classes/MergeInsort.hpp"
 #include "classes/Bucket.hpp"
 
-constexpr	unsigned int	Iterations = 10000;
+constexpr	unsigned int	Samples = 10000;
 
 int	main(int argc, char *argv[])
 {
@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	Bucket<Timer::Clock::duration>	dequeBucket;
 	Bucket<Timer::Clock::duration>	vectorBucket;
 
-	for (unsigned int i = 0; i < Iterations; ++i)
+	for (unsigned int i = 0; i < Samples; ++i)
 	{
 		sortable.set(input);
 		start	= Timer::Clock::now();
@@ -60,7 +60,7 @@ int	main(int argc, char *argv[])
 
 	Timer::report(std::cout << "deque  average sort time: ", dequeBucket.average()) << "\n";
 	Timer::report(std::cout << "vector average sort time: ", vectorBucket.average()) << "\n";
-	std::cout << "(" << Iterations << " Iterations)\n";
+	std::cout << "(" << Samples << " Samples)\n";
 
 	return (0);
 }

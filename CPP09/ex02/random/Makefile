@@ -10,8 +10,8 @@ SRC			=	main.cpp
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) main.cpp -o $(NAME)
+$(NAME): $(SRC)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 fclean:
 	rm -f $(NAME)

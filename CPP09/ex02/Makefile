@@ -8,7 +8,7 @@ NAME		=	PmergeMe
 
 RANDOM_DIR	=	random
 RANDOM_BIN	=	$(RANDOM_DIR)/Random
-RANDOM_SUB	=	GenerateRandomNumbers
+RANDOM_SUB	=	Rand
 
 CLASSES_DIR	=	classes
 CLASSES		=	MergeInsort.cpp	\
@@ -26,7 +26,7 @@ all: $(NAME)
 
 $(RANDOM_BIN):
 	make -C $(RANDOM_DIR)
-	mv $(RANDOM_BIN) $(RANDOM_SUB)
+	cp $(RANDOM_BIN) $(RANDOM_SUB)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
@@ -46,6 +46,7 @@ clean:
 	fi
 
 fclean: clean
+	make -C $(RANDOM_DIR) fclean
 	rm -f $(RANDOM_SUB)
 	rm -f $(NAME)
 

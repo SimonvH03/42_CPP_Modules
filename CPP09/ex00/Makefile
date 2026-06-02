@@ -27,7 +27,7 @@ $(NAME): $(OBJ)
 -include $(DEP)
 
 clean:
-	@if [ -n "$(OBJ_DIR)" ] && [ "$(OBJ_DIR)" != "/" ] && [ -d "$(OBJ_DIR)" ]; then \
+	@if [ -n "$(OBJ_DIR)" ] && [ "$(OBJ_DIR)" != "/" ]; then \
 		rm -rf $(OBJ_DIR); \
 	else \
 		echo "Error: OBJ_DIR is undefined or invalid"; \
